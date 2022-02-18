@@ -18,6 +18,21 @@
             gtag("js", new Date());
             gtag("config", "UA-97489509-8");
         </script>
+        <style>
+            .grid-container {
+                display: grid !important;
+                grid-template-columns: auto auto auto !important;
+                background-color: #2196F3 !important;
+                padding: 10px !important;
+            }
+            .grid-item {
+                background-color: rgba(255, 255, 255, 0.8) !important;
+                border: 1px solid rgba(0, 0, 0, 0.8) !important;
+                padding: 20px !important;
+                font-size: 30px !important;
+                text-align: center !important;
+            }
+        </style>
     </head>
     <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>

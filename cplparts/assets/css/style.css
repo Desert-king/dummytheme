@@ -23,6 +23,19 @@ body {
     text-align: left;
     direction: ltr;
 }
+.grid-container {
+    display: grid !important;
+    grid-template-columns: auto auto auto !important;
+    background-color: #2196F3 !important;
+    padding: 10px !important;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.8) !important;
+    padding: 20px !important;
+    font-size: 30px !important;
+    text-align: center !important;
+  }
 .block-products-columns__list-item{
     margin-bottom: 16px;
 }
