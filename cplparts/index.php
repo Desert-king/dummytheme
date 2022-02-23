@@ -600,7 +600,8 @@
                             <div class="block-zone__widget">
                                 <div class="block-zone__widget-header">
                                     <div class="block-zone__tabs">
-                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> <button class="block-zone__tabs-button" type="button">Bestsellers</button>
+                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> 
+                                        <button class="block-zone__tabs-button" type="button">Bestsellers</button>
                                         <button class="block-zone__tabs-button" type="button">Popular</button>
                                     </div>
                                     <?php
@@ -614,6 +615,26 @@
                                             )
                                         );
                                     ?>
+                                    <?php  $categories = get_terms( ['taxonomy' => 'product_cat', 'hide_empty' => false] ); ?>
+                                   
+    
+                                    <ul class="cat-list">
+                                    <li><a class="cat-list_item active" href="#!" data-slug="">All projects</a></li>
+
+                                    <?php foreach($categories as $category) : ?>
+                                        <li>
+                                        <a class="cat-list_item" href="#!" data-slug="<?= $category->slug; ?>">
+                                            <?= $category->name; ?>
+                                        </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                    <!-- <?php //echo "<pre>"; print_r($categories); echo "</pre>";  ?> -->
+                                    <?php
+                                   
+                                    ?>
+                                    
+                                    </ul>
+                                  
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
                                         <button class="arrow__button" type="button">
                                             <svg width="7" height="11"><path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" /></svg>
@@ -641,7 +662,9 @@
                                                 'posts_per_page' => 3,
                                                 'orderby' => 'rand'
                                             );
+ 
                                             $loop = new WP_Query($args);
+                                        
                                             while ($loop->have_posts()) : $loop->the_post();
                                                 global $product; ?>
                                             <div class="block-zone__carousel-item">
@@ -773,7 +796,8 @@
                             <div class="block-zone__widget">
                                 <div class="block-zone__widget-header">
                                     <div class="block-zone__tabs">
-                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> <button class="block-zone__tabs-button" type="button">Bestsellers</button>
+                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> 
+                                        <button class="block-zone__tabs-button" type="button">Bestsellers</button>
                                         <button class="block-zone__tabs-button" type="button">Popular</button>
                                     </div>
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
@@ -800,7 +824,7 @@
                                             $args = array(
                                                 'product_cat' => 'Bestsellers',
                                                 'posts_per_page' => 3,
-                                                'orderby' => 'rand'
+                                                // 'orderby' => 'rand'
                                             );
                                             $loop = new WP_Query($args);
                                             while ($loop->have_posts()) : $loop->the_post();
@@ -934,8 +958,31 @@
                             <div class="block-zone__widget">
                                 <div class="block-zone__widget-header">
                                     <div class="block-zone__tabs">
-                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> <button class="block-zone__tabs-button" type="button">Bestsellers</button>
-                                        <button class="block-zone__tabs-button" type="button">Popular</button>
+                                        <!-- <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button>  -->
+                                        <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button" onclick="dosomething('Hello')"><?php 
+                                            $id = 28;
+                                            if( $term = get_term_by( 'id', $id, 'product_cat' ) ){
+                                                $btn_name = $term->name;
+                                                echo  $btn_name;
+                                            }
+                                          ?></button> 
+                                         <button class="block-zone__tabs-button" type="button"><?php 
+                                            $id = 23;
+                                            if( $term = get_term_by( 'id', $id, 'product_cat' ) ){
+                                                $btn_name = $term->name;
+                                                echo  $btn_name;
+                                            }
+                                          ?></button> 
+                                          <button class="block-zone__tabs-button" type="button"><?php 
+                                            $id = 24;
+                                            if( $term = get_term_by( 'id', $id, 'product_cat' ) ){
+                                                $btn_name = $term->name;
+                                                echo  $btn_name;
+                                            }
+                                          ?></button> 
+                                          
+                                        <!-- <button class="block-zone__tabs-button" type="button">Bestsellers</button>
+                                        <button class="block-zone__tabs-button" type="button">Popular</button> -->
                                     </div>
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
                                         <button class="arrow__button" type="button">
@@ -958,11 +1005,14 @@
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
+                                            // $name = "Popular";
                                             $args = array(
-                                                'product_cat' => 'Popular',
+                                                  // 'product_cat' => $btn_name,
+                                                'product_cat' => "Popular",
                                                 'posts_per_page' => 3,
                                                 'orderby' => 'rand'
                                             );
+                                            // print_r($args['product_cat']);
                                             $loop = new WP_Query($args);
                                             while ($loop->have_posts()) : $loop->the_post();
                                                 global $product; ?>

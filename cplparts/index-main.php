@@ -2375,6 +2375,8 @@
                                         <button class="block-zone__tabs-button block-zone__tabs-button--active" type="button">Featured</button> <button class="block-zone__tabs-button" type="button">Bestsellers</button>
                                         <button class="block-zone__tabs-button" type="button">Popular</button>
                                     </div>
+                            
+
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
                                         <button class="arrow__button" type="button">
                                             <svg width="7" height="11"><path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" /></svg>

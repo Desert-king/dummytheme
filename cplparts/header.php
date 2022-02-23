@@ -18,6 +18,11 @@
             gtag("js", new Date());
             gtag("config", "UA-97489509-8");
         </script>
+        <script type="text/javascript">
+            function dosomething(val){
+                alert(val);
+            }
+        </script>
         <style>
             .grid-container {
                 display: grid !important;
@@ -194,6 +199,7 @@
                                 )
                             );
                         ?>
+                        
                     </div>
                    
                     <div class="header__topbar-end-bg"></div>

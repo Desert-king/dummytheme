@@ -7,10 +7,52 @@
  * @package cplparts
  */
 
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' ) ) {
+    require_once( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' );
+}
+if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/sample/sample-config.php' ) ) {
+    require_once( dirname( __FILE__ ) . '/ReduxFramework/sample/sample-config.php' );
+}
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
 }
+
+// use Carbon_Fields\Container;
+// use Carbon_Fields\Field;
+
+// add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
+// function crb_attach_theme_options() {
+//     Container::make( 'theme_options', __( 'Theme Options' ) )
+//         ->add_fields( array(
+//             Field::make( 'text', 'crb_text', 'Text Field' ),
+//         ) );
+// }
+?>
+<?php
+// add_action('carbon_register_fields', 'crb_register_custom_fields');
+// function crb_register_custom_fields() {
+//     include_once(dirname(__FILE__) . '/post-meta.php');
+// }
+?>
+<?php
+ 
+ require_once (dirname(__FILE__) . '/sample/sample-config.php');
+ 
+?>
+<!-- require get_template_directory_uri(__FILE__) . 'post-meta.php' -->
+<?php
+	//include 'post-meta.php';
+?>
+<?php
+
+// add_action( 'after_setup_theme', 'crb_load' );
+// function crb_load() {
+//     require_once( 'vendor/autoload.php' );
+//     \Carbon_Fields\Carbon_Fields::boot();
+// }
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -19,6 +61,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+// if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/theme_options/ReduxCore/framework.php' ) ) {
+//     require_once( dirname( __FILE__ ) . '/theme_options/ReduxCore/framework.php' );
+// }
+// if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/theme_options/test_theme/config.php' ) ) {
+//     require_once( dirname( __FILE__ ) . '/theme_options/test_theme/config.php' );
+// }
+
 function cplparts_setup() {
 	/*
 		* Make theme available for translation.
