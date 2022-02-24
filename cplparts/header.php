@@ -18,11 +18,7 @@
             gtag("js", new Date());
             gtag("config", "UA-97489509-8");
         </script>
-        <script type="text/javascript">
-            function dosomething(val){
-                alert(val);
-            }
-        </script>
+        
         <style>
             .grid-container {
                 display: grid !important;
@@ -36,6 +32,12 @@
                 padding: 20px !important;
                 font-size: 30px !important;
                 text-align: center !important;
+            }
+            .tab-view{
+                display: none;   
+            }
+            .tab-view.active{
+                display: block;   
             }
         </style>
     </head>

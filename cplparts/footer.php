@@ -945,6 +945,15 @@
         </div>
         
 		<?php wp_footer(); ?>
+        <script>
+        function handleCategoryTab(elem){
+            var target = jQuery(elem).attr("target");
+        
+            jQuery(".tab-view").removeClass("active");
+            jQuery("#"+target).addClass("active");
+
+        }
+        </script>
     </body>
     <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Feb 2022 05:49:55 GMT -->
 </html>
