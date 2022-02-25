@@ -46,6 +46,11 @@ if ( ! defined( '_S_VERSION' ) ) {
 <?php
 	//include 'post-meta.php';
 ?>
+
+<?php 
+
+?>
+
 <?php
 
 // add_action( 'after_setup_theme', 'crb_load' );
@@ -175,20 +180,95 @@ add_action( 'after_setup_theme', 'cplparts_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function cplparts_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'cplparts' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'cplparts' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+// function cplparts_widgets_init() {
+// 	register_sidebar(
+// 		array(
+// 			'name'          => esc_html__( 'Sidebar', 'cplparts' ),
+// 			'id'            => 'sidebar-1',
+// 			'description'   => esc_html__( 'Add widgets here.', 'cplparts' ),
+// 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+// 			'after_widget'  => '</section>',
+// 			'before_title'  => '<h2 class="widget-title">',
+// 			'after_title'   => '</h2>',
+// 		)
+// 	);
+// }
+// add_action( 'widgets_init', 'cplparts_widgets_init' );
+
+// function new_sidebar_widget_init() {
+// 	register_sidebar( array(
+// 		 'name' => 'new-sidebar',
+// 		 'id' => 'new-sidebar',
+// 		 'before_widget' => '<div id="new-sidebar">',
+// 		 'after_widget' => '</div>',
+// 		 'before_title' => '',
+// 		 'after_title' => '',
+// 	 ) );
+// 	 register_sidebar( array(
+// 		 'name' => 'new-sidebar-1',
+// 		 'id' => 'new-sidebar-1',
+// 		 'before_widget' => '<div id="new-sidebar">',
+// 		 'after_widget' => '</div>',
+// 		 'before_title' => '',
+// 		 'after_title' => '',
+// 	 ) );
+//  }
+//  add_action( 'widgets_init', 'new_sidebar_widget_init' ); 
+
+add_action( 'widgets_init', 'my_register_sidebars' );
+function my_register_sidebars() {
+    /* Register the 'primary' sidebar. */
+    register_sidebar(
+        array(
+            'id'            => 'primary',
+            'name'          => __( 'Primary Sidebar' ),
+            'description'   => __( 'A short description of the sidebar.' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        )
+    );
+    /* Repeat register_sidebar() code for additional sidebars. */
 }
-add_action( 'widgets_init', 'cplparts_widgets_init' );
+
+// function cplparts_sidebar_registration() {
+
+// 	// Arguments used in all register_sidebar() calls.
+// 	$shared_args = array(
+// 		'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
+// 		'after_title'   => '</h2>',
+// 		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
+// 		'after_widget'  => '</div></div>',
+// 	);
+
+// 	// Footer #1.
+// 	register_sidebar(
+// 		array_merge(
+// 			$shared_args,
+// 			array(
+// 				'name'        => __( 'Footer #1', 'cplparts' ),
+// 				'id'          => 'sidebar-1',
+// 				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'cplparts' ),
+// 			)
+// 		)
+// 	);
+
+// 	// Footer #2.
+// 	register_sidebar(
+// 		array_merge(
+// 			$shared_args,
+// 			array(
+// 				'name'        => __( 'Footer #2', 'cplparts' ),
+// 				'id'          => 'sidebar-2',
+// 				'description' => __( 'Widgets in this area will be displayed in the second column in the footer.', 'cplparts' ),
+// 			)
+// 		)
+// 	);
+
+// }
+
+// add_action( 'widgets_init', 'cplparts_sidebar_registration' );
 
 /**
  * Enqueue scripts and styles.

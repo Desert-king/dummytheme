@@ -20,8 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-
-	<?php
+    <?php
 		/**
 		 * woocommerce_before_main_content hook.
 		 *
@@ -30,14 +29,32 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_before_main_content' );
 	?>
+    <div class="block-split block-split--has-sidebar">
+		<div class="container">
+			<div class="block-split__row row no-gutters">
+			    <?php //do_action( 'woocommerce_sidebar' ); ?>
+				<?php // dynamic_sidebar( 'new-sidebar' ); ?> 
+                <?php //get_sidebar( 'primary' ); ?>
+				<?php //do_action( 'woocommerce_sidebar' ); ?>
+				<?php get_template_part( 'template-parts/sidebar/sidebar', 'sidebar' ); ?>
+			       <div class="block-split__item block-split__item-content col-auto">
+				        <div class="product product--layout--sidebar">
+							<?php while ( have_posts() ) : ?>
+								<?php the_post(); ?>
 
-		<?php while ( have_posts() ) : ?>
-			<?php the_post(); ?>
+								<?php wc_get_template_part( 'content', 'single-product' ); ?>
 
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
+							
+						    <div class="product__body">
+								<div class="product__card product__card--one"></div>
+                                <div class="product__card product__card--two"></div>
+				                <!-- <div class="product-gallery product-gallery--layout--product-sidebar product__gallery" data-layout="product-sidebar"> -->
+                                    <div class="product-gallery__featured">
+						               <?php //woocommerce_product_thumbnails(); ?>
+									</div>
+								<!-- </div> -->
+							</div>
+							<?php endwhile; // end of the loop. ?>
 	<?php
 		/**
 		 * woocommerce_after_main_content hook.
@@ -53,10 +70,16 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		do_action( 'woocommerce_sidebar' );
+		// do_action( 'woocommerce_sidebar' );
 	?>
 
+</div>
+</div>
+</div>
+</div>
+</div>
 <?php
-// get_footer( 'shop' );
+
+get_footer( 'shop' );
 
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
