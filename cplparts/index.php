@@ -356,7 +356,7 @@
                                             <div class="product-card__info">
                                                 <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 473-75662-R</div>
                                                 <div class="product-card__name">
-                                                    <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                    <div><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
                                                 </div>
                                                 <div class="product-card__rating">
                                                     <div class="rating product-card__rating-stars">
@@ -519,7 +519,7 @@
                                                 <div class="product-card__info">
                                                     <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 472-67382-Z</div>
                                                     <div class="product-card__name">
-                                                        <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                        <div><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
                                                     </div>
                                                     <div class="product-card__rating">
                                                         <div class="rating product-card__rating-stars">
@@ -689,7 +689,7 @@
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 472-67382-Z</div>
                                                         <div class="product-card__name">
-                                                            <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                            <div><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
                                                         </div>
                                                         <div class="product-card__rating">
                                                             <div class="rating product-card__rating-stars">
@@ -851,7 +851,7 @@
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 472-67382-Z</div>
                                                         <div class="product-card__name">
-                                                            <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                            <div><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
                                                         </div>
                                                         <div class="product-card__rating">
                                                             <div class="rating product-card__rating-stars">
@@ -1026,7 +1026,7 @@
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 472-67382-Z</div>
                                                         <div class="product-card__name">
-                                                            <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                            <div><a href="<?php echo get_permalink($loop->post->ID) ?>" ><?php the_title(); ?></a></div>
                                                         </div>
                                                         <div class="product-card__rating">
                                                             <div class="rating product-card__rating-stars">
@@ -1125,7 +1125,7 @@
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 472-67382-Z</div>
                                                         <div class="product-card__name">
-                                                            <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                            <div><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
                                                         </div>
                                                         <div class="product-card__rating">
                                                             <div class="rating product-card__rating-stars">
@@ -1909,7 +1909,7 @@
                                                         <div class="product-card__name">
                                                             <div>
                                                                 <div class="product-card__badges"><div class="tag-badge tag-badge--sale">sale</div></div>
-                                                                <a href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>"><?php the_title(); ?></a>
+                                                                <a href="<?php echo get_permalink($loop->post->ID) ?>" ><?php the_title(); ?></a>
                                                             </div>
                                                         </div>
                                                         <div class="product-card__rating">

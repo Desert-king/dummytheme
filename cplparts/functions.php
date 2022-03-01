@@ -109,7 +109,8 @@ function cplparts_setup() {
 			'main-menu' => esc_html__( 'Main menu', 'cplparts' ),
 			'footer-first-menu' => esc_html__( 'Footer first menu', 'cplparts' ),
 			'footer-second-menu' => esc_html__( 'Footer second menu', 'cplparts' ),
-			'product-category-menu' => esc_html__( 'Product category menu', 'cplparts' )
+			'product-category-menu' => esc_html__( 'Product category menu', 'cplparts' ),
+			'category-of-Products' => esc_html__( 'Categories', 'cplparts' )
 		)
 	);
 

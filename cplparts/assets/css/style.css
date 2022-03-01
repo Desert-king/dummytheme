@@ -7456,7 +7456,8 @@ ul.footer-links__list li a {
 .widget-categories__item {
     position: relative;
 }
-.widget-categories__link {
+.widget-categories__link,
+.widget-categories__list.widget-categories__list--root li a {
     display: block;
     color: inherit;
     padding: 5px 0;
@@ -7530,10 +7531,13 @@ ul.footer-links__list li a {
     font-size: 15px;
     line-height: 20px;
 }
-.widget-categories__list--root > .widget-categories__item {
+.widget-categories__list--root > .widget-categories__item,
+.widget-categories__list--root li{
     padding-left: 16px;
 }
-.widget-categories__list--root > .widget-categories__item:before {
+.widget-categories__list--root > .widget-categories__item:before,
+.widget-categories__list.widget-categories__list--root .menu-categories li.menu-item:before
+{
     position: absolute;
     display: block;
     content: "";

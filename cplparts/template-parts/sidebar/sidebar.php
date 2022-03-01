@@ -35,7 +35,20 @@
     <div class="card widget widget-categories">
         <div class="widget__header"><h4>Categories</h4></div>
         <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open">
-            <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Tools & Garage</a></li>
+            <?php
+                    wp_nav_menu(    
+                        array(
+                            'theme_location' => 'category-of-Products',
+                            'container' => '',
+                            'menu_class' => '',
+                            // 'items_wrap' => '<ul  id="detail-page-menu" class="main-menu__list">%3$s</ul>',
+                            // 'add_li_class'  => 'main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu',
+                            'depth' => '2',
+                        )
+
+                    );
+            ?>
+            <!-- <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Tools & Garage</a></li>
             <li class="widget-categories__item" data-collapse-item>
                 <a href="#" class="widget-categories__link">Headlights & Lighting </a><button class="widget-categories__expander" type="button" data-collapse-trigger></button>
                 <div class="widget-categories__container" data-collapse-content>
@@ -105,62 +118,10 @@
             </li>
             <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Steering</a></li>
             <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Transmission</a></li>
-            <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Air Filters</a></li>
+            <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Air Filters</a></li> -->
         </ul>
     </div>
-    <!-- <div class="card widget widget-products">
-        <div class="widget__header"><h4>Latest Products</h4></div>
-        <div class="widget-products__list">
-            <div class="widget-products__item">
-                <div class="widget-products__image image image--type--product">
-                    <a href="product-full.html" class="image__body"><img class="image__tag" src="images/products/product-1-64x64.jpg" alt="" /></a>
-                </div>
-                <div class="widget-products__info">
-                    <div class="widget-products__name"><a href="product-full.html">Brandix Spark Plug Kit ASR-400</a></div>
-                    <div class="widget-products__prices"><div class="widget-products__price widget-products__price--current">$19.00</div></div>
-                </div>
-            </div>
-            <div class="widget-products__item">
-                <div class="widget-products__image image image--type--product">
-                    <a href="product-full.html" class="image__body"><img class="image__tag" src="images/products/product-2-64x64.jpg" alt="" /></a>
-                </div>
-                <div class="widget-products__info">
-                    <div class="widget-products__name"><a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a></div>
-                    <div class="widget-products__prices"><div class="widget-products__price widget-products__price--current">$224.00</div></div>
-                </div>
-            </div>
-            <div class="widget-products__item">
-                <div class="widget-products__image image image--type--product">
-                    <a href="product-full.html" class="image__body"><img class="image__tag" src="images/products/product-3-64x64.jpg" alt="" /></a>
-                </div>
-                <div class="widget-products__info">
-                    <div class="widget-products__name"><a href="product-full.html">Left Headlight Of Brandix Z54</a></div>
-                    <div class="widget-products__prices">
-                        <div class="widget-products__price widget-products__price--new">$349.00</div>
-                        <div class="widget-products__price widget-products__price--old">$415.00</div>
-                    </div>
-                </div>
-            </div>
-            <div class="widget-products__item">
-                <div class="widget-products__image image image--type--product">
-                    <a href="product-full.html" class="image__body"><img class="image__tag" src="images/products/product-4-64x64.jpg" alt="" /></a>
-                </div>
-                <div class="widget-products__info">
-                    <div class="widget-products__name"><a href="product-full.html">Glossy Gray 19" Aluminium Wheel AR-19</a></div>
-                    <div class="widget-products__prices"><div class="widget-products__price widget-products__price--current">$589.00</div></div>
-                </div>
-            </div>
-            <div class="widget-products__item">
-                <div class="widget-products__image image image--type--product">
-                    <a href="product-full.html" class="image__body"><img class="image__tag" src="images/products/product-5-64x64.jpg" alt="" /></a>
-                </div>
-                <div class="widget-products__info">
-                    <div class="widget-products__name"><a href="product-full.html">Twin Exhaust Pipe From Brandix Z54</a></div>
-                    <div class="widget-products__prices"><div class="widget-products__price widget-products__price--current">$749.00</div></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
     <?php  
         $args = array(
             'post_type'      => 'product',
