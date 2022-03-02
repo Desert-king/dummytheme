@@ -29,6 +29,13 @@ get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
+ <div class="block-split block-split--has-sidebar">
+    <div class="container">
+        <div class="block-split__row row no-gutters">
+		    <?php get_template_part( 'template-parts/sidebar/shop-page-sidebar', 'sidebar' ); ?>
+			<div class="block-split__item block-split__item-content col-auto">
+                <div class="block">
+                    <div class="products-view">
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
@@ -100,6 +107,14 @@ do_action( 'woocommerce_after_main_content' );
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action( 'woocommerce_sidebar' );
+// do_action( 'woocommerce_sidebar' );
+?>
 
+                     </div>
+                </div>
+             </div>
+         </div>
+    </div>
+</div>
+<?Php 
 get_footer( 'shop' );
