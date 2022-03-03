@@ -34,7 +34,20 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                     <div class="filter__container">
                                         <div class="filter-categories">
                                             <ul class="filter-categories__list">
-                                                <li class="filter-categories__item filter-categories__item--parent">
+                                                <?php
+                                                        wp_nav_menu(    
+                                                            array(
+                                                                'theme_location' => 'category-of-Products',
+                                                                'container' => '',
+                                                                'menu_class' => '',
+                                                                // 'items_wrap' => '<ul  id="detail-page-menu" class="main-menu__list">%3$s</ul>',
+                                                                // 'add_li_class'  => 'main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu',
+                                                                'depth' => '2',
+                                                            )
+
+                                                        );
+                                                ?>
+                                                <!-- <li class="filter-categories__item filter-categories__item--parent">
                                                     <span class="filter-categories__arrow">
                                                         <svg width="6" height="9">
                                                             <path
@@ -105,13 +118,19 @@ C6.1,7.8,6.1,8.4,5.7,8.7z"
                                                 <li class="filter-categories__item filter-categories__item--child">
                                                     <a href="#">Glue Guns</a>
                                                     <div class="filter-categories__counter">7</div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- 11111111111111111111 -->
+                        <?php 
+                               
+
+                        ?>
+                        <!-- 11111111111111111111111 -->
                         <div class="widget-filters__item">
                             <div class="filter filter--opened" data-collapse-item>
                                 <button type="button" class="filter__title" data-collapse-trigger>
@@ -727,7 +746,47 @@ C6.1,7.8,6.1,8.4,5.7,8.7z"
                     </div>
                     <div class="widget-filters__actions d-flex"><button class="btn btn-primary btn-sm">Filter</button> <button class="btn btn-secondary btn-sm">Reset</button></div>
                 </div>
-                <div class="card widget widget-products d-none d-lg-block">
+                <?php  
+                    $args = array(
+                        'post_type'      => 'product',
+                        'posts_per_page' => 5,
+                    );
+
+                    $loop = new WP_Query( $args );
+                    ?>
+                        <div class="card widget widget-products">
+                        <div class="widget__header"><h4>Latest Products</h4></div>
+                        <div class="widget-products__list">
+                    <?php
+                        
+                    
+                    
+                    while ( $loop->have_posts() ) : $loop->the_post();
+                        global $product;
+                        ?>
+                        <div class="widget-products__item">
+                        <div class="widget-products__image image image--type--product">
+                            <a class="image__body"  href="<?php echo get_permalink($loop->post->ID) ?>">
+                            <!-- <img class="image__tag" src="<?php //echo get_the_post_thumbnail($loop->post->ID, 'thumbnail'); ?>" alt="" /> -->
+                            <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'thumbnail', array('class' => 'image__tag'), 'shop_catalog');
+                            else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" />'; ?>  
+                            </a>
+                        </div>
+                        <div class="widget-products__info">
+                            <div class="widget-products__name"><a href="<?php echo get_permalink($loop->post->ID) ?>"><?php the_title(); ?></a></div>
+                            <div class="widget-products__prices"><div class="widget-products__price widget-products__price--current"><?php echo $product->get_price_html(); ?></div></div>
+                        </div>
+                        </div>
+                    <?php 
+                    //echo '<br /><a href="'.get_permalink().'">' . woocommerce_get_product_thumbnail().' '.get_the_title().'</a>'; 
+                    endwhile;
+                    ?> 
+                    </div> 
+                    </div> 
+                    <?php
+                    wp_reset_query();
+                ?>
+                <!-- <div class="card widget widget-products d-none d-lg-block">
                     <div class="widget__header"><h4>Latest Products</h4></div>
                     <div class="widget-products__list">
                         <div class="widget-products__item">
@@ -779,7 +838,8 @@ C6.1,7.8,6.1,8.4,5.7,8.7z"
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
             </div>
         </div>
     </div>
