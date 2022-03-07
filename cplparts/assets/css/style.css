@@ -5893,6 +5893,9 @@ ul.footer-links__list li a {
 .block-products-columns__list-item .product-card .product-card__wishlist {
     display: none;
 }
+.product-card__addtocart-full a.add_to_cart_button , .product-card__addtocart-full a.add_to_cart_button:hover{
+    color: #fff;
+}
 .block-products-columns__list-item .product-card .product-card__image {
     padding: 8px 10px;
     width: 112px;
@@ -5939,6 +5942,12 @@ ul.footer-links__list li a {
     overflow: hidden;
     padding-right: 26px;
 }
+.product-card__name a h2.woocommerce-loop-product__title{
+    font-size: 16px;
+    color: inherit;
+    font-weight: 400;
+}
+
 .block-products-columns__list-item .product-card .product-card__rating {
     margin: -3px 0 -2px;
     padding-top: 7px;
