@@ -20,38 +20,10 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
-// use Carbon_Fields\Container;
-// use Carbon_Fields\Field;
 
-// add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
-// function crb_attach_theme_options() {
-//     Container::make( 'theme_options', __( 'Theme Options' ) )
-//         ->add_fields( array(
-//             Field::make( 'text', 'crb_text', 'Text Field' ),
-//         ) );
-// }
-?>
-<?php
-// add_action('carbon_register_fields', 'crb_register_custom_fields');
-// function crb_register_custom_fields() {
-//     include_once(dirname(__FILE__) . '/post-meta.php');
-// }
-?>
-<?php
  
  require_once (dirname(__FILE__) . '/sample/sample-config.php');
- 
-?>
-<!-- require get_template_directory_uri(__FILE__) . 'post-meta.php' -->
-<?php
-	//include 'post-meta.php';
-?>
 
-<?php 
-
-?>
-
-<?php
 
 // add_action( 'after_setup_theme', 'crb_load' );
 // function crb_load() {
