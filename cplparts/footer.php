@@ -954,6 +954,18 @@
 
         }
         </script>
+
+        <!-- to enable update cart button -->
+        <script>
+        jQuery(document).ready(function(){
+            jQuery('.woocommerce-cart').find('button[name="update_cart"]').prop('disabled', false);
+
+            jQuery('body').on('updated_cart_totals', function() {
+                jQuery('.woocommerce-cart').find('button[name="update_cart"]').prop('disabled', false);
+
+            })
+        });
+    </script>
     </body>
     <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Feb 2022 05:49:55 GMT -->
 </html>

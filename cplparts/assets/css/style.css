@@ -8247,6 +8247,7 @@ ul.footer-links__list li a {
     margin-bottom: 32px;
     font-size: 15px;
 }
+
 .cart__totals-table a:hover {
     text-decoration: underline;
 }
@@ -8297,6 +8298,9 @@ ul.footer-links__list li a {
 }
 .cart__totals-table tfoot td {
     letter-spacing: -0.02em;
+}
+a.checkout-button.button.alt.wc-forward {
+    color: #fff !important;
 }
 @media (max-width: 1399.98px) {
     .cart {

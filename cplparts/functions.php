@@ -58,6 +58,14 @@ function cplparts_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
+	// add_action('woocommerce_before_main_content', 'remove_sidebar' );
+    // function remove_sidebar()
+    // {
+    //     if( is_checkout() || is_cart()) { 
+    //      remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+    //    }
+    // }
+
 	/*
 		* Let WordPress manage the document title.
 		* By adding theme support, we declare that this theme does not use a
@@ -339,4 +347,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
 
