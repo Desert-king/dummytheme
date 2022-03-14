@@ -23,9 +23,16 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
 
-<div class="u-columns col2-set" id="customer_login">
-
-	<div class="u-column1 col-1">
+<!-- <div class="u-columns col2-set" id="customer_login"> -->
+<div class="site__body">
+	<div class="block-space block-space--layout--after-header"></div>
+	    <div class="block">
+		     <div class="container container--max--lg">
+			     <div class="row">
+	                <!-- <div class="u-column1 col-1"> -->
+					<div class="col-md-6 d-flex">
+					   <div class="card flex-grow-1 mb-md-0 mr-0 mr-lg-3 ml-0 ml-lg-4">
+                            <div class="card-body card-body--padding--2">
 
 <?php endif; ?>
 
@@ -62,10 +69,14 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 		</form>
 
 <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
-
+    </div>
+	</div>
 	</div>
 
-	<div class="u-column2 col-2">
+	<!-- <div class="u-column2 col-2"> -->
+	<div class="col-md-6 d-flex mt-4 mt-md-0">
+        <div class="card flex-grow-1 mb-0 ml-0 ml-lg-3 mr-0 mr-lg-4">
+             <div class="card-body card-body--padding--2">
 
 		<h2><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2>
 
@@ -110,9 +121,13 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 			<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 		</form>
-
+		</div>
+		</div>
 	</div>
 
+</div>
+</div>
+</div>
 </div>
 <?php endif; ?>
 
