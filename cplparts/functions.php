@@ -23,7 +23,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 
  
  require_once (dirname(__FILE__) . '/sample/sample-config.php');
-
+ require_once (dirname(__FILE__) . '/sample/cpl-contact-settings.php');
 
 // add_action( 'after_setup_theme', 'crb_load' );
 // function crb_load() {

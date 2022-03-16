@@ -14631,9 +14631,60 @@ input[type=checkbox]{
     padding: 0 12px 8px;
     color: #262626;
 }
-.cpl-register .woocommerce-privacy-policy-text p{
+.cpl-register .woocommerce-privacy-policy-text p, 
+.cpl-my-account .woocommerce-MyAccount-content p,
+.contact-us__address p{
     font-size: 14px !important;
     line-height: 22px !important;
     padding: 0 12px 8px !important;
     color: #262626 !important;
+}
+.cpl-my-account label{
+    margin-bottom: 0.25rem;
+    font-size: 15px;
+    color: #262626;
+}
+.cpl-my-account span.password-input {
+    width: 100%;
+}
+.woocommerce-LostPassword.lost_password{
+    font-size: 12.8px;
+}
+/* .col-12.col-lg-6 form input, */
+.wpcf7-form.init input.wpcf7-form-control.wpcf7-text{
+    border-radius: 2px;
+    background-clip: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,background .15s ease-in-out;
+    color: #262626;
+    background-color: #ebebeb;
+    border: 1px solid #ebebeb;
+    height: 36px;
+    padding: 7.5px 10px;
+    font-size: 16px;
+    line-height: 19px;
+    display: block;
+    width: 100%;
+    font-weight: 400;
+}
+/* .col-12.col-lg-6 form textarea, */
+.wpcf7-form.init textarea.wpcf7-form-control.wpcf7-textarea{
+    border-radius: 2px;
+    background-clip: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,background .15s ease-in-out;
+    color: #262626;
+    background-color: #ebebeb;
+    border: 1px solid #ebebeb;
+    height: 96px;
+    padding: 7.5px 10px;
+    font-size: 16px;
+    line-height: 19px;
+    display: block;
+    width: 100%;
+    font-weight: 400;
 }
