@@ -14577,7 +14577,7 @@ a.checkout-button.button.alt.wc-forward {
     color: #262626;
     font-family: Roboto, "sans-serif";
 }
-.woocommerce-checkout input:not([type="checkbox"]){
+.woocommerce-checkout .cpl-checkout-block input:not([type="checkbox"]){
     border-radius: 2px;
     background-clip: border-box;
     -webkit-appearance: none;
@@ -14651,7 +14651,7 @@ input[type=checkbox]{
     font-size: 12.8px;
 }
 /* .col-12.col-lg-6 form input, */
-.wpcf7-form.init input.wpcf7-form-control.wpcf7-text{
+.cpl-contact-page form input{
     border-radius: 2px;
     background-clip: border-box;
     -webkit-appearance: none;
@@ -14670,7 +14670,7 @@ input[type=checkbox]{
     font-weight: 400;
 }
 /* .col-12.col-lg-6 form textarea, */
-.wpcf7-form.init textarea.wpcf7-form-control.wpcf7-textarea{
+.cpl-contact-page form textarea{
     border-radius: 2px;
     background-clip: border-box;
     -webkit-appearance: none;
@@ -14687,4 +14687,15 @@ input[type=checkbox]{
     display: block;
     width: 100%;
     font-weight: 400;
+}
+.cpl-contact-page form input[type=submit]{
+    border-color: #e52727;
+    background: #e52727;
+    color: #fff;
+    width: auto;
+}
+.cpl-contact-page label{
+    margin-bottom: .25rem;
+    font-size: 15px;
+    color: #262626;
 }

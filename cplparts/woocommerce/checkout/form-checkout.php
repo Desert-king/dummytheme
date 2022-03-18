@@ -28,7 +28,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 
 ?>
-<div class="checkout block">
+<div class="checkout block cpl-checkout-block">
 	<div class="container container--max--xl">
 		
 			<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
@@ -87,6 +87,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	       <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
 		
     </diV>
+	<div class ="block-space block-space--layout--before-footer"></div>
 </diV>
 
 

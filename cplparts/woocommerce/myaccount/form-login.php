@@ -144,6 +144,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 </div>
 </div>
 </div>
+<div class ="block-space block-space--layout--before-footer"></div>
 </div>
 <?php endif; ?>
 

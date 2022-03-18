@@ -10,8 +10,12 @@ Template Name: Contact-page
             <div class="site__body">
                 <div class="block-map block">
                     <div class="block-map__body">
-                        <iframe src="https://maps.google.com/maps?q=Holbrook-Palmer%20Park&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe src="https://www.google.com/maps?q=<?php echo rawurlencode(implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' ))); ?>&t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            <?php echo implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' )) ; ?>
                     </div>
+                    <!-- ################## -->
+                    <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=firoz%20tower&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google html code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div> -->
+                    <!-- ################## -->
                 </div>
                 <div class="block-header block-header--has-breadcrumb block-header--has-title">
                     <div class="container">
@@ -30,7 +34,7 @@ Template Name: Contact-page
                     </div>
                 </div>
                 <div class="block">
-                    <div class="container container--max--lg">
+                    <div class="container container--max--lg cpl-contact-page">
                         <div class="card">
                             <div class="card-body card-body--padding--2">
                                 <div class="row">
@@ -38,7 +42,12 @@ Template Name: Contact-page
                                         <div class="mr-1">
                                             <h4 class="contact-us__header card-title">Our Address</h4>
                                             <div class="contact-us__address">
-                                                <p>
+                                               <?php
+                                               global $redux_demo;
+
+                                               echo  $redux_demo['cpl-editor-text'];
+                                               ?>
+                                                <!-- <p>
                                                     715 Fake Ave, Apt. 34, New York, NY 10021 USA<br />
                                                     Email: red parts@example.com<br />
                                                     Phone Number: +1 754 000-00-00
@@ -52,7 +61,7 @@ Template Name: Contact-page
                                                 <p>
                                                     <strong>Comment</strong><br />
                                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit suscipit mi, non tempor nulla finibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                </p>
+                                                </p> -->
                                             </div>
                                         </div>
                                     </div>

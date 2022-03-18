@@ -22,6 +22,7 @@ do_action( 'woocommerce_before_main_content' );
 
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php //do_action( 'woocommerce_before_cart_table' ); ?>
+	<div class="site__body">
 	<div class="block">
     <div class="container">
         <div class="cart">
@@ -197,6 +198,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
 	</div>
    </div>
    </div>
+  
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
 
@@ -213,6 +215,8 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
 		do_action( 'woocommerce_cart_collaterals' );
 	?>
 </div>
-
+<div class ="block-space block-space--layout--before-footer"></div>
+</div>
 <?php do_action( 'woocommerce_after_cart' ); ?>
+
 
