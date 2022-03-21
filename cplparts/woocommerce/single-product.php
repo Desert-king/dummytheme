@@ -1734,7 +1734,10 @@ get_header( 'shop' ); ?>
 </div>
 </div>
 </div>
+<div class="block-space block-space--layout--before-footer"></div>
 </div>
+
+
 <?php
 
 get_footer( 'shop' );

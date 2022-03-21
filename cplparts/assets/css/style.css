@@ -9730,6 +9730,11 @@ a.checkout-button.button.alt.wc-forward {
     line-height: 22px;
     padding: 0 12px 8px;
 }
+/* .typography p{
+    font-size: 14px !important;
+    line-height: 22px !important;
+    padding: 0 12px 8px !important;
+} */
 .payment-methods__item-container {
     overflow: hidden;
     opacity: 0;

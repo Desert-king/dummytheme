@@ -2,9 +2,11 @@
 /*
 Template Name: Blog-page
 */
+// die('blog-new');
 ?>
 <!DOCTYPE html>
 <?php get_header(); ?>
+
             <!-- site__header / end --><!-- site__body -->
             <div class="site__body">
                 <div class="block-header block-header--has-breadcrumb block-header--has-title">
@@ -23,6 +25,27 @@ Template Name: Blog-page
                         </div>
                     </div>
                 </div>
+                <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                <?php
+		    //   if ( have_posts() ) :
+
+			
+
+			// /* Start the Loop */
+			// while ( have_posts() ) :
+			// 	the_post();
+                    
+			// 	echo "<h1>Farhana</h1>";
+
+			// endwhile;
+
+			// the_posts_navigation();
+
+		
+
+		    // endif;
+		     ?>
+                <!-- 111111111111111111111 -->
                 <div class="block blog-view blog-view--layout--classic">
                     <div class="container">
                         <div class="blog-view__body">
@@ -30,28 +53,43 @@ Template Name: Blog-page
                                 <div class="block posts-view">
                                     <div class="posts-view__list posts-list posts-list--layout--classic">
                                         <div class="posts-list__body">
+                                            <?php 
+                                            $args = array(
+                                                'post_type' => 'post',
+                                            );
+                                            $loop = new WP_Query($args);
+                                            while ($loop->have_posts()) : $loop->the_post();
+                                                global $product;
+                                            
+                                            ?>
                                             <div class="posts-list__item">
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
                                                         <a href="post-full-width.html"><img src="images/posts/post-1-730x485.jpg" alt="" /></a>
                                                     </div>
                                                     <div class="post-card__content">
-                                                        <div class="post-card__category"><a href="blog-classic-right-sidebar.html">Special Offers</a></div>
+                                                        <div class="post-card__category"><a href="blog-classic-right-sidebar.html">Special Offers Updated</a></div>
                                                         <div class="post-card__title">
-                                                            <h2><a href="post-full-width.html">Philosophy That Addresses Topics Such As Goodness</a></h2>
+                                                            <h2><a href="post-full-width.html"><?php the_title();?></a></h2>
                                                         </div>
-                                                        <div class="post-card__date">By <a href="#">Jessica Moore</a> on October 19, 2019</div>
+                                                        <div class="post-card__date">By <a href="#"><?php echo get_the_author(); ?></a> <?php echo get_the_date('Y-m-d');?></div>
                                                         <div class="post-card__excerpt">
                                                             <div class="typography">
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis neque ut purus fermentum, ac pretium nibh facilisis. Vivamus venenatis viverra iaculis. Suspendisse
-                                                                tempor orci non sapien ullamcorper dapibus. Suspendisse at velit diam. Donec pharetra nec enim blandit vulputate.
+                                                                <?php echo get_post_field('post_content', $post_id); ?>
                                                             </div>
                                                         </div>
                                                         <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="posts-list__item">
+                                            <?php
+                                            endwhile;
+                                            // If no posts were found
+                                            
+                                            ?>
+                                            
+                                            
+                                            <!-- <div class="posts-list__item">
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
                                                         <a href="post-full-width.html"><img src="images/posts/post-2-730x485.jpg" alt="" /></a>
@@ -218,8 +256,8 @@ Template Name: Blog-page
                                                         <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="posts-list__item">
+                                            </div> -->
+                                            <!-- <div class="posts-list__item">
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
                                                         <a href="post-full-width.html"><img src="images/posts/post-10-730x485.jpg" alt="" /></a>
@@ -239,7 +277,7 @@ Template Name: Blog-page
                                                         <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="posts-view__pagination">

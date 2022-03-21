@@ -1,4 +1,8 @@
-
+<?php
+/*
+Template Name: Home-page
+*/
+?>
 <?php get_header(); ?>
 <!-- site__header / end --><!-- site__body -->
 <div class="site__body">
