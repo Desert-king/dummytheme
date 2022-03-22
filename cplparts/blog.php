@@ -4,7 +4,7 @@ Template Name: Blog-page
 */
 // die('blog-new');
 ?>
-<!DOCTYPE html>
+
 <?php get_header(); ?>
 
             <!-- site__header / end --><!-- site__body -->

@@ -5,7 +5,7 @@ Template Name: Post-page
 ?>
 
 <?php get_header(); ?>
-            <!-- site__header / end --><!-- site__body -->
+            
             <div class="site__body">
                 <div class="block post-view">
                     <div class="post-view__header post-header post-header--has-image">

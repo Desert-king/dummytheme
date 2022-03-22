@@ -372,8 +372,10 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-// do_action( 'woocommerce_sidebar' );
+ //do_action( 'woocommerce_sidebar' );
+ 
  ?>
+ <?php get_sidebar( 'Primary Sidebar updated' ); ?>
                        
 
                      </div>
