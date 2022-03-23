@@ -9730,6 +9730,15 @@ a.checkout-button.button.alt.wc-forward {
     line-height: 22px;
     padding: 0 12px 8px;
 }
+ p{
+    font-size: 14px !important;
+    line-height: 22px !important;
+    padding: 0 12px 8px !important;
+    color: #262626 !important;
+    font-family: Roboto,"sans-serif" !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
 /* .typography p{
     font-size: 14px !important;
     line-height: 22px !important;
