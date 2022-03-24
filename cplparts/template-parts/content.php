@@ -20,14 +20,30 @@
 						<li class="post-header__categories-item"><a href="#" class="post-header__categories-link">Latest News</a></li>
 					</ul>
 				</div>
-				<h1 class="post-header__title">Morbi Interdum Velit Quis Magna Placerat Lobortis Eget</h1>
+				<!-- <h1 class="post-header__title"> -->
+				<?php 
+				if ( is_singular() ) :
+					the_title( '<h1 class="post-header__title">', '</h1>' );
+				else :
+					the_title( '<h2 class="post-header__title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				endif; 
+				if ( 'post' === get_post_type() ) :
+		        ?>
+				<!-- </h1> -->
 				<div class="post-header__meta">
 					<ul class="post-header__meta-list">
-						<li class="post-header__meta-item">By <a href="#" class="post-header__meta-link">Jessica Moore</a></li>
-						<li class="post-header__meta-item">November 30, 2018</li>
+						<li class="post-header__meta-item">
+							<?php cplparts_posted_on(); ?>
+						</li>
+						<li class="post-header__meta-item">
+							<a href="#" class="post-header__meta-link">
+							   <?php cplparts_posted_by(); ?>
+						    </a>
+					    </li>
 						<li class="post-header__meta-item"><a href="#" class="post-header__meta-link">4 Comments</a></li>
 					</ul>
 				</div>
+				<?php endif; ?>
 			</div>
 			<div class="decor post-header__decor decor--type--bottom">
 				<div class="decor__body">
@@ -43,47 +59,30 @@
 					<div class="post-view__card post">
 						<div class="post__body typography">
 							<p>
-								Vestibulum sagittis justo sit amet nisl semper, et pulvinar elit maximus. Morbi interdum velit quis magna placerat lobortis eget pharetra magna. Nulla tristique sollicitudin turpis, eget maximus
-								risus faucibus non. Nulla vestibulum ipsum risus, vitae maximus nunc bibendum quis.
+							<?php
+							the_content(
+								sprintf(
+									wp_kses(
+										/* translators: %s: Name of current post. Only visible to screen readers */
+										__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'cplparts' ),
+										array(
+											'span' => array(
+												'class' => array(),
+											),
+										)
+									),
+									wp_kses_post( get_the_title() )
+								)
+							);
+							?>
 							</p>
-							<p>
-								Raesent eu consequat nibh. Quisque ullamcorper, augue eu fringilla sodales, leo metus volutpat risus, at suscipit ipsum diam eget sem. Maecenas dictum elit in enim molestie, vel sollicitudin erat
-								ultricies. Sed risus tellus, molestie finibus dui quis, suscipit consequat ex.
-							</p>
-							<blockquote>
-								<p>Sed a dictum elit. In iaculis porttitor luctus. Maecenas ultricies dolor et semper placerat. Proin at lectus felis.</p>
-								<p><cite>John Mcarthy</cite></p>
-							</blockquote>
-							<p>Vivamus in nisi at turpis rhoncus feugiat. Mauris scelerisque non ante et ultrices. Donec sit amet sem lobortis, ullamcorper felis at, finibus sem. Curabitur tincidunt neque nunc.</p>
-							<h2>Nam Eget Blandit Diam</h2>
-							<p>
-								Quisque semper magna eget libero maximus, a sollicitudin nunc hendrerit. Cras efficitur, ante vitae fringilla rutrum, mi tortor dapibus metus, in egestas metus erat sit amet orci. Ut faucibus non
-								ante dapibus efficitur. Nam eget blandit diam, imperdiet condimentum neque. Donec risus nisi, aliquet a commodo ac, elementum vitae leo.
-							</p>
-							<p>Vestibulum sagittis justo sit amet nisl semper, et pulvinar elit maximus. Morbi interdum velit quis magna placerat lobortis eget pharetra magna.</p>
-							<p><strong>Nulla fringilla:</strong> <a href="#">Donec aliquet at felis et dignissim</a></p>
-							<figure>
-								<a href="#"><img src="images/posts/post-3-664xauto.jpg" alt="" /></a>
-								<figcaption>Nunc viverra, dui nec commodo dignissim, libero arcu.</figcaption>
-							</figure>
-							<p>Vestibulum non varius lectus. Cras vel elit id ligula laoreet imperdiet. Mauris quis laoreet velit. Suspendisse sed velit nec ante facilisis pharetra.</p>
-							<p>
-								Phasellus ut elit vestibulum, dignissim mi non, suscipit ex. Praesent eu consequat nibh. Quisque ullamcorper, augue eu fringilla sodales, leo metus volutpat risus,
-								<a href="#">at suscipit ipsum diam eget sem</a>. Maecenas dictum elit in enim molestie, vel sollicitudin erat ultricies. Sed risus tellus, molestie finibus dui quis, suscipit consequat ex.
-							</p>
-							<hr />
-							<h2>Nunc Dapibus Varius Ligula</h2>
-							<p>
-								Maecenas ultrices arcu ut feugiat semper. Praesent dictum tincidunt justo, ac tincidunt ante fermentum at. Vestibulum non varius lectus. Cras vel elit id ligula laoreet imperdiet. Mauris quis
-								laoreet velit. Suspendisse sed velit nec ante facilisis pharetra. Duis vitae fermentum elit. Integer ac mattis elit.
-							</p>
-							<p>Mauris scelerisque non ante et ultrices. Donec sit amet sem lobortis:</p>
-							<ol>
-								<li>Duis <strong>finibus imperdiet ultricies</strong>. Donec vel pretium turpis. In auctor euismod posuere.</li>
-								<li>Praesent dictum tincidunt justo, ac tincidunt ante fermentum at. Vestibulum non varius lectus. Cras vel elit id ligula laoreet imperdiet.</li>
-								<li><strong>In iaculis porttitor luctus</strong>. Maecenas ultricies dolor et semper placerat. Proin at lectus felis. Quisque dapibus auctor justo id dictum.</li>
-							</ol>
-							<p>Ut faucibus non ante dapibus efficitur. Nam eget blandit diam, imperdiet condimentum neque. Donec risus nisi, aliquet a commodo ac, elementum vitae leo.</p>
+							<?php 
+							// If comments are open or we have at least one comment, load up the comment template.
+							if ( comments_open() || get_comments_number() ) :
+								comments_template();
+							endif;
+			
+							?>
 						</div>
 						<div class="post__pagination">
 							<div class="post__pagination-title">Pages</div>
@@ -118,6 +117,19 @@
 					</div>
 					<div class="post-view__card post-navigation">
 						<div class="post-navigation__body">
+					<?php 
+							the_post_navigation(
+									array(
+										'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'cplparts' ) . '</span> <span class="nav-title">%title</span>',
+										'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'cplparts' ) . '</span> <span class="nav-title">%title</span>',
+									)
+								);
+							?>
+							</div>
+							</div>
+					<div class="post-view__card post-navigation">
+						<div class="post-navigation__body">
+						    
 							<a class="post-navigation__item post-navigation__item--prev" href="#">
 								<div class="post-navigation__item-image"><img src="images/posts/post-2-80x80.jpg" alt="" /></div>
 								<div class="post-navigation__item-info">
@@ -151,6 +163,7 @@ C-0.1,9.8-0.1,10.4,0.3,10.7z"
 					</div>
 					<div class="post-view__card">
 						<h2 class="post-view__card-title">Comments (4)</h2>
+						
 						<div class="post-view__card-body comments-view">
 							<ol class="comments-list comments-list--level--0 comments-view__list">
 								<li class="comments-list__item">
