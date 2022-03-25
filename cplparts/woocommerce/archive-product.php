@@ -375,7 +375,16 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
  //do_action( 'woocommerce_sidebar' );
  
  ?>
- <?php get_sidebar( 'Primary Sidebar updated' ); ?>
+ <?php //if(get_sidebar( 'primary-new' )){
+	//echo get_sidebar( 'primary-new' );
+//  }
+//  else{
+// 	 echo "no sidebar";
+//  } 
+ ?>
+ <?php //get_sidebar( 'primary-new' ); ?>
+ <?php get_template_part( 'template-parts/sidebar/sidebar-primary-new'); ?>
+ 
                        
 
                      </div>
