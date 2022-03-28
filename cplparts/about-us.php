@@ -9,7 +9,8 @@ Template Name: About-us
                 <div class="about">
                     <div class="about__body">
                         <div class="about__image">
-                            <div class="about__image-bg" style="background-image: url('images/about-1903x1903.jpg');"></div>
+                            
+                            <div class="about__image-bg" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-1903x1903.jpg');"></div>
                             <div class="decor about__image-decor decor--type--bottom">
                                 <div class="decor__body">
                                     <div class="decor__start"></div>
@@ -25,7 +26,7 @@ Template Name: About-us
                                 parts around the world.
                             </div>
                             <div class="about__card-author">Ryan Ford, CEO RedParts</div>
-                            <div class="about__card-signature"><img src="images/signature.jpg" width="160" height="55" alt="" /></div>
+                            <div class="about__card-signature"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/signature.jpg" width="160" height="55" alt="" /></div>
                         </div>
                         <div class="about__indicators">
                             <div class="about__indicators-body">
@@ -50,43 +51,62 @@ Template Name: About-us
                     <div class="container container--max--xl">
                         <div class="block-teammates__title">Professional Team</div>
                         <div class="block-teammates__subtitle">Meet this is our professional team.</div>
+                         <?php 
+                                   global $redux_demo;
+
+                                //     print_r( $redux_demo['title_field'] );
+                                //     echo '<hr>';
+                                //     print_r( $redux_demo['text_field'] );
+                                //     echo '<hr>';
+                                //    print_r( $redux_demo['select_field'] ); 
+                                // $x = 1;
+ 
+                                // while($x <= 5) {
+                                //   echo "The number is: $x <br>";
+                                var_dump($redux_demo['repeater-field-id']['title_field']);
+                                //   $x++;
+                                // } 
+                                ?>  
+                                  
                         <div class="block-teammates__list">
+                       
                             <div class="owl-carousel">
+                                
                                 <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="images/teammates/teammate1-206x206.jpg" alt="" /></div>
+                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate1-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Michael Russo</div>
                                         <div class="teammate__position">Chief Executive Officer</div>
                                     </div>
                                 </div>
-                                <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="images/teammates/teammate2-206x206.jpg" alt="" /></div>
+                                <!-- <div class="block-teammates__item teammate">
+                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate2-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Samantha Smith</div>
                                         <div class="teammate__position">Account Manager</div>
                                     </div>
                                 </div>
                                 <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="images/teammates/teammate3-206x206.jpg" alt="" /></div>
+                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate3-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Anthony Harris</div>
                                         <div class="teammate__position">Finance Director</div>
                                     </div>
                                 </div>
                                 <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="images/teammates/teammate4-206x206.jpg" alt="" /></div>
+                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate4-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Katherine Miller</div>
                                         <div class="teammate__position">Marketing Officer</div>
                                     </div>
                                 </div>
                                 <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="images/teammates/teammate5-206x206.jpg" alt="" /></div>
+                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate5-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Boris Gilmore</div>
                                         <div class="teammate__position">Engineer</div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -102,7 +122,7 @@ Template Name: About-us
                         <div class="block-reviews__list">
                             <div class="owl-carousel">
                                 <div class="block-reviews__item">
-                                    <div class="block-reviews__item-avatar"><img src="images/testimonials/testimonial-1-190x190.jpg" alt="" /></div>
+                                    <div class="block-reviews__item-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonials/testimonial-1-190x190.jpg" alt="" /></div>
                                     <div class="block-reviews__item-content">
                                         <div class="block-reviews__item-text">
                                             This division is not obsolete but has changed. Natural philosophy has split into the various natural sciences, especially astronomy, and cosmology. Moral philosophy has birthed the social
@@ -125,7 +145,7 @@ Template Name: About-us
                                     </div>
                                 </div>
                                 <div class="block-reviews__item">
-                                    <div class="block-reviews__item-avatar"><img src="images/testimonials/testimonial-2-190x190.jpg" alt="" /></div>
+                                    <div class="block-reviews__item-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonials/testimonial-2-190x190.jpg" alt="" /></div>
                                     <div class="block-reviews__item-content">
                                         <div class="block-reviews__item-text">
                                             Philosophical questions can be grouped into categories. These groupings allow philosophers. The groupings also make philosophy easier for students to approach.
@@ -147,7 +167,7 @@ Template Name: About-us
                                     </div>
                                 </div>
                                 <div class="block-reviews__item">
-                                    <div class="block-reviews__item-avatar"><img src="images/testimonials/testimonial-3-190x190.jpg" alt="" /></div>
+                                    <div class="block-reviews__item-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonials/testimonial-3-190x190.jpg" alt="" /></div>
                                     <div class="block-reviews__item-content">
                                         <div class="block-reviews__item-text">
                                             The ideas conceived by a society have profound repercussions on what actions the society performs. Philosophy yields applications such as those in ethics – applied ethics in particular – and

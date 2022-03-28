@@ -24,6 +24,8 @@ if ( ! defined( '_S_VERSION' ) ) {
  
  require_once (dirname(__FILE__) . '/sample/sample-config.php');
  require_once (dirname(__FILE__) . '/sample/cpl-contact-settings.php');
+ require_once (dirname(__FILE__) . '/sample/cpl-about-settings.php');
+ require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings.php');
 
 // add_action( 'after_setup_theme', 'crb_load' );
 // function crb_load() {
