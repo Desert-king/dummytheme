@@ -1,10 +1,10 @@
 <?php
 Redux::setSection( $opt_name,  array(
-    'title' => esc_html__('About Page Professional Team', 'your-textdomain-here' ),
+    'title' => esc_html__('About Page Testimonials', 'your-textdomain-here' ),
     'icon' => 'el-icon-thumbs-up',
     'fields' => array(
         array(
-            'id'             => 'repeater-field-id',
+            'id'             => 'testimonial-fields',
             'type'           => 'repeater',
             'title'          => esc_html__( 'Title', 'your-textdomain-here' ),
             'subtitle'       => esc_html__( '', 'your-textdomain-here' ),
@@ -18,7 +18,7 @@ Redux::setSection( $opt_name,  array(
             'fields'         => array(
                 
                 array(
-                        'id'       => 'title_field',
+                        'id'       => 'user-image',
                         'type'     => 'media', 
                         'url'      => true,
                         'title'    => esc_html__('Media w/ URL', 'your-textdomain-here'),
@@ -29,14 +29,14 @@ Redux::setSection( $opt_name,  array(
                         ),
                     ),
                 array(
-                    'id'          => 'employee_name',
-                    'type'        => 'text',
-                    'placeholder' => esc_html__( 'Name', 'your-textdomain-here' ),
+                    'id'          => 'user-feedback',
+                    'type'        => 'textarea',
+                    'placeholder' => esc_html__( 'Feedback', 'your-textdomain-here' ),
                 ),
                 array(
-                    'id'          => 'select_field',
+                    'id'          => 'user-name',
                     'type'        => 'text',
-                    'placeholder' => esc_html__( 'Designation', 'your-textdomain-here' ),
+                    'placeholder' => esc_html__( 'Name', 'your-textdomain-here' ),
                 ),
                
             )

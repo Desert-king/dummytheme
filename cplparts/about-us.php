@@ -51,34 +51,52 @@ Template Name: About-us
                     <div class="container container--max--xl">
                         <div class="block-teammates__title">Professional Team</div>
                         <div class="block-teammates__subtitle">Meet this is our professional team.</div>
-                         <?php 
-                                   global $redux_demo;
+                             <?php 
+                                global $redux_demo;
+                                $repeaters = $redux_demo['repeater-field-id'];
+                                $names= $redux_demo['employee_name'];
+                                 $designations = $redux_demo['select_field'];
+                                 $photoes = $redux_demo['title_field'];
+                                // print_r($photoes[1]['url']);
+                                // print_r($names[1]);
+                                ?>
+                                <div class="block-teammates__list">
+                       
+                                <div class="owl-carousel">
+                                <?php
+                                   $count = count($names);
+                                    $x = 1;
+                                    while($x <= $count) {
+                                    // foreach ($names as $name) {
+                                        ?>
+                                        <div class="block-teammates__item teammate">
+                                            <div class="teammate__avatar"><img src="<?php echo $photoes[$x]['url']?>" alt="" /></div>
+                                            <div class="teammate__info">
+                                                <div class="teammate__name"><?php echo($names)[$x]; ?></div>
+                                                <div class="teammate__position"><?php echo($designations)[$x];  ?></div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    // }
+                                    $x++;
+                                    }
+                                ?> 
+                                </div>
+                            </div>
 
-                                //     print_r( $redux_demo['title_field'] );
-                                //     echo '<hr>';
-                                //     print_r( $redux_demo['text_field'] );
-                                //     echo '<hr>';
-                                //    print_r( $redux_demo['select_field'] ); 
-                                // $x = 1;
- 
-                                // while($x <= 5) {
-                                //   echo "The number is: $x <br>";
-                                var_dump($redux_demo['repeater-field-id']['title_field']);
-                                //   $x++;
-                                // } 
-                                ?>  
+                              
                                   
                         <div class="block-teammates__list">
                        
                             <div class="owl-carousel">
                                 
-                                <div class="block-teammates__item teammate">
+                                <!-- <div class="block-teammates__item teammate">
                                     <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate1-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
                                         <div class="teammate__name">Michael Russo</div>
                                         <div class="teammate__position">Chief Executive Officer</div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="block-teammates__item teammate">
                                     <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate2-206x206.jpg" alt="" /></div>
                                     <div class="teammate__info">
@@ -119,9 +137,59 @@ Template Name: About-us
                             During our work we have accumulated<br />
                             hundreds of positive reviews.
                         </div>
+                        <?php 
+                                   global $redux_demo;
+
+                               
+                                $repeaters = $redux_demo['testimonial-fields'];
+
+                                 $test_img= $redux_demo['user-image'];
+                                 $test_feedback = $redux_demo['user-feedback'];
+                                 $test_name = $redux_demo['user-name'];
+                                // print_r($test_img[1]['url']);
+                                // print_r($names[1]);
+                                ?>
                         <div class="block-reviews__list">
                             <div class="owl-carousel">
+                            <?php
+                                   $count = count($test_name);
+                                    $x = 1;
+                                    while($x <= $count) {
+                                    // foreach ($names as $name) {
+                                        ?>
                                 <div class="block-reviews__item">
+                                    <div class="block-reviews__item-avatar"><img src="<?php echo $test_img[$x]['url'] ?>" alt="" /></div>
+                                    <div class="block-reviews__item-content">
+                                        <div class="block-reviews__item-text">
+                                        <?php echo $test_feedback[$x]; ?>
+                                        </div>
+                                        <div class="block-reviews__item-meta">
+                                            <div class="block-reviews__item-rating">
+                                                <div class="rating">
+                                                    <div class="rating__body">
+                                                        <div class="rating__star rating__star--active"></div>
+                                                        <div class="rating__star rating__star--active"></div>
+                                                        <div class="rating__star rating__star--active"></div>
+                                                        <div class="rating__star rating__star--active"></div>
+                                                        <div class="rating__star"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="block-reviews__item-author"><?php echo $test_name[$x]; ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                    // }
+                                    $x++;
+                                    }
+                                ?> 
+                                
+                            </div>
+                        </div>
+                        <!-- <div class="block-reviews__list">
+                            <div class="owl-carousel"> -->
+                                <!-- <div class="block-reviews__item">
                                     <div class="block-reviews__item-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonials/testimonial-1-190x190.jpg" alt="" /></div>
                                     <div class="block-reviews__item-content">
                                         <div class="block-reviews__item-text">
@@ -143,8 +211,8 @@ Template Name: About-us
                                             <div class="block-reviews__item-author">Jessica Moore, CEO Meblya</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="block-reviews__item">
+                                </div> -->
+                                <!-- <div class="block-reviews__item">
                                     <div class="block-reviews__item-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/testimonials/testimonial-2-190x190.jpg" alt="" /></div>
                                     <div class="block-reviews__item-content">
                                         <div class="block-reviews__item-text">
@@ -188,9 +256,9 @@ Template Name: About-us
                                             <div class="block-reviews__item-author">Jeff Kowalski, CEO Stroyka</div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                </div> -->
+                            <!-- </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="block-space block-space--layout--before-footer"></div>
