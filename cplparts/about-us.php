@@ -30,7 +30,34 @@ Template Name: About-us
                         </div>
                         <div class="about__indicators">
                             <div class="about__indicators-body">
-                                <div class="about__indicators-item">
+                            <?php 
+                                global $redux_demo;
+                                $repeaters = $redux_demo['counter-fields'];
+                                //print_r($repeaters);
+                                $numbers= $redux_demo['counter-number'];
+                                $titles = $redux_demo['counter-title'];
+                                // print_r($photoes[1]['url']);
+                                // print_r($names[1]);
+                                ?>
+                               
+                                <?php
+                                   $counter_count = count($numbers);
+                                //    var_export($photoes);
+                                    $x = 1;
+                                    while($x <= $counter_count) {
+                                    // foreach ($names as $name) {
+                                        ?>
+                                        <div class="about__indicators-item">
+                                            <div class="about__indicators-item-value"><?php echo($numbers)[$x]; ?></div>
+                                            <div class="about__indicators-item-title"><?php echo($titles)[$x]; ?></div>
+                                        </div>
+                                        <?php
+                                        // }
+                                    $x++;
+                                    }
+                                ?> 
+                                        
+                                <!-- <div class="about__indicators-item">
                                     <div class="about__indicators-item-value">350</div>
                                     <div class="about__indicators-item-title">Stores around the world</div>
                                 </div>
@@ -41,7 +68,7 @@ Template Name: About-us
                                 <div class="about__indicators-item">
                                     <div class="about__indicators-item-value">5 000</div>
                                     <div class="about__indicators-item-title">Satisfied customers</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -49,11 +76,23 @@ Template Name: About-us
                 <div class="block-space block-space--layout--divider-xl"></div>
                 <div class="block block-teammates">
                     <div class="container container--max--xl">
-                        <div class="block-teammates__title">Professional Team</div>
-                        <div class="block-teammates__subtitle">Meet this is our professional team.</div>
+                        <div class="block-teammates__title">
+                        <?php 
+                        global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-title-one'];
+                       
+                        ?>
+                        </div>
+                        <div class="block-teammates__subtitle">
+                        <?php 
+                        global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-sub-title-one'];
+                        ?>
+                        </div>
                              <?php 
                                 global $redux_demo;
                                 $repeaters = $redux_demo['repeater-field-id'];
+                                //print_r($repeaters);
                                 $names= $redux_demo['employee_name'];
                                  $designations = $redux_demo['select_field'];
                                  $photoes = $redux_demo['title_field'];
@@ -65,6 +104,7 @@ Template Name: About-us
                                 <div class="owl-carousel">
                                 <?php
                                    $count = count($names);
+                                //    var_export($photoes);
                                     $x = 1;
                                     while($x <= $count) {
                                     // foreach ($names as $name) {
@@ -132,10 +172,17 @@ Template Name: About-us
                 <div class="block-space block-space--layout--divider-xl"></div>
                 <div class="block block-reviews">
                     <div class="container">
-                        <div class="block-reviews__title">Testimonials</div>
+                        <div class="block-reviews__title">
+                        <?php 
+                        global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-title-two'];
+                        ?>
+                        </div>
                         <div class="block-reviews__subtitle">
-                            During our work we have accumulated<br />
-                            hundreds of positive reviews.
+                        <?php 
+                        global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-sub-title-two'];
+                        ?>
                         </div>
                         <?php 
                                    global $redux_demo;
