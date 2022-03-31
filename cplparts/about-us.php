@@ -10,7 +10,9 @@ Template Name: About-us
                     <div class="about__body">
                         <div class="about__image">
                             
-                            <div class="about__image-bg" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about-1903x1903.jpg');"></div>
+                            <div class="about__image-bg" style="background-image: url('<?php  global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-image']['url'];?>')">
+                        </div>
                             <div class="decor about__image-decor decor--type--bottom">
                                 <div class="decor__body">
                                     <div class="decor__start"></div>
@@ -20,13 +22,23 @@ Template Name: About-us
                             </div>
                         </div>
                         <div class="about__card">
-                            <div class="about__card-title">About Us</div>
+                            <div class="about__card-title">
+                              <?php  global $redux_demo; // Same as your opt_name
+                                 echo $redux_demo['about-article-title'];
+                              ?>
+                           </div>
                             <div class="about__card-text">
-                                RedParts is an international company with 30 years of history selling spare parts for cars, trucks and motorcycles. During our work we managed to create a unique service for the sale and delivery of spare
-                                parts around the world.
+                              <?php  global $redux_demo; // Same as your opt_name
+                                 echo $redux_demo['about-article-content'];
+                              ?>
                             </div>
-                            <div class="about__card-author">Ryan Ford, CEO RedParts</div>
-                            <div class="about__card-signature"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/signature.jpg" width="160" height="55" alt="" /></div>
+                            <div class="about__card-author">
+                            <?php  global $redux_demo; // Same as your opt_name
+                                 echo $redux_demo['about-content-author'];
+                              ?>
+                              </div>
+                            <div class="about__card-signature"><img src="<?php  global $redux_demo; // Same as your opt_name
+                        echo $redux_demo['about-content-author-sign']['url'];?>" /></div>
                         </div>
                         <div class="about__indicators">
                             <div class="about__indicators-body">
@@ -110,7 +122,7 @@ Template Name: About-us
                                     // foreach ($names as $name) {
                                         ?>
                                         <div class="block-teammates__item teammate">
-                                            <div class="teammate__avatar"><img src="<?php echo $photoes[$x]['url']?>" alt="" /></div>
+                                            <div class="teammate__avatar"><img src="<?php echo $photoes[$x]['url'];?>" alt="" /></div>
                                             <div class="teammate__info">
                                                 <div class="teammate__name"><?php echo($names)[$x]; ?></div>
                                                 <div class="teammate__position"><?php echo($designations)[$x];  ?></div>
