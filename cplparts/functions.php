@@ -32,6 +32,7 @@ if ( ! defined( '_S_VERSION' ) ) {
  require_once (dirname(__FILE__) . '/sample/cpl-faq-first-section-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-faq-second-section-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
+ require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
  
 
 

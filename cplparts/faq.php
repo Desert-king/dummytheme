@@ -42,11 +42,19 @@ Template Name: FAQ-page
                                     // foreach ($names as $name) {
                                 ?>
                                 <div class="faq__question">
-                                    <h5 class="faq__question-title"><?php echo($first_section_titles)[$x]; ?></h5>
+                                    <h5 class="faq__question-title"><?php 
+                                    if(isset(($first_section_titles)[$x])){
+                                        echo($first_section_titles)[$x];
+                                     }
+                                    ?></h5>
                                     <div class="faq__question-answer">
                                         <div class="typography">
                                             <p>
-                                            <?php echo($first_section_contents)[$x]; ?>
+                                            <?php 
+                                            if(isset(($first_section_contents)[$x])){
+                                                echo($first_section_contents)[$x];
+                                             }
+                                            ?>
                                             </p>
                                         </div>
                                     </div>
@@ -187,11 +195,19 @@ Template Name: FAQ-page
                                     // foreach ($names as $name) {
                                 ?>
                                 <div class="faq__question">
-                                    <h5 class="faq__question-title"><?php echo($third_section_titles)[$x]; ?></h5>
+                                    <h5 class="faq__question-title"><?php 
+                                   if(isset(($third_section_titles)[$x])){
+                                    echo($third_section_titles)[$x];
+                                   }
+                                    ?></h5>
                                     <div class="faq__question-answer">
                                         <div class="typography">
                                             <p>
-                                            <?php echo($third_section_contents)[$x]; ?>
+                                            <?php 
+                                            if(isset(($third_section_contents)[$x])){
+                                                echo($third_section_contents)[$x];
+                                               }
+                                            ?>
                                             </p>
                                         </div>
                                     </div>
@@ -228,7 +244,9 @@ Template Name: FAQ-page
                         <div class="faq__footer">
                             <div class="faq__footer-title">Still Have A Questions?</div>
                             <div class="faq__footer-subtitle">We will be happy to answer any questions you may have.</div>
-                            <a href="contact-us-v1.html" class="btn btn-primary">Contact Us</a>
+                            <a href="<?php global $redux_demo; echo $redux_demo['contact-link'];?>" class="btn btn-primary">
+                            Contact Us
+                            </a>
                         </div>
                     </div>
                 </div>
