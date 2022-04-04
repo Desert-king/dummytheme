@@ -6,6 +6,43 @@ Redux::set_section(
            'id'    => 'cpl-faq',   
            'type'  => 'text',
            'title' => 'Cpl FAQ Settings',
+           'fields' => array(
+            array(
+                'id'             => 'faq-first-rpt-fields',
+                'type'           => 'repeater',
+                'title'          => esc_html__( 'First Title', 'your-textdomain-here' ),
+                'subtitle'       => esc_html__( '', 'your-textdomain-here' ),
+                'desc'           => esc_html__( '', 'your-textdomain-here' ),
+                //'group_values' => true, // Group all fields below within the repeater ID
+                //'item_name'    => '', // Add a repeater block name to the Add and Delete buttons
+                //'bind_title'   => '', // Bind the repeater block title to this field ID
+                //'static'       => 2, // Set the number of repeater blocks to be output
+                //'limit'        => 2, // Limit the number of repeater blocks a user can create
+                //'sortable'     => false, // Allow the users to sort the repeater blocks or not
+                'fields'         => array(
+                    
+                    array(
+                        'id'          => 'faq-first-title',
+                        'type'        => 'text',
+                        'placeholder' => esc_html__( 'Title', 'your-textdomain-here' ),
+                    ),
+                    array(
+                        'id'               => 'faq-first-content',
+                        'type'             => 'editor',
+                        'title'            => esc_html__('Editor Text', 'your-textdomain-here'), 
+                        'subtitle'         => esc_html__('Subtitle text would go here.', 'your-textdomain-here'),
+                        'default'          => '',
+                        'args'   => array(
+                            'teeny'            => true,
+                            'textarea_rows'    => 10
+                        )
+                    ),
+                    
+                   
+                   
+                )
+            )
+        )
 ) );
 
 Redux::set_field( $opt_name, 'cpl-faq', array( 
@@ -43,6 +80,8 @@ Redux::set_field( $opt_name, 'cpl-faq', array(
     'title' => 'Contact Page Link',
     'type' => 'text','placeholder' => esc_html__( 'Add your contact page link here', 'Add your second section title here' ),
 ) );
+
+
 
 
 

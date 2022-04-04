@@ -44,7 +44,7 @@ Template Name: About-us
                             <div class="about__indicators-body">
                             <?php 
                                 global $redux_demo;
-                                $repeaters = $redux_demo['counter-fields'];
+                                // $repeaters = $redux_demo['counter-fields'];
                                 //print_r($repeaters);
                                 $numbers= $redux_demo['counter-number'];
                                 $titles = $redux_demo['counter-title'];
@@ -55,8 +55,8 @@ Template Name: About-us
                                 <?php
                                    $counter_count = count($numbers);
                                 //    var_export($photoes);
-                                    $x = 1;
-                                    while($x <= $counter_count) {
+                                    $x = 0;
+                                    while($x < $counter_count) {
                                     // foreach ($names as $name) {
                                         ?>
                                         <div class="about__indicators-item">
@@ -105,9 +105,9 @@ Template Name: About-us
                                 global $redux_demo;
                                 $repeaters = $redux_demo['repeater-field-id'];
                                 //print_r($repeaters);
-                                $names= $redux_demo['employee_name'];
-                                 $designations = $redux_demo['select_field'];
-                                 $photoes = $redux_demo['title_field'];
+                                $photoes = $redux_demo['image_field'];
+                                $names = $redux_demo['user_name'];
+                                $designations = $redux_demo['designation'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -115,10 +115,12 @@ Template Name: About-us
                        
                                 <div class="owl-carousel">
                                 <?php
-                                   $count = count($names);
+                                   $count_teammate = count($names);
                                 //    var_export($photoes);
-                                    $x = 1;
-                                    while($x <= $count) {
+                                //    var_export($names);
+                                //    var_export($designations);
+                                    $x = 0;
+                                    while($x < $count_teammate) {
                                     // foreach ($names as $name) {
                                         ?>
                                         <div class="block-teammates__item teammate">
@@ -181,6 +183,7 @@ Template Name: About-us
                         </div>
                     </div>
                 </div>
+                
                 <div class="block-space block-space--layout--divider-xl"></div>
                 <div class="block block-reviews">
                     <div class="container">
@@ -212,8 +215,8 @@ Template Name: About-us
                             <div class="owl-carousel">
                             <?php
                                    $count = count($test_name);
-                                    $x = 1;
-                                    while($x <= $count) {
+                                    $x = 0;
+                                    while($x < $count) {
                                     // foreach ($names as $name) {
                                         ?>
                                 <div class="block-reviews__item">
