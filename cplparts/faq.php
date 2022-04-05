@@ -26,10 +26,10 @@ Template Name: FAQ-page
                             <div class="faq__section-body">
                             <?php 
                                 global $redux_demo;
-                                $repeaters = $redux_demo['faq-first-section-fields'];
+                                $repeaters = $redux_demo['new-faq-first-section-fields'];
                                 //print_r($repeaters);
-                                $first_section_titles= $redux_demo['faq-first-section-title'];
-                                $first_section_contents = $redux_demo['faq-first-section-content'];
+                                $first_section_titles= $redux_demo['new-faq-first-section-title'];
+                                $first_section_contents = $redux_demo['new-faq-first-section-content'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -37,8 +37,8 @@ Template Name: FAQ-page
                                 <?php
                                    $first_content_count = count($first_section_titles);
                                 //    var_export($photoes);
-                                    $x = 1;
-                                    while($x <= $first_content_count) {
+                                    $x = 0;
+                                    while($x < $first_content_count) {
                                     // foreach ($names as $name) {
                                 ?>
                                 <div class="faq__question">
@@ -108,10 +108,10 @@ Template Name: FAQ-page
                             <div class="faq__section-body">
                             <?php 
                                 global $redux_demo;
-                                $repeaters = $redux_demo['faq-third-section-fields'];
+                                $repeaters = $redux_demo['new-faq-second-section-fields'];
                                 //print_r($repeaters);
-                                $second_section_titles= $redux_demo['faq-second-section-title'];
-                                $second_section_contents = $redux_demo['faq-second-section-content'];
+                                $second_section_titles= $redux_demo['new-faq-second-section-title'];
+                                $second_section_contents = $redux_demo['new-faq-second-section-content'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -119,8 +119,8 @@ Template Name: FAQ-page
                                 <?php
                                    $second_content_count = count($second_section_titles);
                                 //    var_export($photoes);
-                                    $x = 1;
-                                    while($x <= $second_content_count) {
+                                    $x = 0;
+                                    while($x < $second_content_count) {
                                     // foreach ($names as $name) {
                                 ?>
                                 <div class="faq__question">
@@ -179,10 +179,10 @@ Template Name: FAQ-page
                             <div class="faq__section-body">
                             <?php 
                                 global $redux_demo;
-                                $repeaters = $redux_demo['faq-second-section-fields'];
+                                $repeaters = $redux_demo['new-faq-third-section-fields'];
                                 //print_r($repeaters);
-                                $third_section_titles= $redux_demo['faq-third-section-title'];
-                                $third_section_contents = $redux_demo['faq-third-section-content'];
+                                $third_section_titles= $redux_demo['new-faq-third-section-title'];
+                                $third_section_contents = $redux_demo['new-faq-third-section-content'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -190,8 +190,8 @@ Template Name: FAQ-page
                                 <?php
                                    $third_content_count = count($third_section_titles);
                                 //    var_export($photoes);
-                                    $x = 1;
-                                    while($x <= $third_content_count) {
+                                   $x = 0;
+                                    while($x < $third_content_count) {
                                     // foreach ($names as $name) {
                                 ?>
                                 <div class="faq__question">

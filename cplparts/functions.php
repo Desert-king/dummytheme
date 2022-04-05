@@ -25,14 +25,13 @@ if ( ! defined( '_S_VERSION' ) ) {
  require_once (dirname(__FILE__) . '/sample/sample-config.php');
  require_once (dirname(__FILE__) . '/sample/cpl-contact-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-about-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings-test.php');
- require_once (dirname(__FILE__) . '/sample/cpl-about-page-testimonials-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-about-page-counter-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-testimonials-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-counter-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-faq-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-faq-first-section-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-faq-second-section-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-faq-first-section-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-faq-second-section-settings.php');
+//  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
  
 

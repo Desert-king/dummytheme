@@ -46,8 +46,8 @@ Template Name: About-us
                                 global $redux_demo;
                                 // $repeaters = $redux_demo['counter-fields'];
                                 //print_r($repeaters);
-                                $numbers= $redux_demo['counter-number'];
-                                $titles = $redux_demo['counter-title'];
+                                $numbers= $redux_demo['new-counter-number'];
+                                $titles = $redux_demo['new-counter-title'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -103,11 +103,11 @@ Template Name: About-us
                         </div>
                              <?php 
                                 global $redux_demo;
-                                $repeaters = $redux_demo['repeater-field-id'];
+                                $repeaters = $redux_demo['new-repeater-field-id'];
                                 //print_r($repeaters);
-                                $photoes = $redux_demo['image_field'];
-                                $names = $redux_demo['user_name'];
-                                $designations = $redux_demo['designation'];
+                                $photoes = $redux_demo['new-image_field'];
+                                $names = $redux_demo['new-user_name'];
+                                $designations = $redux_demo['new-designation'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -203,11 +203,11 @@ Template Name: About-us
                                    global $redux_demo;
 
                                
-                                $repeaters = $redux_demo['testimonial-fields'];
+                                $repeaters = $redux_demo['new-testimonial-fields'];
 
-                                 $test_img= $redux_demo['user-image'];
-                                 $test_feedback = $redux_demo['user-feedback'];
-                                 $test_name = $redux_demo['user-name'];
+                                 $test_img= $redux_demo['new-user-image'];
+                                 $test_feedback = $redux_demo['new-user-feedback'];
+                                 $test_name = $redux_demo['new-user-name'];
                                 // print_r($test_img[1]['url']);
                                 // print_r($names[1]);
                                 ?>

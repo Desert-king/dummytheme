@@ -16,7 +16,7 @@ Redux::setSection( $opt_name,  array(
             //'static'       => 2, // Set the number of repeater blocks to be output
             //'limit'        => 2, // Limit the number of repeater blocks a user can create
             //'sortable'     => false, // Allow the users to sort the repeater blocks or not
-            'sortable'     => false, // Allow the users to sort the repeater blocks or not
+            // 'sortable'     => false, // Allow the users to sort the repeater blocks or not
             'fields'         => array(
                 
                 array(
