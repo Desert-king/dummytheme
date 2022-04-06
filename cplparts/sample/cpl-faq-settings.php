@@ -60,7 +60,7 @@ Redux::setSection( $opt_name,  array(
                     'id'          => 'new-faq-first-section-title',
                     'type'        => 'text',
                     'title'       => esc_html__('Asked Question', 'your-textdomain-here'), 
-                    'placeholder' => esc_html__( 'Title', 'your-textdomain-here' ),
+                    'placeholder' => esc_html__( 'Add your question here', 'your-textdomain-here' ),
                 ),
                 array(
                     'id'               => 'new-faq-first-section-content',
