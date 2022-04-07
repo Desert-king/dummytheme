@@ -36,8 +36,15 @@ Template Name: 404-page
                                    ?>
                                 </p>
                                 <form class="not-found__search">
-                                    <input type="text" class="not-found__search-input form-control" placeholder="Search Query..." /> <button type="submit" class="not-found__search-button btn btn-primary">Search</button>
+                                    <input type="text" name="s" class="not-found__search-input form-control" placeholder="Search Query..." /> <button type="submit" class="not-found__search-button btn btn-primary">Search</button>
                                 </form>
+                                <div>
+                                <?php get_search_form(); ?>
+                                </div>
+                                <!-- <form id="content" action="/">
+                                    <input type="text" name="s" class="input" id="search-input">
+                                    <button type="reset" class="search" id="search-btn"></button>
+                                </form> -->
                                 <p class="not-found__text">
                                 <?php 
                                     global $redux_demo; // Same as your opt_name
