@@ -1700,7 +1700,7 @@ Template Name: Home-page
                                     $loop = new WP_Query($args);
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
-                                        <div class="row">
+                                        <!-- <div class="row"> -->
                                             <!-- <h2>Shampoo</h2> -->
                                              <!-- ************** -->
                                              
@@ -1753,7 +1753,7 @@ Template Name: Home-page
                                                 </div>
                                             </div>
                                              <!-- ******************* -->
-                                        </div>
+                                        <!-- </div> -->
                                     <?php endwhile; ?>
                                     <?php wp_reset_query(); ?>
                                     <!-- ###################### -->
@@ -1817,7 +1817,6 @@ Template Name: Home-page
                                     $loop = new WP_Query($args);
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
-                                        <div class="row">
                                             <!-- <h2>Shampoo</h2> -->
                                              <!-- ************** -->
                                              <div class="block-products-columns__list-item">
@@ -1869,7 +1868,6 @@ Template Name: Home-page
                                                 </div>
                                             </div>
                                              <!-- ******************* -->
-                                        </div>
                                     <?php endwhile; ?>
                                     <?php wp_reset_query(); ?>
                                     <!-- ###################### -->
@@ -1888,7 +1886,6 @@ Template Name: Home-page
                                     $loop = new WP_Query($args);
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
-                                        <div class="row">
                                             <!-- <h2>Shampoo</h2> -->
                                              <!-- ************** -->
                                              <div class="block-products-columns__list-item">
@@ -1940,7 +1937,6 @@ Template Name: Home-page
                                                 </div>
                                             </div>
                                              <!-- ******************* -->
-                                        </div>
                                     <?php endwhile; ?>
                                     <?php wp_reset_query(); ?>
                                     <!-- ###################### -->

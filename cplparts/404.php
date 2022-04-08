@@ -35,9 +35,9 @@ Template Name: 404-page
                                     }
                                    ?>
                                 </p>
-                                <form class="not-found__search">
+                                <!-- <form class="not-found__search">
                                     <input type="text" name="s" class="not-found__search-input form-control" placeholder="Search Query..." /> <button type="submit" class="not-found__search-button btn btn-primary">Search</button>
-                                </form>
+                                </form> -->
                                 <div>
                                 <?php get_search_form(); ?>
                                 </div>

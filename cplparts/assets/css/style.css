@@ -14713,3 +14713,50 @@ input[type=checkbox]{
     font-size: 15px;
     color: #262626;
 }
+/* form.search-form input */
+input.search-submit {
+    -webkit-appearance:button;
+    border: none;
+    border-radius: 2px;
+    fill: currentColor;
+    font-weight: 500;
+    border-color: #e52727;
+    background: #e52727;
+    color: #fff;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 8.5px 16px;
+    margin-left: 4px;
+}
+input.search-field {
+    display: flex;
+    margin-bottom: 30px;
+    /* margin-right: 186px; */
+    border-radius: 2px;
+    background-clip: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background 0.15s ease-in-out;
+    color: #262626;
+    background-color: #ebebeb;
+    border: 1px solid #ebebeb;
+    height: 36px;
+    padding: 7.5px 10px;
+    font-size: 16px;
+    line-height: 19px;
+    display: block;
+    width: 350px;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+@media screen and (max-width: 320px){
+    input.search-field {
+        width: 300px !important;
+    }
+}
+input.search-field:hover {
+border-color: #d9d9d9;
+}
