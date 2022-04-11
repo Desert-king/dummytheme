@@ -152,6 +152,54 @@ get_header( 'shop' ); ?>
                                                                 <td>201902-0057</td>
                                                             </tr>
                                                             <tr>
+                                                                <?php 
+                                                                // global $product;
+
+                                                                // if ( get_post_type( $post ) === 'product' && ! is_a($product, 'WC_Product') ) {
+                                                                //     $product = wc_get_product( get_the_id() ); // Get the WC_Product Object
+                                                                // }
+
+                                                                // $product_attributes = $product->get_attributes(); // Get the product attributes
+
+                                                                // // Raw output
+                                                                // echo '<pre>'; print_r( $product_attributes ); echo '</pre>';
+                                                                ?>
+                                                                <!-- <th><?php  //print_r( $product_attributes ); ?></th>
+                                                                <td>201902-0057</td> -->
+                                                            </tr>
+                                                            <tr>
+                                                            <?php
+                                                            add_shortcode( 'product_attributes', 'get_product_attributes' );
+                                                            function get_product_attributes() {
+                                                                $output = '<div style="list-style:inline-block;">';
+                                                                foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                                                    $taxonomy = 'pa_' . $attribute->attribute_name;
+                                                                    $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                                    
+                                                                    $output .= '<div class="widget-filters__item">
+                                                                    <div class="filter filter--opened" data-collapse-item> <button type="button" class="filter__title" data-collapse-trigger>' . $attribute->attribute_name . '
+                                                                    <span class="filter__arrow">
+                                                                    <svg width="12px" height="7px">
+                                                                        <path
+                                                                            d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"
+                                                                        />
+                                                                    </svg>
+                                                                    </span>
+                                                                    </button> 
+                                                                    <div class="filter__body" data-collapse-content>  
+                                                                        <div class="filter__container">
+                                                                                <div class="filter-vehicle">
+                                                                                    <ul class="filter-vehicle__list"><li class="filter-vehicle__item">'. implode( '<li class="filter-vehicle__item">
+                                                                                            <span class="filter-vehicle__item-title">', $term_names) .'</span></li></li></ul></div></div></div></div></div>';
+                                                                }
+                                                                return $output . '</div>';
+                                                            }
+                                                            
+
+                                                            ?>
+                                                            <?php echo do_shortcode('[product_attributes]'); ?>
+                                                            </tr>
+                                                            <tr>
                                                                 <th>Brand</th>
                                                                 <td><a href="#">Brandix</a></td>
                                                             </tr>
@@ -1648,7 +1696,10 @@ get_header( 'shop' ); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="product-card__info">
+                                                           
                                                                 <div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 473-75662-R</div>
+                                                               
+                                                                
                                                                 <div class="product-card__name">
                                                                     <div><a href="product-full.html">Set of Car Floor Mats Brandix Z4</a></div>
                                                                 </div>

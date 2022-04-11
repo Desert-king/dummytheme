@@ -77,4 +77,5 @@ if ( post_password_required() ) {
 <?php //do_action( 'woocommerce_after_single_product' ); ?>
  <!-- added by farhana start -->
 <!--  -->
+
 <!-- added by farhana end -->
