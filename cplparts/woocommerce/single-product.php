@@ -140,7 +140,16 @@ get_header( 'shop' ); ?>
                                                         <div class="product__prices"><div class="product__price product__price--current"><?php woocommerce_template_single_price(); ?></div></div>
                                                         <div class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                             <div class="status-badge__body">
-                                                                <div class="status-badge__text">In Stock</div>
+                                                                <div class="status-badge__text"><?php 
+                                                                 global $product;
+                                                                if ( ! $product->managing_stock() && ! $product->is_in_stock() ){
+                                                                    echo 'out of stock';
+                                                                }
+                                                                else{
+                                                                    echo 'In stock';
+                                                                }
+                                                                ?>
+                                                                </div>
                                                                 <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="In&#x20;Stock"></div>
                                                             </div>
                                                         </div>
@@ -149,32 +158,27 @@ get_header( 'shop' ); ?>
                                                         <table>
                                                             <tr>
                                                                 <th>SKU</th>
-                                                                <td>201902-0057</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <?php 
-                                                                // global $product;
-
-                                                                // if ( get_post_type( $post ) === 'product' && ! is_a($product, 'WC_Product') ) {
-                                                                //     $product = wc_get_product( get_the_id() ); // Get the WC_Product Object
-                                                                // }
-
-                                                                // $product_attributes = $product->get_attributes(); // Get the product attributes
-
-                                                                // // Raw output
-                                                                // echo '<pre>'; print_r( $product_attributes ); echo '</pre>';
+                                                                <td><?php 
+                                                                global $product;
+                                                                $sku = $product->get_sku();
+                                                                if (isset($sku)) {
+                                                                    echo $sku;
+                                                                  }
                                                                 ?>
-                                                                <!-- <th><?php  //print_r( $product_attributes ); ?></th>
-                                                                <td>201902-0057</td> -->
+                                                                </td>
                                                             </tr>
+                                                            
                                                             <tr>
                                                             <?php
                                                             add_shortcode( 'product_attributes', 'get_product_attributes' );
                                                             function get_product_attributes() {
                                                                 $output = '<div style="list-style:inline-block;">';
                                                                 foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                                                     global  $product;
+                                                                    $ID = $product->get_id();
                                                                     $taxonomy = 'pa_' . $attribute->attribute_name;
-                                                                    $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                                    $term_names = wp_get_object_terms($product->get_id(), array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                                    // $product = $product->get_id();
                                                                     
                                                                     $output .= '<div class="widget-filters__item">
                                                                     <div class="filter filter--opened" data-collapse-item> <button type="button" class="filter__title" data-collapse-trigger>' . $attribute->attribute_name . '
@@ -284,7 +288,45 @@ get_header( 'shop' ); ?>
                                                 </div>
                                                 <div class="product__tags-and-share-links">
                                                     <div class="product__tags tags tags--sm">
-                                                        <div class="tags__list"><a href="#">Brake Kit</a> <a href="#">Brandix</a> <a href="#">Filter</a> <a href="#">Bumper</a> <a href="#">Transmission</a> <a href="#">Hood</a></div>
+                                                       
+                                                          <?php 
+                                                             global $product;
+                                                             $id = $product->get_id();
+                                                             echo ($id);
+                                                            //  while($term=$id){
+                                                            $args = array(
+                                                                'hide_empty' => false,
+                                                                'include'    => $id
+                                                            );
+                                                             // $terms = get_terms( 'product_tag', $args );
+                                                             $terms = get_terms(array( 'taxonomy' => 'product_tag',  'hide_empty' => false)); 
+                                                             ?>
+                                                             <?php 
+                                                            //  $terms = get_term_by('term_id', 'name', 'Term Name');
+                                                             ?>
+                                                            <div class="tags__list">
+                                                            <?php foreach ( $terms as $term ) { ?>
+                                                                <a href="<?php echo get_term_link( $term->term_id, 'product_tag' ); ?> " rel="tag"><?php echo $term->name; ?></a>
+                                                            <?php 
+                                                            }
+                                                            // } 
+                                                            ?>
+                                                            <?php 
+                                                            //  $terms = get_the_terms( $post->ID , array( 'teams_positions') );
+                                                            //  // init counter
+                                                            //  $i = 1;
+                                                            //  foreach ( $terms as $term ) {
+                                                            //   $term_link = get_term_link( $term, array( 'teams_positions') );
+                                                            //   if( is_wp_error( $term_link ) )
+                                                            //   continue;
+                                                            //   echo $term->name;
+                                                            //   //  Add comma (except after the last theme)
+                                                            //   echo ($i < count($terms))? " / " : "";
+                                                            //   // Increment counter
+                                                            //   $i++;
+                                                            //  }
+                                                            ?>
+                                                            </div>
                                                     </div>
                                                     <div class="product__share-links share-links">
                                                         <ul class="share-links__list">
