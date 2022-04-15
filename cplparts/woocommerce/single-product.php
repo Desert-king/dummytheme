@@ -169,47 +169,63 @@ get_header( 'shop' ); ?>
                                                             </tr>
                                                             
                                                             <tr>
-                                                            <?php
-                                                            add_shortcode( 'product_attributes', 'get_product_attributes' );
-                                                            function get_product_attributes() {
-                                                                $output = '<div style="list-style:inline-block;">';
-                                                                foreach( wc_get_attribute_taxonomies() as $attribute ) {
-                                                                     global  $product;
-                                                                    $ID = $product->get_id();
-                                                                    $taxonomy = 'pa_' . $attribute->attribute_name;
-                                                                    $term_names = wp_get_object_terms($product->get_id(), array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
-                                                                    // $product = $product->get_id();
-                                                                    
-                                                                    $output .= '<div class="widget-filters__item">
-                                                                    <div class="filter filter--opened" data-collapse-item> <button type="button" class="filter__title" data-collapse-trigger>' . $attribute->attribute_name . '
-                                                                    <span class="filter__arrow">
-                                                                    <svg width="12px" height="7px">
-                                                                        <path
-                                                                            d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"
-                                                                        />
-                                                                    </svg>
-                                                                    </span>
-                                                                    </button> 
-                                                                    <div class="filter__body" data-collapse-content>  
-                                                                        <div class="filter__container">
-                                                                                <div class="filter-vehicle">
-                                                                                    <ul class="filter-vehicle__list"><li class="filter-vehicle__item">'. implode( '<li class="filter-vehicle__item">
-                                                                                            <span class="filter-vehicle__item-title">', $term_names) .'</span></li></li></ul></div></div></div></div></div>';
-                                                                }
-                                                                return $output . '</div>';
-                                                            }
-                                                            
+                                                            <?php $taxonomy = 'pa_color'; // Here set the product attribute taxonomy
+                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
 
+                                                            if ( ! empty( $terms ) ) {
+                                                                $output   = []; // Initializing
+
+                                                                // Loop through the terms set in the product
+                                                                foreach( $terms as $term ) {
+                                                                    // $output[] = '<a href="'.get_term_link( $term, $taxonomy ).'">'.$term->name.'</a>';
+                                                                    $output[] = $term->name;
+                                                                }
+                                                               
+                                                                echo ("<th>");
+                                                                echo (_n( "Color", "Colors", count($terms) ));
+                                                                echo ("</th>");
+                                                                echo ("<td>".implode( ', ', $output ) ."</td>");
+                                                            }
                                                             ?>
-                                                            <?php echo do_shortcode('[product_attributes]'); ?>
                                                             </tr>
                                                             <tr>
-                                                                <th>Brand</th>
-                                                                <td><a href="#">Brandix</a></td>
+                                                            <?php $taxonomy = 'pa_brand'; // Here set the product attribute taxonomy
+                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
+
+                                                            if ( ! empty( $terms ) ) {
+                                                                $output_brand  = []; // Initializing
+
+                                                                // Loop through the terms set in the product
+                                                                foreach( $terms as $term ) {
+                                                                     $output_brand[] = '<a href="'.get_term_link( $term, $taxonomy ).'">'.$term->name.'</a>';
+                                                                }
+                                                              
+                                                                echo ("<th>");
+                                                                echo (_n( "Brand", "Brands", count($terms) ));
+                                                                echo ("</th>");
+                                                                echo ("<td>".implode( ', ',$output_brand ) ."</td>");
+                                                            }
+                                                            ?>
                                                             </tr>
                                                             <tr>
-                                                                <th>Country</th>
-                                                                <td>Japan</td>
+                                                            <?php $taxonomy = 'pa_country'; // Here set the product attribute taxonomy
+                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
+
+                                                            if ( ! empty( $terms ) ) {
+                                                                $output_countrty   = []; // Initializing
+
+                                                                // Loop through the terms set in the product
+                                                                foreach( $terms as $term ) {
+                                                                   
+                                                                    $output_countrty[] = $term->name;
+                                                                }
+                                                                
+                                                                echo ("<th>");
+                                                                echo (_n( "Country", "Countries", count($terms) ));
+                                                                echo ("</th>");
+                                                                echo ("<td>".implode( ', ', $output_countrty ) ."</td>");
+                                                            }
+                                                            ?>
                                                             </tr>
                                                             <tr>
                                                                 <th>Vendor code</th>
@@ -222,21 +238,34 @@ get_header( 'shop' ); ?>
                                                     <div class="product-form__body">
                                                         <div class="product-form__row">
                                                             <div class="product-form__title">Material</div>
-                                                            <div class="product-form__control">
+                                                            <?php $taxonomy = 'pa_material'; // Here set the product attribute taxonomy
+                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
+
+                                                            if ( ! empty( $terms ) ) {
+                                                                $output_material   = []; // Initializing
+
+                                                                // Loop through the terms set in the product
+                                                                foreach( $terms as $term ) {
+                                                                    // $output[] = '<a href="'.get_term_link( $term, $taxonomy ).'">'.$term->name.'</a>';
+                                                                    $output_material[] = $term->name;
+                                                                }
+                                                                ?>
+                                                                <div class="product-form__control">
                                                                 <div class="input-radio-label">
                                                                     <div class="input-radio-label__list">
+                                                                    <?php foreach ( $terms as $term ) { ?>
                                                                         <label class="input-radio-label__item">
-                                                                            <input type="radio" name="material" class="input-radio-label__input" /> <span class="input-radio-label__title">Steel</span>
+                                                                            <input type="radio" name="material" class="input-radio-label__input" /> <span class="input-radio-label__title"> <?php  echo  $term->name; ?></span>
                                                                         </label>
-                                                                        <label class="input-radio-label__item">
-                                                                            <input type="radio" name="material" class="input-radio-label__input" /> <span class="input-radio-label__title">Aluminium</span>
-                                                                        </label>
-                                                                        <label class="input-radio-label__item">
-                                                                            <input type="radio" name="material" class="input-radio-label__input" disabled="disabled" /> <span class="input-radio-label__title">Thorium</span>
-                                                                        </label>
+                                                                        <?php 
+                                                                        }
+                                                                        ?>  
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                               </div>
+                                                               <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                         <div class="product-form__row">
                                                             <div class="product-form__title">Color</div>
@@ -290,16 +319,9 @@ get_header( 'shop' ); ?>
                                                     <div class="product__tags tags tags--sm">
                                                        
                                                           <?php 
-                                                             global $product;
-                                                             $id = $product->get_id();
-                                                             echo ($id);
-                                                            //  while($term=$id){
-                                                            $args = array(
-                                                                'hide_empty' => false,
-                                                                'include'    => $id
-                                                            );
-                                                             // $terms = get_terms( 'product_tag', $args );
-                                                             $terms = get_terms(array( 'taxonomy' => 'product_tag',  'hide_empty' => false)); 
+                                                             
+                                                            $terms = wp_get_post_terms( $post->ID, 'product_tag', array( 'fields' => 'all' ) );
+                                                            // print_r( $terms);
                                                              ?>
                                                              <?php 
                                                             //  $terms = get_term_by('term_id', 'name', 'Term Name');
@@ -310,21 +332,6 @@ get_header( 'shop' ); ?>
                                                             <?php 
                                                             }
                                                             // } 
-                                                            ?>
-                                                            <?php 
-                                                            //  $terms = get_the_terms( $post->ID , array( 'teams_positions') );
-                                                            //  // init counter
-                                                            //  $i = 1;
-                                                            //  foreach ( $terms as $term ) {
-                                                            //   $term_link = get_term_link( $term, array( 'teams_positions') );
-                                                            //   if( is_wp_error( $term_link ) )
-                                                            //   continue;
-                                                            //   echo $term->name;
-                                                            //   //  Add comma (except after the last theme)
-                                                            //   echo ($i < count($terms))? " / " : "";
-                                                            //   // Increment counter
-                                                            //   $i++;
-                                                            //  }
                                                             ?>
                                                             </div>
                                                     </div>
