@@ -34,6 +34,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 //  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
  require_once (dirname(__FILE__) . '/sample/cpl-404-settings.php');
+ require_once (dirname(__FILE__) . '/sample/cpl-product-brands-settings.php');
  require_once (get_template_directory() . '/inc/tgmpa.php');
 
 

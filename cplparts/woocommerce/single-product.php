@@ -227,65 +227,71 @@ get_header( 'shop' ); ?>
                                                             }
                                                             ?>
                                                             </tr>
+
+                                                           
                                                             <tr>
-                                                                <th>Vendor code</th>
-                                                                <td>BDX-750Z370-S</td>
+                                                            <?php $taxonomy = 'pa_vendor-code'; // Here set the product attribute taxonomy
+                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
+
+                                                            if ( ! empty( $terms ) ) {
+                                                                $output_vendor   = []; // Initializing
+
+                                                                // Loop through the terms set in the product
+                                                                foreach( $terms as $term ) {
+                                                                   
+                                                                    $output_vendor[] = $term->name;
+                                                                }
+                                                                
+                                                                echo ("<th>");
+                                                                echo (_n( "Vendor code", "Vendor codes", count($terms) ));
+                                                                echo ("</th>");
+                                                                echo ("<td>".implode( ', ', $output_vendor) ."</td>");
+                                                            }
+                                                            ?>
                                                             </tr>
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div class="product-form product__form">
+                                                <!-- <div class="product-form product__form">
                                                     <div class="product-form__body">
                                                         <div class="product-form__row">
-                                                            <div class="product-form__title">Material</div>
-                                                            <?php $taxonomy = 'pa_material'; // Here set the product attribute taxonomy
-                                                            $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
+                                                            <div class="product-form__title">Material</div> -->
+                                                    <?php $taxonomy = 'pa_material'; // Here set the product attribute taxonomy
+                                                    $terms    = wp_get_post_terms( get_the_ID(), $taxonomy ); // Get the terms
 
-                                                            if ( ! empty( $terms ) ) {
-                                                                $output_material   = []; // Initializing
+                                                    if ( ! empty( $terms ) ) {
+                                                        $output_material   = []; // Initializing
 
-                                                                // Loop through the terms set in the product
-                                                                foreach( $terms as $term ) {
-                                                                    // $output[] = '<a href="'.get_term_link( $term, $taxonomy ).'">'.$term->name.'</a>';
-                                                                    $output_material[] = $term->name;
-                                                                }
-                                                                ?>
-                                                                <div class="product-form__control">
-                                                                <div class="input-radio-label">
-                                                                    <div class="input-radio-label__list">
-                                                                    <?php foreach ( $terms as $term ) { ?>
-                                                                        <label class="input-radio-label__item">
-                                                                            <input type="radio" name="material" class="input-radio-label__input" /> <span class="input-radio-label__title"> <?php  echo  $term->name; ?></span>
-                                                                        </label>
-                                                                        <?php 
-                                                                        }
-                                                                        ?>  
+                                                        // Loop through the terms set in the product
+                                                        foreach( $terms as $term ) {
+                                                            // $output[] = '<a href="'.get_term_link( $term, $taxonomy ).'">'.$term->name.'</a>';
+                                                            $output_material[] = $term->name;
+                                                        }
+                                                        ?>
+                                                        <div class="product-form product__form">
+                                                                <div class="product-form__body">
+                                                                    <div class="product-form__row">
+                                                                    <div class="product-form__title">Material</div>
+                                                                        <div class="product-form__control">
+                                                                            <div class="input-radio-label">
+                                                                                <div class="input-radio-label__list">
+                                                                                    <?php foreach ( $terms as $term ) { ?>
+                                                                                        <label class="input-radio-label__item">
+                                                                                            <input type="radio" name="material" class="input-radio-label__input" /> <span class="input-radio-label__title"> <?php  echo  $term->name; ?></span>
+                                                                                        </label>
+                                                                                        <?php 
+                                                                                        }
+                                                                                    ?>  
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                               </div>
-                                                               <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                        <div class="product-form__row">
-                                                            <div class="product-form__title">Color</div>
-                                                            <div class="product-form__control">
-                                                                <div class="input-radio-color">
-                                                                    <div class="input-radio-color__list">
-                                                                        <label class="input-radio-color__item input-radio-color__item--white" style="color: #fff;" data-toggle="tooltip" title="White">
-                                                                            <input type="radio" name="color" /> <span></span>
-                                                                        </label>
-                                                                        <label class="input-radio-color__item" style="color: #ffd333;" data-toggle="tooltip" title="Yellow"><input type="radio" name="color" /> <span></span></label>
-                                                                        <label class="input-radio-color__item" style="color: #ff4040;" data-toggle="tooltip" title="Red"><input type="radio" name="color" /> <span></span></label>
-                                                                        <label class="input-radio-color__item input-radio-color__item--disabled" style="color: #4080ff;" data-toggle="tooltip" title="Blue">
-                                                                            <input type="radio" name="color" disabled="disabled" /> <span></span>
-                                                                        </label>
-                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                        
                                                 <div class="product__actions">
                                                     <div class="product__actions-item product__actions-item--quantity">
                                                         <div class="input-number">
