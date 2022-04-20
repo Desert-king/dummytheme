@@ -1615,11 +1615,44 @@ Template Name: Home-page
                 <div class="block block-brands block-brands--layout--columns-8-full">
                     <div class="container">
                         <ul class="block-brands__list">
-                            <li class="block-brands__item">
+                                <?php 
+                                    global $redux_demo;
+                                    $brands = $redux_demo['cpl-pro-brand-section-fields-new'];
+                                    //print_r($repeaters);
+                                    $brand_titles= $redux_demo['cpl-pro-brand-title-new'];
+                                    $brand_images = $redux_demo['cpl-pro-brand-image-new'];
+                                    // print_r($photoes[1]['url']);
+                                    // print_r($names[1]);
+                                ?>
+                                <?php
+                                   $first_count = count($brand_titles);
+                                //    var_export($photoes);
+                                    $x = 0;
+                                    while($x < $first_count) {
+                                    // foreach ($names as $name) {
+                                ?>
+                                <li class="block-brands__item">
+                                     <a href="#" class="block-brands__item-link">
+                                     <img src="<?php echo $brand_images[$x]['url'] ?>" alt="" /> 
+                                     <span class="block-brands__item-name"><?php 
+                                            if(isset(($brand_titles)[$x])){
+                                                echo($brand_titles)[$x];
+                                             }
+                                            ?></span></a>
+                                </li>
+                                 <li class="block-brands__divider" role="presentation"></li>
+                                            
+                                           
+                                <?php
+                                        // }
+                                    $x++;
+                                    }
+                                ?>
+                            <!-- <li class="block-brands__item">
                                 <a href="#" class="block-brands__item-link"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/brand-1.png" alt="" /> <span class="block-brands__item-name">AimParts</span></a>
                             </li>
-                            <li class="block-brands__divider" role="presentation"></li>
-                            <li class="block-brands__item">
+                            <li class="block-brands__divider" role="presentation"></li> -->
+                            <!-- <li class="block-brands__item">
                                 <a href="#" class="block-brands__item-link"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/brand-2.png" alt="" /> <span class="block-brands__item-name">WindEngine</span></a>
                             </li>
                             <li class="block-brands__divider" role="presentation"></li>
@@ -1678,7 +1711,7 @@ Template Name: Home-page
                             <li class="block-brands__item">
                                 <a href="#" class="block-brands__item-link"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/brands/brand-16.png" alt="" /> <span class="block-brands__item-name">SquareGarage</span></a>
                             </li>
-                            <li class="block-brands__divider" role="presentation"></li>
+                            <li class="block-brands__divider" role="presentation"></li> -->
                         </ul>
                     </div>
                 </div>

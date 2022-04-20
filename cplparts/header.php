@@ -1282,15 +1282,15 @@
                                     </a>
                                     <div class="account-menu__divider"></div>
                                     <ul class="account-menu__links">
-                                        <li><a href="account-dashboard.html">Dashboard</a></li>
-                                        <li><a href="account-dashboard.html">Garage</a></li>
-                                        <li><a href="account-profile.html">Edit Profile</a></li>
-                                        <li><a href="account-orders.html">Order History</a></li>
-                                        <li><a href="account-addresses.html">Addresses</a></li>
+                                        <li><a href="<?php echo esc_url( home_url( '/my-account' ) ); ?>">Dashboard</a></li>
+                                        <!-- <li><a href="account-dashboard.html">Garage</a></li> -->
+                                        <li><a href="<?php echo esc_url( home_url( '/wp-admin/profile.php' ) ); ?>">Edit Profile</a></li>
+                                        <!-- <li><a href="account-orders.html">Order History</a></li>
+                                        <li><a href="account-addresses.html">Addresses</a></li> -->
                                     </ul>
                                     <div class="account-menu__divider"></div>
                                     <ul class="account-menu__links">
-                                        <li><a href="account-login.html">Logout</a></li>
+                                        <li><a href="<?php echo esc_url( home_url( '/my-account/customer-logout/?_wpnonce=fa44571443' ) ); ?>">Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
