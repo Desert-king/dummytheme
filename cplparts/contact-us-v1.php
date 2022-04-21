@@ -17,7 +17,7 @@ Template Name: Contact-page
                     <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=firoz%20tower&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google html code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div> -->
                     <!-- ################## -->
                 </div>
-                <div class="block-header block-header--has-breadcrumb block-header--has-title">
+                <!-- <div class="block-header block-header--has-breadcrumb block-header--has-title">
                     <div class="container">
                         <div class="block-header__body">
                             <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
@@ -32,7 +32,16 @@ Template Name: Contact-page
                             <h1 class="block-header__title">Contact Us</h1>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <?php
+                    /**
+                     * woocommerce_before_main_content hook.
+                     *
+                     * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                     * @hooked woocommerce_breadcrumb - 20
+                     */
+                    do_action( 'woocommerce_before_main_content' );
+                ?>
                 <div class="block">
                     <div class="container container--max--lg cpl-contact-page">
                         <div class="card">

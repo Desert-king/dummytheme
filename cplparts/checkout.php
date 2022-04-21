@@ -7,7 +7,7 @@ Template Name: Checkout-page
             
             <!-- site__header / end --><!-- site__body -->
             <div class="site__body">
-                <div class="block-header block-header--has-breadcrumb block-header--has-title">
+                <!-- <div class="block-header block-header--has-breadcrumb block-header--has-title">
                     <div class="container">
                         <div class="block-header__body">
                             <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
@@ -22,7 +22,16 @@ Template Name: Checkout-page
                             <h1 class="block-header__title">Checkout</h1>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <?php
+                    /**
+                     * woocommerce_before_main_content hook.
+                     *
+                     * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                     * @hooked woocommerce_breadcrumb - 20
+                     */
+                    do_action( 'woocommerce_before_main_content' );
+                ?>
                 <div class="checkout block">
                     <div class="container container--max--xl">
                         <div class="row">

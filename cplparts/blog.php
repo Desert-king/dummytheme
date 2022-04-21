@@ -9,7 +9,7 @@ Template Name: Blog-page
 
             <!-- site__header / end --><!-- site__body -->
             <div class="site__body">
-                <div class="block-header block-header--has-breadcrumb block-header--has-title">
+                <!-- <div class="block-header block-header--has-breadcrumb block-header--has-title">
                     <div class="container">
                         <div class="block-header__body">
                             <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
@@ -24,7 +24,16 @@ Template Name: Blog-page
                             <h1 class="block-header__title">Latest News</h1>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <?php
+                    /**
+                     * woocommerce_before_main_content hook.
+                     *
+                     * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+                     * @hooked woocommerce_breadcrumb - 20
+                     */
+                    do_action( 'woocommerce_before_main_content' );
+                ?>
                 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                 <?php
 		    //   if ( have_posts() ) :
@@ -53,6 +62,7 @@ Template Name: Blog-page
                                 <div class="block posts-view">
                                     <div class="posts-view__list posts-list posts-list--layout--classic">
                                         <div class="posts-list__body">
+                                        <div class="posts-list__item">
                                             <?php 
                                             $args = array(
                                                 'post_type' => 'post',
@@ -62,7 +72,7 @@ Template Name: Blog-page
                                                 global $product;
                                             
                                             ?>
-                                            <div class="posts-list__item">
+                                            <!-- <div class="posts-list__item"> -->
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
                                                         <a href="post-full-width.html"><img src="images/posts/post-1-730x485.jpg" alt="" /></a>
@@ -81,12 +91,13 @@ Template Name: Blog-page
                                                         <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <!-- </div> -->
                                             <?php
                                             endwhile;
                                             // If no posts were found
                                             
                                             ?>
+                                             </div>
                                             
                                             
                                             <!-- <div class="posts-list__item">
