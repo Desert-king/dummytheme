@@ -62,7 +62,7 @@ Template Name: Blog-page
                                 <div class="block posts-view">
                                     <div class="posts-view__list posts-list posts-list--layout--classic">
                                         <div class="posts-list__body">
-                                        <div class="posts-list__item">
+                                        <!-- <div class="posts-list__item"> -->
                                             <?php 
                                             $args = array(
                                                 'post_type' => 'post',
@@ -72,7 +72,7 @@ Template Name: Blog-page
                                                 global $product;
                                             
                                             ?>
-                                            <!-- <div class="posts-list__item"> -->
+                                            <div class="posts-list__item">
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
                                                         <a href="post-full-width.html"><img src="images/posts/post-1-730x485.jpg" alt="" /></a>
@@ -91,13 +91,12 @@ Template Name: Blog-page
                                                         <div class="post-card__more"><a href="post-full-width.html" class="btn btn-secondary btn-sm">Read more</a></div>
                                                     </div>
                                                 </div>
-                                            <!-- </div> -->
+                                            </div>
                                             <?php
                                             endwhile;
                                             // If no posts were found
                                             
                                             ?>
-                                             </div>
                                             
                                             
                                             <!-- <div class="posts-list__item">

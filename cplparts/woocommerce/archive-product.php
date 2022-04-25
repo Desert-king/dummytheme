@@ -155,10 +155,23 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 						</div>
 						<div class="products-list__content">
 						     <?php 
+							   // Full wp pagination example
+								$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+								$args = array(
+									// 'post_type' => 'blog',
+									'posts_per_page' => 2,
+									'paged' => $paged
+								);
+
+								// The Query
+								$the_query = new WP_Query( $args );
 							  
 								if ( have_posts() ) {
 									while ( have_posts() ) {
 										the_post(); 
+										
+
 								?>
 							<div class="products-list__item">
 								<div class="product-card">
@@ -239,7 +252,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 									<div class="product-card__footer">
 										<div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php woocommerce_template_loop_price(); ?></div></div>
 										<button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
-											<svg width="20" height="20">
+											<!-- <svg width="20" height="20">
 												<circle cx="7" cy="17" r="2" />
 												<circle cx="15" cy="17" r="2" />
 												<path
@@ -247,7 +260,22 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
 C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"
 												/>
-											</svg>
+											</svg> -->
+
+											<?php 
+											//  function remove_button_loop(){
+											// 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+											// 	}
+											// 	add_action('init','remove_button_loop');
+											// 	function add_to_cart_replace() {
+											// 		global $product;
+											// 		$link = $product->get_permalink();
+											// 		echo do_shortcode('<a href="'.$link.'" class="button addtocartbutton"><i class="fa fa-shopping-bag"></i></a>');
+											// 	}
+											// 	add_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	
+											?>
+											<?php //add_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	 ?>
+											<?php woocommerce_template_loop_add_to_cart(); ?>
 										</button>
 										<button class="product-card__addtocart-full" type="button"><?php woocommerce_template_loop_add_to_cart(); ?></button>
 										<button class="product-card__wishlist" type="button">
@@ -272,12 +300,91 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 							</div>
 							<?php 
 							 } // end while
+							 ?>
+							 <div id="nav-single">
+								<div class="left"><?php previous_post_link(); ?></div>
+								<div class="right"><?php next_post_link(); ?></div>
+							</div>
+                             <br><br>
+							<div class="pagination">
+								<?php
+									echo paginate_links( array(
+										'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+										'total'        => $the_query->max_num_pages,
+										'current'      => max( 1, get_query_var( 'paged' ) ),
+										'format'       => '?paged=%#%',
+										'show_all'     => false,
+										'type'         => 'plain',
+										'end_size'     => 2,
+										'mid_size'     => 1,
+										'prev_next'    => true,
+										'prev_text'    => sprintf( '<i></i> %1$s', __( 'Newer Posts', 'text-domain' ) ),
+										'next_text'    => sprintf( '%1$s <i></i>', __( 'Older Posts', 'text-domain' ) ),
+										'add_args'     => false,
+										'add_fragment' => '',
+									) );
+								?>
+							</div>
+							<br><br>
+							<?php 
+							$big = 999999999; // need an unlikely integer
+ 
+							echo paginate_links( array(
+								'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+								'format' => '?paged=%#%',
+								'current' => max( 1, get_query_var('paged') ),
+								'total' => $the_query->max_num_pages
+							) );
+							?>
+
+
+							<?php 
+							//  echo "hello";
+							//  $next= next_post_link();
+							//  echo $next;
 							} // end if
 							?>
 						</div>
 					</div>
 					   <!-- product loop -->
 					   <!-- pagination -->
+
+					 <!-- dynamic pagination start-->
+					 <?php 
+					 function the_so37580965_wp_custom_pagination($args = [], $class = 'pagination') {
+
+						if ($GLOBALS['wp_query']->max_num_pages <= 1) return;
+
+						$args = wp_parse_args( $args, [
+							'mid_size'           => 2,
+							'prev_next'          => false,
+							'prev_text'          => __('Older posts', 'textdomain'),
+							'next_text'          => __('Newer posts', 'textdomain'),
+							'screen_reader_text' => __('Posts navigation', 'textdomain'),
+						]);
+
+						$links     = paginate_links($args);
+						$next_link = get_previous_posts_link($args['next_text']);
+						$prev_link = get_next_posts_link($args['prev_text']);
+						$template  = apply_filters( 'the_so37580965_navigation_markup_template', '
+						<nav class="navigation %1$s" role="navigation">
+							<h2 class="screen-reader-text">%2$s</h2>
+							<div class="nav-links">%3$s<div class="page-numbers-container">%4$s</div>%5$s</div>
+						</nav>', $args, $class);
+
+						echo sprintf($template, $class, $args['screen_reader_text'], $prev_link, $links, $next_link);
+
+						}
+						
+                      ?>
+					    <?php
+							echo paginate_links( array(
+								'mid_size'  => 3,
+								'prev_text' => __( '&laquo; Prev', 'textdomain' ),
+								'next_text' => __( 'Next &raquo;', 'textdomain' ),
+							) );
+						?>
+					 <!-- dynamic pagination ends -->
 					<div class="products-view__pagination">
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">

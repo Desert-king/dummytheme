@@ -319,5 +319,21 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+function woocommerce_custom_product_add_to_cart_text() {
+	return __( "<img src=\"".get_template_directory_uri() . "/assets/images/cart/my_cart.png\">" , 'woocommerce' );
+//return __( '<i class="fas fa-cart-plus"></i>', 'woocommerce' );
+}
+
+// function remove_button_loop(){
+// 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+// 	}
+// 	add_action('init','remove_button_loop');
+// 	function add_to_cart_replace() {
+// 		global $product;
+// 		$link = $product->get_permalink();
+// 		echo do_shortcode('<a href="'.$link.'" class="button addtocartbutton"><i class="fa fa-shopping-bag"></i></a>');
+// 	}
+// 	add_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	
 
 

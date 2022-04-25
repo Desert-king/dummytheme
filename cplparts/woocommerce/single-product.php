@@ -291,7 +291,13 @@ get_header( 'shop' ); ?>
                                                         <?php
                                                     }
                                                 ?>
-                                                        
+                                                <?php 
+                                                      add_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 ); 
+                                                      do_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 );
+                                                ?>
+                                                
+
+                                                    
                                                 <div class="product__actions">
                                                     <div class="product__actions-item product__actions-item--quantity">
                                                         <div class="input-number">
@@ -299,9 +305,14 @@ get_header( 'shop' ); ?>
                                                             <div class="input-number__add"></div>
                                                             <div class="input-number__sub"></div>
                                                         </div>
+                                                       
                                                     </div>
 													<!-- <?php //woocommerce_template_single_add_to_cart() ;?> -->
-                                                    <div class="product__actions-item product__actions-item--addtocart"><button class="btn btn-primary btn-lg btn-block">Add to cart</button></div>
+                                                    <div class="product__actions-item product__actions-item--addtocart">
+                                                      <button class="btn btn-primary btn-lg btn-block">
+                                                          <?php woocommerce_template_loop_add_to_cart(); ?>
+                                                      </button>
+                                                    </div>
                                                     <div class="product__actions-divider"></div>
                                                     <button class="product__actions-item product__actions-item--wishlist" type="button">
                                                         <svg width="16" height="16">
