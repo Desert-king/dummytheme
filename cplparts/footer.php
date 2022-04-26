@@ -954,6 +954,15 @@
 
         }
         </script>
+        <script>
+        function handleTagTab(elem){
+            var target = jQuery(elem).attr("target");
+        
+            jQuery(".tag-tab-view").removeClass("current");
+            jQuery("#"+target).addClass("current");
+
+        }
+        </script>
 
         <!-- to enable update cart button -->
         <script>

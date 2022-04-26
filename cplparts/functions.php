@@ -319,21 +319,70 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
-function woocommerce_custom_product_add_to_cart_text() {
-	return __( "<img src=\"".get_template_directory_uri() . "/assets/images/cart/my_cart.png\">" , 'woocommerce' );
-//return __( '<i class="fas fa-cart-plus"></i>', 'woocommerce' );
-}
+// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+// function woocommerce_custom_product_add_to_cart_text() {
+//  return __( "<img src= \"".get_template_directory_uri() . "/assets/images/cart/my_cart.png\">" , 'woocommerce' );
+	
+// }
 
-// function remove_button_loop(){
-// 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-// 	}
-// 	add_action('init','remove_button_loop');
-// 	function add_to_cart_replace() {
-// 		global $product;
-// 		$link = $product->get_permalink();
-// 		echo do_shortcode('<a href="'.$link.'" class="button addtocartbutton"><i class="fa fa-shopping-bag"></i></a>');
-// 	}
-// 	add_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	
+// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+// function woocommerce_custom_product_add_to_cart_text() {
+// 	echo 'buy';  
+	
+// }
 
+// add_action( 'woocommerce_after_add_to_cart_button', 'add_content_after_addtocart_button_func' );
+
+// function add_content_after_addtocart_button_func() {
+//     echo '<img src="'.get_template_directory_uri().'/assets/images/cart/commerce-and-shopping.png">';   
+	//echo 'buy';   
+// }
+
+function remove_button_loop(){
+	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+	}
+	add_action('init','remove_button_loop');
+	function add_to_cart_replace() {
+		global $product;
+		$link = $product->get_permalink();
+		echo do_shortcode('<svg width="20" height="20">
+												<circle cx="7" cy="17" r="2" />
+												<circle cx="15" cy="17" r="2" />
+												<path
+													d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
+V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
+C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"
+												/>
+											</svg>');
+	}
+	add_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	
+
+	
+// add_filter( 'woocommerce_loop_add_to_cart_link', 'filter_loop_add_to_cart_link', 20, 3 );
+// function filter_loop_add_to_cart_link( $button, $product, $args = array() ) {
+//     if( $product->is_in_stock() ) return $button;
+
+//     // HERE set your button text (when product is not on stock)
+//     $button_text = __('Not available', 'woocommerce');
+
+//     // HERE set your button STYLING (when product is not on stock)
+//     $color = "#555";      // Button text color
+//     $background = "#aaa"; // Button background color
+
+//     // HERE set your fontawesome icon code and size
+//     $icon = 'fa-ban';
+//     $size = 'fa-lg'; // large - To disable size use an empty value like $size = '';
+
+//     // Changing and disbling the button when products are not in stock
+//     $style = 'color:'.$color.';background-color:'.$background.';cursor:not-allowed;';
+//     return sprintf( '<svg width="20" height="20">
+// 													<circle cx="7" cy="17" r="2" />
+// 	 												<circle cx="15" cy="17" r="2" />
+// 	 												<path
+// 	 													d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
+// 	 V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
+// 	 C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"
+// 	 												/>
+// 	 											</svg>', $style, $icon, $size, $button_text );
+// }
 

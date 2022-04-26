@@ -1305,10 +1305,13 @@ Template Name: Home-page
                                 <h2 class="section-header__title">New Arrivals</h2>
                                 <div class="section-header__spring"></div>
                                 <ul class="section-header__links">
-                                    <li class="section-header__links-item"><a href="#" class="section-header__links-link">Wheel Covers</a></li>
-                                    <li class="section-header__links-item"><a href="#" class="section-header__links-link">Timing Belts</a></li>
-                                    <li class="section-header__links-item"><a href="#" class="section-header__links-link">Oil Pans</a></li>
-                                    <li class="section-header__links-item"><a href="#" class="section-header__links-link">Show All</a></li>
+                                    <!-- <button class="tabs-button tabs-button-active"  target="tabFeatured" onclick="handleCategoryTab(this)">
+                                            Featured Product
+                                    </button> -->
+                                    <li class="section-header__links-item"><a  class="section-header__links-link" target="tabWheelCovers" onclick="handleTagTab(this)">Wheel Covers</a></li>
+                                    <li class="section-header__links-item"><a  class="section-header__links-link" target="tabTimingBelts" onclick="handleTagTab(this)">Timing Belts</a></li>
+                                    <li class="section-header__links-item"><a  class="section-header__links-link" target="tabOilPans" onclick="handleTagTab(this)">Oil Pans</a></li>
+                                    <!-- <li class="section-header__links-item"><a href="#" class="section-header__links-link">Show All</a></li> -->
                                 </ul>
                                 <div class="section-header__arrows">
                                     <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
@@ -1330,7 +1333,8 @@ Template Name: Home-page
                                 <div class="section-header__divider"></div>
                             </div>
                         </div>
-                        <div class="block-products-carousel__carousel">
+                       <!-- main new arrival starts -->
+                        <!-- <div class="block-products-carousel__carousel">
                             <div class="block-products-carousel__carousel-loader"></div>
                             <div class="owl-carousel">
                                 <?php
@@ -1346,45 +1350,6 @@ Template Name: Home-page
                                 <div class="block-products-carousel__column">
                                     
                                    
-                                    <!-- <div class="block-products-carousel__cell">
-                                        <div class="product-card product-card--layout--horizontal">
-                                            <div class="product-card__actions-list">
-                                                <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-                                                    <svg width="16" height="16">
-                                                        <path
-                                                            d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="product-card__image">
-                                                <div class="image image--type--product">
-                                                    <a href="product-full.html" class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-10-245x245.jpg" alt="" /></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-card__info">
-                                                <div class="product-card__name">
-                                                    <div><a href="product-full.html">Set of Car Floor Mats Brandix Z4</a></div>
-                                                </div>
-                                                <div class="product-card__rating">
-                                                    <div class="rating product-card__rating-stars">
-                                                        <div class="rating__body">
-                                                            <div class="rating__star rating__star--active"></div>
-                                                            <div class="rating__star rating__star--active"></div>
-                                                            <div class="rating__star rating__star--active"></div>
-                                                            <div class="rating__star rating__star--active"></div>
-                                                            <div class="rating__star"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-card__rating-label">4 on 16 reviews</div>
-                                                </div>
-                                            </div>
-                                            <div class="product-card__footer">
-                                                <div class="product-card__prices"><div class="product-card__price product-card__price--current">$78.00</div></div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="block-products-carousel__cell">
                                         <div class="product-card product-card--layout--horizontal">
                                             <div class="product-card__actions-list">
@@ -1431,7 +1396,203 @@ Template Name: Home-page
                                 <?php endwhile; ?>
                                 <?php wp_reset_query(); ?>
                             </div>
-                        </div>
+                        </div> -->
+                         <!-- main new arrival ends -->
+                         <!-- tag one start -->
+                         <div id="tabWheelCovers" class="block-products-carousel__carousel tag-tab-view current">
+                            <div class="block-products-carousel__carousel-loader"></div>
+                            <div class="owl-carousel">
+                                <?php
+                                    $args = array(
+                                        'product_tag' => 'Wheel Covers',
+                                        'posts_per_page' => 6,
+                                        'orderby' => 'rand'
+                                    );
+                                    $loop = new WP_Query($args);
+                                    while ($loop->have_posts()) : $loop->the_post();
+                                        global $product; ?> 
+                                
+                                <div class="block-products-carousel__column">
+                                    
+                                   
+                                    <div class="block-products-carousel__cell">
+                                        <div class="product-card product-card--layout--horizontal">
+                                            <div class="product-card__actions-list">
+                                                <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                                    <svg width="16" height="16">
+                                                        <path
+                                                            d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <div class="image image--type--product">
+                                                <a class="image__body" href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="image__body">
+                                                         <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'thumbnail', array('class' => 'image__tag'), 'shop_catalog');
+                                                        else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" />'; ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name">
+                                                    <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                </div>
+                                                <div class="product-card__rating">
+                                                    <div class="rating product-card__rating-stars">
+                                                        <div class="rating__body">
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-label">4 on 16 reviews</div>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__footer">
+                                                <div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php echo $product->get_price_html(); ?></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </div>
+                        </div> 
+                         <!-- tag one end -->
+                         <!-- tag two start -->
+                         <div id="tabTimingBelts" class="block-products-carousel__carousel tag-tab-view">
+                            <div class="block-products-carousel__carousel-loader"></div>
+                            <div class="owl-carousel">
+                                <?php
+                                    $args = array(
+                                        'product_tag' => 'Timing Belts',
+                                        'posts_per_page' => 6,
+                                        'orderby' => 'rand'
+                                    );
+                                    $loop = new WP_Query($args);
+                                    while ($loop->have_posts()) : $loop->the_post();
+                                        global $product; ?> 
+                                
+                                <div class="block-products-carousel__column">
+                                    
+                                   
+                                    <div class="block-products-carousel__cell">
+                                        <div class="product-card product-card--layout--horizontal">
+                                            <div class="product-card__actions-list">
+                                                <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                                    <svg width="16" height="16">
+                                                        <path
+                                                            d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <div class="image image--type--product">
+                                                <a class="image__body" href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="image__body">
+                                                         <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'thumbnail', array('class' => 'image__tag'), 'shop_catalog');
+                                                        else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" />'; ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name">
+                                                    <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                </div>
+                                                <div class="product-card__rating">
+                                                    <div class="rating product-card__rating-stars">
+                                                        <div class="rating__body">
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-label">4 on 16 reviews</div>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__footer">
+                                                <div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php echo $product->get_price_html(); ?></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </div>
+                        </div> 
+                         <!-- tag two end-->
+                         <!-- tag three start -->
+                         <div id="tabOilPans" class="block-products-carousel__carousel tag-tab-view">
+                            <div class="block-products-carousel__carousel-loader"></div>
+                            <div class="owl-carousel">
+                                <?php
+                                    $args = array(
+                                        'product_tag' => 'Oil Pans',
+                                        'posts_per_page' => 6,
+                                        'orderby' => 'rand'
+                                    );
+                                    $loop = new WP_Query($args);
+                                    while ($loop->have_posts()) : $loop->the_post();
+                                        global $product; ?> 
+                                
+                                <div class="block-products-carousel__column">
+                                    
+                                   
+                                    <div class="block-products-carousel__cell">
+                                        <div class="product-card product-card--layout--horizontal">
+                                            <div class="product-card__actions-list">
+                                                <button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+                                                    <svg width="16" height="16">
+                                                        <path
+                                                            d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="product-card__image">
+                                                <div class="image image--type--product">
+                                                <a class="image__body" href="<?php echo get_permalink($loop->post->ID) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="image__body">
+                                                         <?php if (has_post_thumbnail($loop->post->ID)) echo get_the_post_thumbnail($loop->post->ID, 'thumbnail', array('class' => 'image__tag'), 'shop_catalog');
+                                                        else echo '<img src="' . woocommerce_placeholder_img_src() . '" alt="Placeholder" />'; ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__info">
+                                                <div class="product-card__name">
+                                                    <div><a href="product-full.html"><?php the_title(); ?></a></div>
+                                                </div>
+                                                <div class="product-card__rating">
+                                                    <div class="rating product-card__rating-stars">
+                                                        <div class="rating__body">
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star rating__star--active"></div>
+                                                            <div class="rating__star"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-card__rating-label">4 on 16 reviews</div>
+                                                </div>
+                                            </div>
+                                            <div class="product-card__footer">
+                                                <div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php echo $product->get_price_html(); ?></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                                <?php wp_reset_query(); ?>
+                            </div>
+                        </div> 
+                         <!-- tag three end-->
                     </div>
                 </div>
                 <!-- ######################## -->

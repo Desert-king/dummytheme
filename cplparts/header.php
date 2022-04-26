@@ -39,6 +39,12 @@
             .tab-view.active{
                 display: block;   
             }
+            .tag-tab-view{
+                display: none;   
+            }
+            .tag-tab-view.current{
+                display: block;   
+            }
         </style>
     </head>
     <body <?php body_class(); ?>>
