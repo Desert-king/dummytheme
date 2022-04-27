@@ -202,8 +202,10 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 									</div>
 									<div class="product-card__image">
 										<div class="image image--type--product">
+											<a class="image__body">
 											<?php //do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
 											<?php echo woocommerce_template_loop_product_thumbnail(); ?>
+											</a>
 										</div>
 										<div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
 											<div class="status-badge__body">
