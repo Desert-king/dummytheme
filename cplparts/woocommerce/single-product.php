@@ -82,26 +82,31 @@ get_header( 'shop' ); ?>
                                                     </a>
                                                 </div> -->
                                             </div>
+                                            <h1> hey </h1>
+                                            <?php //woocommerce_show_product_sale_flash(); ?>
 											
 
                                             <!-- <div class="product-gallery__thumbnails">
                                                 <div class="owl-carousel">
                                                     <div class="product-gallery__thumbnails-item image image--type--product">
-                                                        <div class="image__body"><img class="image__tag" src="images/products/product-2-70x70.jpg" alt="" /></div>
+                                                        <div class="image__body">
+                                                        <img class="image__tag" src="<?php echo woocommerce_show_product_images(); ?>" /></div>
+                                                    </div> -->
+                                                    <!-- <div class="product-gallery__thumbnails-item image image--type--product">
+                                                        <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-1-70x70.jpg" alt="" /></div>
                                                     </div>
                                                     <div class="product-gallery__thumbnails-item image image--type--product">
-                                                        <div class="image__body"><img class="image__tag" src="images/products/product-1-70x70.jpg" alt="" /></div>
+                                                        <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-3-70x70.jpg" alt="" /></div>
                                                     </div>
                                                     <div class="product-gallery__thumbnails-item image image--type--product">
-                                                        <div class="image__body"><img class="image__tag" src="images/products/product-3-70x70.jpg" alt="" /></div>
-                                                    </div>
-                                                    <div class="product-gallery__thumbnails-item image image--type--product">
-                                                        <div class="image__body"><img class="image__tag" src="images/products/product-4-70x70.jpg" alt="" /></div>
-                                                    </div>
-                                                </div>
+                                                        <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-4-70x70.jpg" alt="" /></div>
+                                                    </div> -->
+                                                <!-- </div>
                                             </div> -->
 											
                                         </div>
+                                        <!-- gallery static part -->
+                                        
                                         <div class="product__header">
                                             <h1 class="product__title"><?php woocommerce_template_single_title() ?></h1>
                                             <div class="product__subtitle">
