@@ -14815,3 +14815,8 @@ border-color: #d9d9d9;
     height: 100%;
     object-fit: scale-down;
 }
+
+.woocommerce-product-gallery__image.flex-active-slide .wp-post-image {
+    width: 300px;
+    margin: 0px 40px;
+}

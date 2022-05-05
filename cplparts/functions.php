@@ -386,3 +386,11 @@ C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,2
 // 	 											</svg>', $style, $icon, $size, $button_text );
 // }
 
+add_filter( 'woocommerce_output_related_products_args', 'bbloomer_change_number_related_products', 9999 );
+ 
+function bbloomer_change_number_related_products( $args ) {
+ $args['posts_per_page'] = 6; // # of related products
+ $args['columns'] = 4; // # of columns per row
+ return $args;
+}
+

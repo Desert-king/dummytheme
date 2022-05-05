@@ -1012,7 +1012,7 @@ get_header( 'shop' ); ?>
 											</div>
 										</div>
 										<!-- dynamic related product end -->
-                                        <div class="block-products-carousel__carousel">
+                                        <!-- <div class="block-products-carousel__carousel">
                                             <div class="block-products-carousel__carousel-loader"></div>
                                             <div class="owl-carousel">
                                                 <div class="block-products-carousel__column">
@@ -1804,7 +1804,7 @@ get_header( 'shop' ); ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -1814,7 +1814,7 @@ get_header( 'shop' ); ?>
 										<?php //do_action ('woocommerce_after_single_product_summary'); ?>
 										<?php //woocommerce_output_product_data_tabs(); ?>
 										<?php //woocommerce_upsell_display(); ?>
-										<?php //woocommerce_output_related_products(); ?>
+										<?php woocommerce_output_related_products(); ?>
 									
 											
 									</div>   
