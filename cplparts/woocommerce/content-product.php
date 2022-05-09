@@ -171,9 +171,9 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 			</div>
 			<div class="product-card__image">
 				<div class="image image--type--product">
-					<a href="product-full.html" class="image__body">
+					<a href="<?php echo get_permalink($product->ID) ?>" class="image__body">
 					    <!-- <img class="image__tag" src="images/products/product-1-245x245.jpg" alt="" /> -->
-						<img class="image__tag" src="<?php //do_action('woocommerce_before_shop_loop_item_title'); ?>"/>
+						<!-- <img class="image__tag" src="<?php //do_action('woocommerce_before_shop_loop_item_title'); ?>"/> -->
 						<?php woocommerce_template_loop_product_thumbnail();?>
 					</a>
 				</div>
@@ -188,7 +188,16 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 				</div>
 			</div>
 			<div class="product-card__info">
-				<div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
+				<div class="product-card__meta">
+				   <span class="product-card__meta-title">SKU:</span> 
+				   <?php 
+						global $product;
+						$sku = $product->get_sku();
+						if (isset($sku)) {
+							echo $sku;
+							}
+					?>
+			   </div>
 				<div class="product-card__name">
 					<div>
 						<div class="product-card__badges">
@@ -197,7 +206,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 							<div class="tag-badge tag-badge--hot">hot</div>
 						</div>
 						<!-- <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a> -->
-						<a href="product-full.html"><?php do_action( 'woocommerce_shop_loop_item_title' ); ?></a>
+						<a href="<?php echo get_permalink($product->ID) ?>"><?php do_action( 'woocommerce_shop_loop_item_title' ); ?></a>
 					</div>
 				</div>
 				<div class="product-card__rating">

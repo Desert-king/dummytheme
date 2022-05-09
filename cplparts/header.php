@@ -1023,6 +1023,7 @@
                     <!-- </div> -->
                     <div class="header__search">
                         <div class="search">
+                            <?php get_search_form(); ?>
                             <form action="#" class="search__body">
                                 <div class="search__shadow"></div>
                                 <input class="search__input" type="text" placeholder="Enter Keyword or Part Number" />
