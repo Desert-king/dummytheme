@@ -10,8 +10,10 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
-
+	<!-- <main id="primary" class="site-main"> -->
+	
+	<div class="block-space block-space--layout--after-header"></div>
+      <div class="container">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -22,7 +24,7 @@ get_header();
 					?>
 				</h1>
 			</header><!-- .page-header -->
-
+			<main id="primary" class="site-main">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -44,10 +46,14 @@ get_header();
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-		?>
 
-	</main><!-- #main -->
+		?>
+		</main>
+		</div>
+		<div class="block-space block-space--layout--before-footer"></div>
+
+	<!-- #main -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

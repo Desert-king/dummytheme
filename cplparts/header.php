@@ -1023,10 +1023,10 @@
                     <!-- </div> -->
                     <div class="header__search">
                         <div class="search">
-                            <?php get_search_form(); ?>
-                            <form action="#" class="search__body">
+                            <?php //get_search_form(); ?>
+                            <form method="get"  class="search__body">
                                 <div class="search__shadow"></div>
-                                <input class="search__input" type="text" placeholder="Enter Keyword or Part Number" />
+                                <input class="search__input" type="text" name="s" placeholder="Enter Keyword or Part Number" />
                                 <button class="search__button search__button--start" type="button">
                                     <span class="search__button-icon">
                                         <svg width="20" height="20">
@@ -1058,7 +1058,7 @@
                                     <div class="search__decor-start"></div>
                                     <div class="search__decor-end"></div>
                                 </div>
-                                <div class="search__dropdown search__dropdown--suggestions suggestions">
+                                <!-- <div class="search__dropdown search__dropdown--suggestions suggestions">
                                     <div class="suggestions__group">
                                         <div class="suggestions__group-title">Products</div>
                                         <div class="suggestions__group-content">
@@ -1140,7 +1140,7 @@
                                             <a class="suggestions__item suggestions__category" href="#">Body Parts & Mirrors</a> <a class="suggestions__item suggestions__category" href="#">Interior Accessories</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
                                     <div class="search__dropdown-arrow"></div>
                                     <div class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
