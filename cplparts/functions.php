@@ -457,3 +457,87 @@ function custom_post_type() {
 	  
 	add_action( 'init', 'custom_post_type', 0 );
 
+//redux metabox
+	
+// Change this variable to the opt_name of YOUR project.
+// $opt_name = '$opt_name';
+
+// Standard metabox.
+Redux_Metaboxes::set_box(
+	$opt_name,
+	array(
+		'id'         => 'cpl-metaboxes',
+		'title'      => esc_html__( 'Metabox Options', 'your-textdomain-here' ),
+		'post_types' => array( 'product' ),
+		'position'   => 'normal', // normal, advanced, side.
+		'priority'   => 'high',   // high, core, default, low.
+		'sections'   => array(
+			array(
+				'title'  => esc_html__( 'Product General Specification', 'your-textdomain-here' ),
+				'id'     => 'cpl-basic-fields',
+				'icon'   => 'el-icon-cogs',
+				'fields' => array(
+					array(
+						'id'             => 'cpl-general-text',
+						'type'           => 'repeater',
+						'title'          => esc_html__( 'Product General Specification', 'your-textdomain-here' ),
+						'subtitle'       => esc_html__( 'Enter some title and value of general speification', 'your-textdomain-here' ),
+						'placeholder'    => esc_html__( 'General', 'your-textdomain-here' ),
+						'bind_title'     => 'false',
+						'fields'         => array(
+							
+							array(
+								'id'          => 'cpl-general-title',
+								'type'        => 'text',
+								'title'       => esc_html__('General Title', 'your-textdomain-here'), 
+								'placeholder' => esc_html__( 'Add your general title here', 'your-textdomain-here' ),
+							),
+							array(
+								'id' => 'cpl-general-value',
+								'type'        => 'text',
+								'title'    => esc_html__('General Value', 'your-textdomain-here'),
+								'placeholder'    => esc_html__('Add your general value here', 'your-textdomain-here'),
+							),
+						)
+					),
+				),
+			),
+			array(
+				'title'      => esc_html__( 'Specification of Dimensions', 'your-textdomain-here' ),
+				'type'  => 'text',
+				'icon'       => 'el-icon-cog',
+				'id'         => 'cpl-text-fields',
+				'subsection' => true,
+				'fields'     => array(
+					array(
+						'id'             => 'cpl-dimension-text',
+						'type'           => 'repeater',
+						'title'          => esc_html__( 'Product Dimensions Specification', 'your-textdomain-here' ),
+						'subtitle'       => esc_html__( 'Enter some title and value of dimentions speification', 'your-textdomain-here' ),
+						'placeholder'    => esc_html__( 'Dimentions', 'your-textdomain-here' ),
+						'bind_title'     => 'false',
+						'fields'         => array(
+							
+							array(
+								'id'          => 'cpl-dimension-title',
+								'type'        => 'text',
+								'title'       => esc_html__('Dimensions Title', 'your-textdomain-here'), 
+								'placeholder' => esc_html__( 'Add your dimentions title here', 'your-textdomain-here' ),
+							),
+							array(
+								'id' => 'cpl-dimension-value',
+								'type'        => 'text',
+								'title'    => esc_html__('Dimensions Value', 'your-textdomain-here'),
+								'placeholder'    => esc_html__('Add your dimentions value here', 'your-textdomain-here'),
+							),
+						)
+					),
+				),
+				
+			),
+			
+		),
+	)
+);
+
+

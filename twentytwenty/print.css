@@ -74,6 +74,10 @@ Andreas Hecht in https://www.jotform.com/blog/css-perfect-print-stylesheet-98272
     margin-top: 1cm;
   }
 
+  /* header.entry-header{
+    text-align: center;
+    padding: 44px 0 52px;
+  } */
   /* Page breaks */
 
   a {

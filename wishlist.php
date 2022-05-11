@@ -6,19 +6,11 @@ Template Name: Wishlist
 <?php get_header(); ?>
 
             <!-- site__header / end --><!-- site__body -->
-            <div class="site__body">
+            <!-- <div class="site__body">
                 <div class="block-header block-header--has-breadcrumb block-header--has-title">
                     <div class="container">
-                        <div class="block-header__body">
-                            <!-- <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
-                                <ol class="breadcrumb__list">
-                                    <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>
-                                    <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first"><a href="index.html" class="breadcrumb__item-link">Home</a></li>
-                                    <li class="breadcrumb__item breadcrumb__item--parent"><a href="#" class="breadcrumb__item-link">Breadcrumb</a></li>
-                                    <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last" aria-current="page"><span class="breadcrumb__item-link">Current Page</span></li>
-                                    <li class="breadcrumb__title-safe-area" role="presentation"></li>
-                                </ol>
-                            </nav> -->
+                        <div class="block-header__body"> -->
+                            
                             <?php
                                 /**
                                  * woocommerce_before_main_content hook.
@@ -29,20 +21,10 @@ Template Name: Wishlist
                                 do_action( 'woocommerce_before_main_content' );
                             ?>
                             <!-- <h1 class="block-header__title">Wishlist</h1> -->
-                        </div>
+                        <!-- </div>
                     </div>
                 </div>
-                <!-- <div class="block">
-                    <div class="container">
-                        <div class="document">
-                            <div class="document__header">
-                                <h1 class="document__title">
-                                Wishlist
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                
                 <div class="block">
                     <div class="container container--max--xl">
                         <div class="wishlist">
@@ -190,6 +172,6 @@ Template Name: Wishlist
                     </div>
                 </div>
                 <div class="block-space block-space--layout--before-footer"></div>
-            </div>
+            </div> -->
             <!-- site__body / end --><!-- site__footer -->
 			<?php get_footer(); ?>

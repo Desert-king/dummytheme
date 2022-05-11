@@ -582,6 +582,21 @@ get_header( 'shop' ); ?>
                                                 </li>
                                                 <!-- <li class="product-tabs__item"><a href="#product-tab-analogs">Analogs</a></li> -->
                                             </ul>
+                                            <?php 
+                                                                global $redux_demo;
+                                                                global $product;
+
+                                                                $id = $product->get_id();
+                                                                
+                                                                $specification = $redux_demo['cpl-general-text'];
+                                                                $value = redux_post_meta( $opt_name, "$id", "cpl-basic-fields" );
+                                                                // print_r($value);
+                                                                var_dump($value);
+                                                                $specification_general_titles= $redux_demo['cpl-general-title'];
+                                                                $specification_general_values = $redux_demo['cpl-general-value'];
+                                                                // print_r($photoes[1]['url']);
+                                                                // print_r($names[1]);
+                                                            ?>
                                             <div class="product-tabs__content">
                                                 <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-description">
                                                     <div class="typography">
@@ -592,11 +607,47 @@ get_header( 'shop' ); ?>
                                                     <div class="spec">
                                                         <div class="spec__section">
                                                             <h4 class="spec__section-title">General</h4>
-                                                            <div class="spec__row">
+                                                            <!-- <div class="spec__row">
                                                                 <div class="spec__name">Material</div>
                                                                 <div class="spec__value">Aluminium, Plastic</div>
-                                                            </div>
+                                                            </div> -->
+                                                            <?php 
+                                                                global $redux_demo;
+                                                                $specification = $redux_demo['cpl-general-text'];
+                                                                print_r($specification);
+                                                                $specification_general_titles= $redux_demo['cpl-general-title'];
+                                                                $specification_general_values = $redux_demo['cpl-general-value'];
+                                                                // print_r($photoes[1]['url']);
+                                                                // print_r($names[1]);
+                                                            ?>
+                                                            <?php
+                                                            $spe_first_count = count($specification_general_titles);
+                                                            //    var_export($photoes);
+                                                                $x = 0;
+                                                                while($x < $spe_first_count) {
+                                                                // foreach ($names as $name) {
+                                                            ?>
+                                                           
                                                             <div class="spec__row">
+                                                                <div class="spec__name">
+                                                                    <?php if(isset(($specification_general_titles)[$x])){
+                                                                                echo($specification_general_titles)[$x];
+                                                                            } ?>
+                                                                </div>
+                                                                <div class="spec__value">
+                                                                    <?php if(isset(($specification_general_values)[$x])){
+                                                                                echo($specification_general_values)[$x];
+                                                                            } ?>
+                                                                </div>
+                                                            </div>
+                                                                        
+                                                                    
+                                                            <?php
+                                                                    // }
+                                                                $x++;
+                                                                }
+                                                            ?>
+                                                            <!-- <div class="spec__row">
                                                                 <div class="spec__name">Engine Type</div>
                                                                 <div class="spec__value">Brushless</div>
                                                             </div>
@@ -619,7 +670,7 @@ get_header( 'shop' ); ?>
                                                             <div class="spec__row">
                                                                 <div class="spec__name">Weight</div>
                                                                 <div class="spec__value">1.5 kg</div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                         <div class="spec__section">
                                                             <h4 class="spec__section-title">Dimensions</h4>
