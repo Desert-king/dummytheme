@@ -466,7 +466,7 @@ function custom_post_type() {
 Redux_Metaboxes::set_box(
 	$opt_name,
 	array(
-		'id'         => 'cpl-metaboxes',
+		'id'         => 'cpl-metaboxes-new',
 		'title'      => esc_html__( 'Metabox Options', 'your-textdomain-here' ),
 		'post_types' => array( 'product' ),
 		'position'   => 'normal', // normal, advanced, side.
@@ -539,5 +539,19 @@ Redux_Metaboxes::set_box(
 		),
 	)
 );
+
+//for rating on shop page
+// add_action('woocommerce_after_shop_loop_item', 'add_star_rating' );
+// function add_star_rating()
+// {
+// global $woocommerce, $product;
+// $average = $product->get_average_rating();
+
+// echo '<div class="star-rating"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"><strong itemprop="ratingValue" class="rating">'.$average.'</strong> '.__( 'out of 5', 'woocommerce' ).'</span></div>';
+// }
+
+
+
+
 
 

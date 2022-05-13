@@ -582,7 +582,8 @@ get_header( 'shop' ); ?>
                                                 </li>
                                                 <!-- <li class="product-tabs__item"><a href="#product-tab-analogs">Analogs</a></li> -->
                                             </ul>
-                                          
+                                            
+                                            
                                             <div class="product-tabs__content">
                                                 <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-description">
                                                     <div class="typography">
@@ -691,8 +692,20 @@ get_header( 'shop' ); ?>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="product-tabs__pane" id="product-tab-reviews">
                                                     <div class="reviews-view">
+                                                    <?php 
+                                          
+                                                       // If comments are open or we have at least one comment, load up the comment template.
+                                                        if ( comments_open() || get_comments_number() ) :
+                                                            comments_template();
+                                                        endif;
+
+
+                                                        
+                                                        ?>
+                                                        
                                                         <div class="reviews-view__list">
                                                             <div class="reviews-list">
                                                                 <ol class="reviews-list__content">
@@ -718,6 +731,7 @@ get_header( 'shop' ); ?>
                                                                                 <div class="review__content typography">
                                                                                     Phasellus id mattis nulla. Mauris velit nisi, imperdiet vitae sodales in, maximus ut lectus. Vivamus commodo scelerisque lacus, at porttitor dui iaculis id.
                                                                                     Curabitur imperdiet ultrices fermentum.
+                                                                                    
                                                                                 </div>
                                                                             </div>
                                                                         </div>

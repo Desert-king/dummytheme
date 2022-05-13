@@ -45,6 +45,12 @@
             .tag-tab-view.current{
                 display: block;   
             }
+            .latest-news-view{
+                display: none;   
+            }
+            .latest-news-view.active{
+                display: block;   
+            }
         </style>
     </head>
     <body <?php body_class(); ?>>

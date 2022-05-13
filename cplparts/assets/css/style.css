@@ -5331,6 +5331,7 @@ ul.footer-links__list li a {
     font-size: 14px;
     left: 0;
 }
+
 .block-posts-carousel--layout--grid .post-card .post-card__category a {
     color: #cb1818;
     display: block;
@@ -14829,3 +14830,13 @@ border-color: #d9d9d9;
 #post-266 header.entry-header{
     display: none;
 }
+.post-card__category ul.post-categories  {
+    list-style-type: none !important;
+}
+.post-card__category ul.post-categories li:before {
+    color: white !important;
+}
+.post-card__category ul.post-categories li {
+    margin-left: -40px !important;
+}
+

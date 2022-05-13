@@ -963,6 +963,15 @@
 
         }
         </script>
+        <script>
+        function handleLatestNews(elem){
+            var target = jQuery(elem).attr("target");
+        
+            jQuery(".latest-news-view").removeClass("active");
+            jQuery("#"+target).addClass("active");
+
+        }
+        </script>
 
         <!-- to enable update cart button -->
         <script>

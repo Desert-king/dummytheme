@@ -38,6 +38,7 @@ if ( ! comments_open() ) {
 			}
 			?>
 		</h2>
+		<h1> Farhana is working </h1>
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
