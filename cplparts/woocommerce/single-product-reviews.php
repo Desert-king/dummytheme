@@ -44,7 +44,17 @@ if ( ! comments_open() ) {
 			<ol class="commentlist">
 				<?php wp_list_comments( apply_filters( 'woocommerce_product_review_list_args', array( 'callback' => 'woocommerce_comments' ) ) ); ?>
 			</ol>
-
+            <!-- custom code -->
+			<ul class="comment-list comments">
+				<?php
+				wp_list_comments( array(
+					'style'      => 'ul',
+					'short_ping' => true,
+						'callback' => 'woocommerce_comments'
+				) );
+				?>
+			</ul>
+			<!-- custom code one end -->
 			<?php
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 				echo '<nav class="woocommerce-pagination">';
@@ -70,6 +80,7 @@ if ( ! comments_open() ) {
 		<div id="review_form_wrapper">
 			<div id="review_form">
 				<?php
+				
 				$commenter    = wp_get_current_commenter();
 				$comment_form = array(
 					/* translators: %s is product title */

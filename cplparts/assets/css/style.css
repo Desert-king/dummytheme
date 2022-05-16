@@ -14809,9 +14809,15 @@ border-color: #d9d9d9;
     height: 100%;
     object-fit: scale-down;
  } */
- .image__body img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+ .product-card__image .image__body img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
     display: block;
     position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+.cart-table__column   .image__body img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: scale-down;

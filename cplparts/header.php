@@ -1258,7 +1258,7 @@
                             </a>
                         </div>
                         <div class="indicator indicator--trigger--click">
-                            <a href="account-login.html" class="indicator__button">
+                            <a href="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="indicator__button">
                                 <span class="indicator__icon">
                                     <svg width="32" height="32">
                                         <path
@@ -1444,7 +1444,10 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <div class="dropcart__actions"><a href="cart.html" class="btn btn-secondary">View Cart</a> <a href="checkout.html" class="btn btn-primary">Checkout</a></div>
+                                    <div class="dropcart__actions">
+                                      <a href="<?php echo esc_url( home_url( '/cart' ) ); ?>" class="btn btn-secondary">View Cart</a>
+                                      <a href="<?php echo esc_url( home_url( '/checkout' ) ); ?>" class="btn btn-primary">Checkout</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

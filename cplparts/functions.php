@@ -37,6 +37,11 @@ if ( ! defined( '_S_VERSION' ) ) {
  require_once (dirname(__FILE__) . '/sample/cpl-product-brands-settings.php');
  require_once (get_template_directory() . '/inc/tgmpa.php');
 
+ /**
+ * Load Custom Comments Layout file.
+ */
+require get_template_directory() . '/inc/comment-helper.php';
+
 
  
  
