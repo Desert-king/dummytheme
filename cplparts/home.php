@@ -18,7 +18,7 @@ Template Name: Home-page
                     <div class="block-finder__body container container--max--xl">
                         <div class="block-finder__title">Find Parts For Your Vehicle</div>
                         <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                        <form class="block-finder__form">
+                        <form method="get" class="block-finder__form">
                             <div class="block-finder__form-control block-finder__form-control--select">
                                 <select name="year" aria-label="Vehicle Year">
                                     <option value="none">Select Year</option>

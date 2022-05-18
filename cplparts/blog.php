@@ -325,8 +325,8 @@ Template Name: Blog-page
                             </div>
                             <div class="blog-view__item blog-view__item-sidebar">
                                 <div class="card widget widget-search">
-                                    <form action="#" class="widget-search__form">
-                                        <input class="widget-search__input" type="search" placeholder="Blog search..." />
+                                    <form action="get" class="widget-search__form">
+                                        <input class="widget-search__input" name="s" type="search" placeholder="Blog search..." />
                                         <button class="widget-search__button">
                                             <svg width="20" height="20">
                                                 <path
@@ -369,11 +369,12 @@ Template Name: Blog-page
                                 <div class="card widget widget-categories">
                                     <div class="widget__header"><h4>Categories</h4></div>
                                     <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open">
-                                        <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Latest News</a></li>
+                                        <!-- <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Latest News</a></li>
                                         <li class="widget-categories__item" data-collapse-item>
                                             <a href="#" class="widget-categories__link">Special Offers </a><button class="widget-categories__expander" type="button" data-collapse-trigger></button>
                                             <div class="widget-categories__container" data-collapse-content>
                                                 <ul class="widget-categories__list widget-categories__list--child">
+                                                   
                                                     <li class="widget-categories__item"><a href="#" class="widget-categories__link">Spring Sales</a></li>
                                                     <li class="widget-categories__item"><a href="#" class="widget-categories__link">Summer Sales</a></li>
                                                     <li class="widget-categories__item"><a href="#" class="widget-categories__link">Autumn Sales</a></li>
@@ -387,7 +388,14 @@ Template Name: Blog-page
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Wheels & Tires</a></li>
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Engine & Drivetrain</a></li>
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Transmission</a></li>
-                                        <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Performance</a></li>
+                                        <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Performance</a></li> -->
+                                        <?php 
+                                        $categories = get_categories();
+                                        foreach($categories as $category) {
+                                        //    echo '<div class="col-md-8"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';
+                                           echo '<li class="widget-categories__item" data-collapse-item><a href="' . get_category_link($category->term_id) . '" class="widget-categories__link">' . $category->name . '</a></li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                                 <div class="card widget widget-posts">
@@ -475,13 +483,23 @@ Template Name: Blog-page
                                         </ul>
                                     </div>
                                 </div>
+                                <?php get_template_part( 'template-parts/sidebar/sidebar-primary-new'); ?>
                                 <div class="card widget-tags widget">
                                     <div class="widget__header"><h4>Tags Cloud</h4></div>
                                     <div class="widget-tags__body tags">
-                                        <div class="tags__list">
-                                            <a href="#">Promotion</a> <a href="#">Power Tool</a> <a href="#">New Arrivals</a> <a href="#">Screwdriver</a> <a href="#">Wrench</a> <a href="#">Mounts</a> <a href="#">Electrodes</a>
-                                            <a href="#">Chainsaws</a> <a href="#">Manometers</a> <a href="#">Nails</a> <a href="#">Air Guns</a> <a href="#">Cutting Discs</a>
-                                        </div>
+                                        
+                                        <?php 
+                                                             
+                                        $tags = get_tags(array(
+                                        'hide_empty' => false
+                                        ));
+                                        echo '<div class="tags__list">';
+                                        foreach ($tags as $tag) {
+                                        echo '<a href="#">' . $tag->name . '</a>';
+                                        }
+                                        echo ' </div>';
+                                       
+                                        ?>
                                     </div>
                                 </div>
                             </div>

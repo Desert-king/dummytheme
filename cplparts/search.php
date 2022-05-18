@@ -56,4 +56,50 @@ get_header();
 
 <?php
 // get_sidebar();
+
+
+$year = $_GET['year'];
+$model = $_GET['model'];
+
+if ($year && $model) {
+  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = array(
+    'meta_query' => array(
+        'relation' => 'AND',
+array(
+            'key' => business_year,
+ 'value' => $year,
+
+        ),
+        array(
+            'key' => business_model,
+ 'value' => $model,
+
+        )
+    )
+ );
+query_posts($args);
+} else {
+  query_posts('posts_per_page=4');
+}
+
+if ($year && $model) { ?>
+  <h3>Your Search For <?php echo $year; ?> and <?php echo $model; ?></h3>
+  <?php } else { ?>
+  <h3>Title</h3>
+  <?php } if(have_posts()) : ?>
+            <?php while(have_posts()) : the_post()
+             ?>
+
+         <p class="no_percentage"><?php echo excerpt(15); ?> </p>
+
+        <span class="readmore" ><a href="<?php the_permalink(); ?>" > <?php _e('read more');?>  </a> </span>
+
+      <?php endwhile; ?>
+
+      <?php else: ?>
+      <p class="notice_msg"><?php _e( 'Sorry, but nothing matched your search criteria.'); ?></p>
+      <?php endif; ?>
+
+<?php
 get_footer();
