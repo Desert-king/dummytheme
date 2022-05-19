@@ -20,20 +20,30 @@ Template Name: Home-page
                         <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
                         <form method="get" class="block-finder__form">
                             <div class="block-finder__form-control block-finder__form-control--select">
-                                <select name="year" aria-label="Vehicle Year">
-                                    <option value="none">Select Year</option>
-                                    <option>2010</option>
-                                    <option>2011</option>
-                                    <option>2012</option>
-                                    <option>2013</option>
-                                    <option>2014</option>
-                                    <option>2015</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
-                                    <option>2020</option>
+                            <?php 
+                          add_shortcode( 'product_attributes', 'get_product_attributes' );
+                          function get_product_attributes() {
+                              $output = '<div style="list-style:inline-block;">';
+                            //   foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                  $taxonomy  = 'pa_color';
+                                //   $taxonomy_name  = wc_get_attribute_taxonomies($taxonomy);
+                                //   var_dump($taxonomy_name);
+                                  $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                  
+                                  $output = implode("<option value="."none".">",$term_names)."</option>";
+                            //   }
+                                 //echo implode("<option value="."none".">",$term_names)."</option>";
+                              return $output ;
+                          }
+                          
+
+                        ?>
+                       
+                                <select name="color" aria-label="Vehicle Year">
+                                    <option value="none">Select Color</option>
+                                     <option value="<?php echo do_shortcode('[product_attributes]'); ?>"><?php echo do_shortcode('[product_attributes]'); ?></option>
                                 </select>
+                            <?php //echo do_shortcode('[product_attributes]'); ?>    
                             </div>
                             <div class="block-finder__form-control block-finder__form-control--select">
                                 <select name="make" aria-label="Vehicle Make" disabled="disabled">
@@ -69,6 +79,43 @@ Template Name: Home-page
                         </form>
                     </div>
                 </div>
+                <!-- product filter -->
+                <?php
+                 $products = new WP_Query( array(
+                    'post_type'      => array('product'),
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    // 'meta_query'     => array( array(
+                    //      'key' => '_visibility',
+                    //      'value' => array('catalog', 'visible'),
+                    //      'compare' => 'IN',
+                    //  ) ),
+                    'tax_query'      => array( array(
+                         'taxonomy'        => 'pa_color',
+                         'field'           => 'slug',
+                         'terms'           =>  array('black' , 'green'),
+                         'operator'        => 'IN',
+                     ) )
+                 ) );
+                 
+                 // The Loop
+                 if ( $products->have_posts() ): while ( $products->have_posts() ):
+                     $products->the_post();
+                     $product_ids[] = $products->post->ID;
+                     
+                 endwhile;
+                     wp_reset_postdata();
+                 endif;
+
+                 print_r($product_ids); 
+                 //$product_titles[] = get_the_title( $product_ids );
+                 foreach( $product_ids as $product_id ) {
+                    $product_titles[] = get_the_title( $product_id );
+                }
+                print_r($product_titles);
+
+                ?>
+                <!-- product filter end -->
                 <div class="block-features block block-features--layout--top-strip">
                     <div class="container">
                         <ul class="block-features__list">

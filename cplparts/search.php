@@ -68,12 +68,12 @@ $args = array(
         'relation' => 'AND',
 array(
             'key' => business_year,
- 'value' => $year,
+            'value' => $year,
 
         ),
         array(
             'key' => business_model,
- 'value' => $model,
+            'value' => $model,
 
         )
     )
