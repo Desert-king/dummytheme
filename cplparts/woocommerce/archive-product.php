@@ -154,26 +154,59 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 							<div class="products-list__column products-list__column--price">Price</div>
 						</div>
 						<div class="products-list__content">
-						     <?php 
-							   // Full wp pagination example
-								$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-
-								$args = array(
-									// 'post_type' => 'blog',
-									'posts_per_page' => 2,
-									'paged' => $paged
+						     <!-- search from home page -->
+							 <?php  
+								$tax_query = array( 
+									'relation' => 'OR',
 								);
-
-								// The Query
-								$the_query = new WP_Query( $args );
-							  
-								if ( have_posts() ) {
-									while ( have_posts() ) {
-										the_post(); 
+								if(isset($_GET['color']) && !empty($_GET['color'])){
+									$tax_query[] =  array(
+										'taxonomy'        => 'pa_color',
+										'field'           => 'slug',
+										'terms'           =>  array($_GET['color']),
+										'operator'        => 'IN',
+									);
+								}
+								if(isset($_GET['brand']) && !empty($_GET['brand'])){
+									$tax_query[] =  array(
+										'taxonomy'        => 'pa_brand',
+										'field'           => 'slug',
+										'terms'           =>  array($_GET['brand']),
+										'operator'        => 'IN',
+									);
+								}
+								if(isset($_GET['material']) && !empty($_GET['material'])){
+									$tax_query[] =  array(
+										'taxonomy'        => 'pa_material',
+										'field'           => 'slug',
+										'terms'           =>  array($_GET['material']),
+										'operator'        => 'IN',
+									);
+								}
+								if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
+									$tax_query[] =  array(
+										'taxonomy'        => 'pa_vehicle',
+										'field'           => 'slug',
+										'terms'           =>  array($_GET['vehicle']),
+										'operator'        => 'IN',
+									);
+								}
+								
 										
-
+							$products = new WP_Query( array(
+								'post_type'      => array('product'),
+								'post_status'    => 'publish',
+								'posts_per_page' => -1,
+								'tax_query'      => $tax_query)
+								);
+							
+							// The Loop
+							if ( $products->have_posts() ): while ( $products->have_posts() ):
+								$products->the_post();
+								$product_ids[] = $products->post->ID;
+								
 								?>
-							<div class="products-list__item">
+								<div class="products-list__item">
 								<div class="product-card">
 									<div class="product-card__actions-list">
 										<button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
@@ -288,6 +321,174 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 									</div>
 								</div>
 							</div>
+								<?php
+							endwhile;
+							    //print_r($product_ids); 
+								// product item
+								?>
+							
+								<?php
+								//print_r($product_ids);  
+							
+								// product item
+								wp_reset_postdata();
+							endif;
+
+							//print_r($product_ids); 
+							//$product_titles[] = get_the_title( $product_ids );
+							foreach( $product_ids as $product_id ) {
+								$product_titles[] = get_the_title( $product_id );
+								?>
+								
+								<?php
+							}
+						// }
+							//print_r($product_titles);
+
+							?>
+							
+							
+							<?php
+							?>
+							 <!-- search from home page -->
+							 <?php 
+							 
+							 ?>
+
+						     <?php 
+							   // Full wp pagination example
+								$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+								$args = array(
+									'posts_per_page' => 2,
+									'paged' => $paged
+								);
+
+								
+								$the_query = new WP_Query( $args );
+							  
+								if ( have_posts() ) {
+									while ( have_posts() ) {
+										the_post(); 
+										
+
+								?>
+								
+							<!-- <div class="products-list__item">
+								<div class="product-card">
+									<div class="product-card__actions-list">
+										<button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+											<svg width="16" height="16">
+												<path
+													d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
+												/>
+											</svg>
+										</button>
+										<button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
+											<svg width="16" height="16">
+												<path
+													d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
+l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
+												/>
+											</svg>
+										</button>
+										<button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
+											<svg width="16" height="16">
+												<path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z" />
+												<path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z" />
+												<path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z" />
+											</svg>
+										</button>
+									</div>
+									<div class="product-card__image">
+										<div class="image image--type--product">
+											<a class="image__body">
+											<?php //do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
+											<?php echo woocommerce_template_loop_product_thumbnail(); ?>
+											</a>
+										</div>
+										<div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+											<div class="status-badge__body">
+												<div class="status-badge__icon">
+													<svg width="13" height="13"><path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z" /></svg>
+												</div>
+												<div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
+												<div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
+											</div>
+										</div>
+									</div>
+									<div class="product-card__info">
+										<div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
+										<div class="product-card__name">
+											<div>
+												<div class="product-card__badges">
+													<div class="tag-badge tag-badge--sale">sale</div>
+													<div class="tag-badge tag-badge--new">new</div>
+													<div class="tag-badge tag-badge--hot">hot</div>
+												</div>
+												<a href="product-full.html"><?php woocommerce_template_loop_product_title(); ?></a>
+											</div>
+										</div>
+										<div class="product-card__rating">
+											<div class="rating product-card__rating-stars">
+												<div class="rating__body">
+													<div class="rating__star rating__star--active"></div>
+													<div class="rating__star rating__star--active"></div>
+													<div class="rating__star rating__star--active"></div>
+													<div class="rating__star rating__star--active"></div>
+													<div class="rating__star"></div>
+												</div>
+											</div>
+											<div class="product-card__rating-label">4 on 3 reviews</div>
+										</div>
+										<div class="product-card__features">
+											<ul>
+												<li>Speed: 750 RPM</li>
+												<li>Power Source: Cordless-Electric</li>
+												<li>Battery Cell Type: Lithium</li>
+												<li>Voltage: 20 Volts</li>
+												<li>Battery Capacity: 2 Ah</li>
+											</ul>
+										</div>
+									</div>
+									<div class="product-card__footer">
+										<div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php woocommerce_template_loop_price(); ?></div></div>
+										<button class="cpl-cart product-card__addtocart-icon" type="button" aria-label="Add to cart">
+										    <?php 
+											// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+											// function woocommerce_custom_product_add_to_cart_text() {
+											// 	echo 'buy';  
+												
+											// }
+											?>
+											<?php //do_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	 ?>
+											<?php woocommerce_template_loop_add_to_cart(do_action('woocommerce_after_shop_loop_item','add_to_cart_replace')); ?>
+											<?php //woocommerce_template_loop_add_to_cart(); ?>
+											<?php //woocommerce_template_loop_add_to_cart(do_action('woocommerce_after_add_to_cart_button', 'add_content_after_addtocart_button_func')); ?>
+											<?php // do_action('woocommerce_after_add_to_cart_button'); ?>
+										</button>
+										<button class="product-card__addtocart-full" type="button"><?php woocommerce_template_loop_add_to_cart(); ?></button>
+										<button class="product-card__wishlist" type="button">
+											<svg width="16" height="16">
+												<path
+													d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
+l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
+												/>
+											</svg>
+											<span>Add to wishlist</span>
+										</button>
+										<button class="product-card__compare" type="button">
+											<svg width="16" height="16">
+												<path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z" />
+												<path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z" />
+												<path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z" />
+											</svg>
+											<span>Add to compare</span>
+										</button>
+									</div>
+								</div>
+							</div> -->
 							<?php 
 							 } // end while
 							 ?>

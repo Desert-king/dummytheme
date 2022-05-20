@@ -18,61 +18,58 @@ Template Name: Home-page
                     <div class="block-finder__body container container--max--xl">
                         <div class="block-finder__title">Find Parts For Your Vehicle</div>
                         <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
-                        <form method="get" class="block-finder__form">
+                        <form method="get" class="block-finder__form" action="<?php echo esc_url( home_url( '/shop' ) ); ?>">
+                        <div class="block-finder__form-control block-finder__form-control--select">
+                                <select name="brand" aria-label="Vehicle Make" >
+                                    <option value="none">Select Brand</option>
+                                    <?php 
+                                      $term_brand = get_terms( array( 'taxonomy' => 'pa_brand', 'fields' => 'names' ) );
+                                      foreach ($term_brand as $brand){
+                                          ?>
+                                            <option value="<?php echo $brand ?>"><?php echo $brand ?></option>
+                                          <?php
+                                      }
+                                    ?>
+                                </select>
+                            </div>
                             <div class="block-finder__form-control block-finder__form-control--select">
-                            <?php 
-                          add_shortcode( 'product_attributes', 'get_product_attributes' );
-                          function get_product_attributes() {
-                              $output = '<div style="list-style:inline-block;">';
-                            //   foreach( wc_get_attribute_taxonomies() as $attribute ) {
-                                  $taxonomy  = 'pa_color';
-                                //   $taxonomy_name  = wc_get_attribute_taxonomies($taxonomy);
-                                //   var_dump($taxonomy_name);
-                                  $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
-                                  
-                                  $output = implode("<option value="."none".">",$term_names)."</option>";
-                            //   }
-                                 //echo implode("<option value="."none".">",$term_names)."</option>";
-                              return $output ;
-                          }
-                          
-
-                        ?>
-                       
-                                <select name="color" aria-label="Vehicle Year">
+                            <select name="vehicle" aria-label="Vehicle Make" >
+                                    <option value="none">Select Vehicle</option>
+                                    <?php 
+                                      $term_vehicle = get_terms( array( 'taxonomy' => 'pa_vehicle', 'fields' => 'names' ) );
+                                      foreach ($term_vehicle as $vehicle){
+                                          ?>
+                                            <option value="<?php echo $vehicle ?>"><?php echo $vehicle ?></option>
+                                          <?php
+                                      }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="block-finder__form-control block-finder__form-control--select">
+                            <select name="color" aria-label="Vehicle Make" >
                                     <option value="none">Select Color</option>
-                                     <option value="<?php echo do_shortcode('[product_attributes]'); ?>"><?php echo do_shortcode('[product_attributes]'); ?></option>
-                                </select>
-                            <?php //echo do_shortcode('[product_attributes]'); ?>    
+                                    <?php 
+                                      $term_color = get_terms( array( 'taxonomy' => 'pa_color', 'fields' => 'names' ) );
+                                      foreach ($term_color as $color){
+                                          ?>
+                                            <option value="<?php echo $color ?>"><?php echo $color ?></option>
+                                          <?php
+                                      }
+                                    ?>
+                                </select> 
                             </div>
+                           
                             <div class="block-finder__form-control block-finder__form-control--select">
-                                <select name="make" aria-label="Vehicle Make" disabled="disabled">
-                                    <option value="none">Select Make</option>
-                                    <option>Audi</option>
-                                    <option>BMW</option>
-                                    <option>Ferrari</option>
-                                    <option>Ford</option>
-                                    <option>KIA</option>
-                                    <option>Nissan</option>
-                                    <option>Tesla</option>
-                                    <option>Toyota</option>
-                                </select>
-                            </div>
-                            <div class="block-finder__form-control block-finder__form-control--select">
-                                <select name="model" aria-label="Vehicle Model" disabled="disabled">
-                                    <option value="none">Select Model</option>
-                                    <option>Explorer</option>
-                                    <option>Focus S</option>
-                                    <option>Fusion SE</option>
-                                    <option>Mustang</option>
-                                </select>
-                            </div>
-                            <div class="block-finder__form-control block-finder__form-control--select">
-                                <select name="engine" aria-label="Vehicle Engine" disabled="disabled">
-                                    <option value="none">Select Engine</option>
-                                    <option>Gas 1.6L 125 hp AT/L4</option>
-                                    <option>Diesel 2.5L 200 hp AT/L5</option>
-                                    <option>Diesel 3.0L 250 hp MT/L5</option>
+                            <select name="material" aria-label="Vehicle Make" >
+                                    <option value="none">Select Material</option>
+                                    <?php 
+                                      $term_material = get_terms( array( 'taxonomy' => 'pa_material', 'fields' => 'names' ) );
+                                      foreach ($term_material as $material){
+                                          ?>
+                                            <option value="<?php echo $material ?>"><?php echo $material ?></option>
+                                          <?php
+                                      }
+                                    ?>
                                 </select>
                             </div>
                             <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
@@ -81,22 +78,47 @@ Template Name: Home-page
                 </div>
                 <!-- product filter -->
                 <?php
+                    $tax_query = array( 
+                        'relation' => 'OR',
+                    );
+                    if(isset($_GET['color']) && !empty($_GET['color'])){
+                        $tax_query[] =  array(
+                            'taxonomy'        => 'pa_color',
+                            'field'           => 'slug',
+                            'terms'           =>  array($_GET['color']),
+                            'operator'        => 'IN',
+                        );
+                    }
+                    if(isset($_GET['brand']) && !empty($_GET['brand'])){
+                        $tax_query[] =  array(
+                            'taxonomy'        => 'pa_brand',
+                            'field'           => 'slug',
+                            'terms'           =>  array($_GET['brand']),
+                            'operator'        => 'IN',
+                        );
+                    }
+                    if(isset($_GET['material']) && !empty($_GET['material'])){
+                        $tax_query[] =  array(
+                            'taxonomy'        => 'pa_material',
+                            'field'           => 'slug',
+                            'terms'           =>  array($_GET['material']),
+                            'operator'        => 'IN',
+                        );
+                    }
+                    if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
+                        $tax_query[] =  array(
+                            'taxonomy'        => 'pa_vehicle',
+                            'field'           => 'slug',
+                            'terms'           =>  array($_GET['vehicle']),
+                            'operator'        => 'IN',
+                        );
+                    }
                  $products = new WP_Query( array(
                     'post_type'      => array('product'),
                     'post_status'    => 'publish',
                     'posts_per_page' => -1,
-                    // 'meta_query'     => array( array(
-                    //      'key' => '_visibility',
-                    //      'value' => array('catalog', 'visible'),
-                    //      'compare' => 'IN',
-                    //  ) ),
-                    'tax_query'      => array( array(
-                         'taxonomy'        => 'pa_color',
-                         'field'           => 'slug',
-                         'terms'           =>  array('black' , 'green'),
-                         'operator'        => 'IN',
-                     ) )
-                 ) );
+                    'tax_query'      => $tax_query)
+                    );
                  
                  // The Loop
                  if ( $products->have_posts() ): while ( $products->have_posts() ):
