@@ -78,63 +78,63 @@ Template Name: Home-page
                 </div>
                 <!-- product filter -->
                 <?php
-                    $tax_query = array( 
-                        'relation' => 'OR',
-                    );
-                    if(isset($_GET['color']) && !empty($_GET['color'])){
-                        $tax_query[] =  array(
-                            'taxonomy'        => 'pa_color',
-                            'field'           => 'slug',
-                            'terms'           =>  array($_GET['color']),
-                            'operator'        => 'IN',
-                        );
-                    }
-                    if(isset($_GET['brand']) && !empty($_GET['brand'])){
-                        $tax_query[] =  array(
-                            'taxonomy'        => 'pa_brand',
-                            'field'           => 'slug',
-                            'terms'           =>  array($_GET['brand']),
-                            'operator'        => 'IN',
-                        );
-                    }
-                    if(isset($_GET['material']) && !empty($_GET['material'])){
-                        $tax_query[] =  array(
-                            'taxonomy'        => 'pa_material',
-                            'field'           => 'slug',
-                            'terms'           =>  array($_GET['material']),
-                            'operator'        => 'IN',
-                        );
-                    }
-                    if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
-                        $tax_query[] =  array(
-                            'taxonomy'        => 'pa_vehicle',
-                            'field'           => 'slug',
-                            'terms'           =>  array($_GET['vehicle']),
-                            'operator'        => 'IN',
-                        );
-                    }
-                 $products = new WP_Query( array(
-                    'post_type'      => array('product'),
-                    'post_status'    => 'publish',
-                    'posts_per_page' => -1,
-                    'tax_query'      => $tax_query)
-                    );
+                //     $tax_query = array( 
+                //         'relation' => 'OR',
+                //     );
+                //     if(isset($_GET['color']) && !empty($_GET['color'])){
+                //         $tax_query[] =  array(
+                //             'taxonomy'        => 'pa_color',
+                //             'field'           => 'slug',
+                //             'terms'           =>  array($_GET['color']),
+                //             'operator'        => 'IN',
+                //         );
+                //     }
+                //     if(isset($_GET['brand']) && !empty($_GET['brand'])){
+                //         $tax_query[] =  array(
+                //             'taxonomy'        => 'pa_brand',
+                //             'field'           => 'slug',
+                //             'terms'           =>  array($_GET['brand']),
+                //             'operator'        => 'IN',
+                //         );
+                //     }
+                //     if(isset($_GET['material']) && !empty($_GET['material'])){
+                //         $tax_query[] =  array(
+                //             'taxonomy'        => 'pa_material',
+                //             'field'           => 'slug',
+                //             'terms'           =>  array($_GET['material']),
+                //             'operator'        => 'IN',
+                //         );
+                //     }
+                //     if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
+                //         $tax_query[] =  array(
+                //             'taxonomy'        => 'pa_vehicle',
+                //             'field'           => 'slug',
+                //             'terms'           =>  array($_GET['vehicle']),
+                //             'operator'        => 'IN',
+                //         );
+                //     }
+                //  $products = new WP_Query( array(
+                //     'post_type'      => array('product'),
+                //     'post_status'    => 'publish',
+                //     'posts_per_page' => -1,
+                //     'tax_query'      => $tax_query)
+                //     );
                  
                  // The Loop
-                 if ( $products->have_posts() ): while ( $products->have_posts() ):
-                     $products->the_post();
-                     $product_ids[] = $products->post->ID;
+                //  if ( $products->have_posts() ): while ( $products->have_posts() ):
+                //      $products->the_post();
+                //      $product_ids[] = $products->post->ID;
                      
-                 endwhile;
-                     wp_reset_postdata();
-                 endif;
+                //  endwhile;
+                //      wp_reset_postdata();
+                //  endif;
 
-                 print_r($product_ids); 
+                //  print_r($product_ids); 
                  //$product_titles[] = get_the_title( $product_ids );
-                 foreach( $product_ids as $product_id ) {
-                    $product_titles[] = get_the_title( $product_id );
-                }
-                print_r($product_titles);
+                //  foreach( $product_ids as $product_id ) {
+                //     $product_titles[] = get_the_title( $product_id );
+                // }
+                // print_r($product_titles);
 
                 ?>
                 <!-- product filter end -->

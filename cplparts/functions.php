@@ -21,20 +21,23 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 
- 
- require_once (dirname(__FILE__) . '/sample/sample-config.php');
- require_once (dirname(__FILE__) . '/sample/cpl-contact-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-about-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-testimonials-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-about-page-counter-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-faq-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-faq-first-section-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-faq-second-section-settings.php');
-//  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-404-settings.php');
- require_once (dirname(__FILE__) . '/sample/cpl-product-brands-settings.php');
+if ( class_exists('Redux')) {
+	require_once (dirname(__FILE__) . '/sample/sample-config.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-contact-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-about-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-about-page-team-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-about-page-testimonials-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-about-page-counter-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-faq-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-faq-first-section-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-faq-second-section-settings.php');
+   //  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-404-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-product-brands-settings.php');
+}
+
+
  require_once (get_template_directory() . '/inc/tgmpa.php');
 
  /**
@@ -468,6 +471,7 @@ function custom_post_type() {
 // $opt_name = '$opt_name';
 
 // Standard metabox.
+if ( class_exists('Redux')) {
 Redux_Metaboxes::set_box(
 	$opt_name,
 	array(
@@ -544,6 +548,7 @@ Redux_Metaboxes::set_box(
 		),
 	)
 );
+}
 
 //for rating on shop page
 // add_action('woocommerce_after_shop_loop_item', 'add_star_rating' );
@@ -555,6 +560,13 @@ Redux_Metaboxes::set_box(
 // echo '<div class="star-rating"><span style="width:'.( ( $average / 5 ) * 100 ) . '%"><strong itemprop="ratingValue" class="rating">'.$average.'</strong> '.__( 'out of 5', 'woocommerce' ).'</span></div>';
 // }
 
+add_action('wp_ajax_cart_count_retriever', 'cart_count_retriever');
+add_action('wp_ajax_nopriv_cart_count_retriever', 'cart_count_retriever');
+function cart_count_retriever() {
+    global $wpdb;
+    echo WC()->cart->get_cart_contents_count();
+    wp_die();
+}
 
 
 

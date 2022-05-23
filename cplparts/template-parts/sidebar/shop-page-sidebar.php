@@ -68,6 +68,8 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                               foreach( wc_get_attribute_taxonomies() as $attribute ) {
                                   $taxonomy = 'pa_' . $attribute->attribute_name;
                                   $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+
+                                  //print_r($term_names);
                                   
                                   $output .= '<div class="widget-filters__item">
                                   <div class="filter filter--opened" data-collapse-item> <button type="button" class="filter__title" data-collapse-trigger>' . $attribute->attribute_name . '

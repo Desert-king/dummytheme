@@ -984,6 +984,15 @@
             })
         });
     </script>
+
+    <script>
+      var data = {
+        'action': 'cart_count_retriever'
+        };
+        jQuery.post(ajax_object.ajax_url, data, function(response) {
+        alert('Got this from the server: ' + response);
+        });
+    </script>
     </body>
     <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Feb 2022 05:49:55 GMT -->
 </html>
