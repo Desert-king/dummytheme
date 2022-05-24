@@ -458,6 +458,9 @@ Template Name: Home-page
                                                         />
                                                     </svg>
                                                 </button>
+                                                <button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
+                                                    <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
