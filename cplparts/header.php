@@ -39,6 +39,12 @@
             .tab-view.active{
                 display: block;   
             }
+            /* .block-zone__tabs-button--active{
+                display: none;   
+            }
+            .tabs-button.block-zone__tabs-button--active{
+                display: block;   
+            } */
             .tag-tab-view{
                 display: none;   
             }

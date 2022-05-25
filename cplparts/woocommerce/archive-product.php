@@ -159,6 +159,14 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 								$tax_query = array( 
 									'relation' => 'OR',
 								);
+								if(isset($_GET['category']) && !empty($_GET['category'])){
+									$tax_query[] =  array(
+										'taxonomy' => 'product_cat',
+									    'field' => 'slug',
+										'terms'           =>  array($_GET['category']),
+										'operator'        => 'IN',
+									);
+								}
 								if(isset($_GET['color']) && !empty($_GET['color'])){
 									$tax_query[] =  array(
 										'taxonomy'        => 'pa_color',
@@ -191,6 +199,14 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										'operator'        => 'IN',
 									);
 								}
+								if(isset($_GET['country']) && !empty($_GET['country'])){
+										$tax_query[] =  array(
+											'taxonomy'        => 'pa_country',
+											'field'           => 'slug',
+											'terms'           =>  array($_GET['country']),
+											'operator'        => 'IN',
+										);
+								}
 								
 										
 							$products = new WP_Query( array(
@@ -218,12 +234,7 @@ M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
 											</svg>
 										</button>
 										<button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-											<svg width="16" height="16">
-												<path
-													d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
-l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
-												/>
-											</svg>
+										     <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
 										</button>
 										<button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
 											<svg width="16" height="16">
