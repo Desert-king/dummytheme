@@ -54,7 +54,7 @@ get_header( 'shop' ); ?>
 												<?php wc_get_template_part( 'content', 'single-product' ); ?>
 											<div class="product-gallery__featured">
 											
-                                                <button type="button" class="product-gallery__zoom">
+                                                <!-- <button type="button" class="product-gallery__zoom">
                                                     <svg width="24" height="24">
                                                         <path
                                                             d="M15,18c-2,0-3.8-0.6-5.2-1.7c-1,1.3-2.1,2.8-3.5,4.6c-2.2,2.8-3.4,1.9-3.4,1.9s-0.6-0.3-1.1-0.7
@@ -62,7 +62,7 @@ get_header( 'shop' ); ?>
 	c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S18.9,2,15,2z M16,13h-2v-3h-3V8h3V5h2v3h3v2h-3V13z"
                                                         />
                                                     </svg>
-                                                </button>
+                                                </button> -->
                                                 <!-- <div class="owl-carousel">
                                                    
                                                     <a class="image image--type--product" href="images/products/product-2-700x700.jpg" target="_blank" data-width="700" data-height="700">
@@ -82,7 +82,7 @@ get_header( 'shop' ); ?>
                                                     </a>
                                                 </div> -->
                                             </div>
-                                            <h1> hey </h1>
+                                           
                                             <?php //woocommerce_show_product_sale_flash(); ?>
 											
 
@@ -140,7 +140,7 @@ get_header( 'shop' ); ?>
                                         <div class="product__info">
                                             <div class="product__info-card">
                                                 <div class="product__info-body">
-                                                    <div class="product__badge tag-badge tag-badge--sale">Sale</div>
+                                                    <!-- <div class="product__badge tag-badge tag-badge--sale">Sale</div> -->
                                                     <div class="product__prices-stock">
                                                         <div class="product__prices"><div class="product__price product__price--current"><?php woocommerce_template_single_price(); ?></div></div>
                                                         <div class="status-badge status-badge--style--success product__stock status-badge--has-text">
@@ -297,21 +297,21 @@ get_header( 'shop' ); ?>
                                                     }
                                                 ?>
                                                 <?php 
-                                                      add_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 ); 
-                                                      do_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 );
+                                                    //   add_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 ); 
+                                                    //   do_action( 'woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30 );
                                                 ?>
                                                 
 
                                                     
                                                 <div class="product__actions">
-                                                    <div class="product__actions-item product__actions-item--quantity">
+                                                    <!-- <div class="product__actions-item product__actions-item--quantity">
                                                         <div class="input-number">
-                                                            <input class="input-number__input form-control form-control-lg" type="number" min="1" value="1" />
+                                                            <input  class="input-number__input form-control form-control-lg" type="number" min="1" value="1" />
                                                             <div class="input-number__add"></div>
                                                             <div class="input-number__sub"></div>
                                                         </div>
                                                        
-                                                    </div>
+                                                    </div> -->
 													<!-- <?php //woocommerce_template_single_add_to_cart() ;?> -->
                                                     <div class="product__actions-item product__actions-item--addtocart">
                                                       <button class="btn btn-primary btn-lg btn-block">
@@ -320,22 +320,17 @@ get_header( 'shop' ); ?>
                                                     </div>
                                                     <div class="product__actions-divider"></div>
                                                     <button class="product__actions-item product__actions-item--wishlist" type="button">
-                                                        <svg width="16" height="16">
-                                                            <path
-                                                                d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
-	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
-                                                            />
-                                                        </svg>
-                                                        <span>Add to wishlist</span>
+                                                        <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <!-- <span>Add to wishlist</span> -->
                                                     </button>
-                                                    <button class="product__actions-item product__actions-item--compare" type="button">
+                                                    <!-- <button class="product__actions-item product__actions-item--compare" type="button">
                                                         <svg width="16" height="16">
                                                             <path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z" />
                                                             <path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z" />
                                                             <path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z" />
                                                         </svg>
                                                         <span>Add to compare</span>
-                                                    </button>
+                                                    </button> -->
                                                 </div>
                                                 <div class="product__tags-and-share-links">
                                                     <div class="product__tags tags tags--sm">
@@ -602,8 +597,17 @@ get_header( 'shop' ); ?>
                                                                 $id = $product->get_id();
 
                                                                 $meta_value = redux_post_meta( $opt_name, $id );
-                                                                $general_title = $meta_value["cpl-general-title"];
-                                                                $general_value = $meta_value["cpl-general-value"];
+                                                                if(isset($meta_value["cpl-general-title"])){
+                                                                    $general_title = $meta_value["cpl-general-title"];
+                                                                }else{
+                                                                    $general_title = [];
+                                                                }
+                                                                if(isset($meta_value["cpl-general-value"])){
+                                                                    $general_value = $meta_value["cpl-general-value"];
+                                                                }else{
+                                                                    $general_value = [];
+                                                                }
+                                                                
                                                                
                                                             $spe_first_count = count($general_title);
                                                             
@@ -643,9 +647,18 @@ get_header( 'shop' ); ?>
                                                                 $id = $product->get_id();
 
                                                                 $meta_value = redux_post_meta( $opt_name, $id );
-                                                                // if(isset($meta_value["cpl-dimension-title"]) && isset($meta_value["cpl-dimension-value"])){
+                                                                if(isset($meta_value["cpl-dimension-title"])){
                                                                     $dimension_title = $meta_value["cpl-dimension-title"];
+                                                                }else{
+                                                                    $dimension_title = [];
+                                                                }
+                                                                if(isset($meta_value["cpl-dimension-value"])){
                                                                     $dimension_value = $meta_value["cpl-dimension-value"];
+                                                                }else{
+                                                                    $dimension_value = [];
+                                                                }
+                                                                    // $dimension_title = $meta_value["cpl-dimension-title"];
+                                                                    // $dimension_value = $meta_value["cpl-dimension-value"];
                                                                
 
                                                                 // $dimension_title = $meta_value["cpl-dimension-title"];

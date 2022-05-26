@@ -39,6 +39,18 @@
             .tab-view.active{
                 display: block;   
             }
+            .tab-view-middle{
+                display: none;   
+            }
+            .tab-view-middle.active-middle{
+                display: block;   
+            }
+            .tab-view-top{
+                display: none;   
+            }
+            .tab-view-top.active-top{
+                display: block;   
+            }
             /* .block-zone__tabs-button--active{
                 display: none;   
             }

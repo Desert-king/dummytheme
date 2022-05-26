@@ -950,11 +950,35 @@
             var target = jQuery(elem).attr("target");
         
             jQuery(".tab-view").removeClass("active");
-            // jQuery(".tab-view").removeClass("tabs-button-active");
-            //jQuery(".tabs-button").removeClass("block-zone__tabs-button--active");
+            jQuery(".tabs-button").removeClass("block-zone__tabs-button--active");
+            jQuery(".tabs-button"+target).addClass("block-zone__tabs-button--active");
+            
+            
             jQuery("#"+target).addClass("active");
-            // jQuery("#"+target).addClass("tabs-button-active");
-            //jQuery(target).addClass("block-zone__tabs-button--active");
+            
+            
+
+        }
+        </script>
+        <script>
+        function handleCategoryTabMiddle(elem){
+            var target = jQuery(elem).attr("target");
+        
+            jQuery(".tab-view-middle").removeClass("active-middle");
+            jQuery("#"+target).addClass("active-middle");
+            
+            
+
+        }
+        </script>
+        <script>
+        function handleCategoryTabTop(elem){
+            var target = jQuery(elem).attr("target");
+            jQuery("#CategoryTabTop .tabs-button").removeClass("block-zone__tabs-button--active");
+            jQuery(elem).addClass("block-zone__tabs-button--active");
+            jQuery(".tab-view-top").removeClass("active-top");
+            jQuery("#"+target).addClass("active-top");
+            
             
 
         }

@@ -22,7 +22,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                 <div class="widget widget-filters widget-filters--offcanvas--mobile" data-collapse data-collapse-opened-class="filter--opened">
                     <div class="widget__header widget-filters__header"><h4>Filters</h4></div>
                     <div class="widget-filters__list">
-                        <div class="widget-filters__item">
+                        <!-- <div class="widget-filters__item">
                             <div class="filter filter--opened" data-collapse-item>
                                 <button type="button" class="filter__title" data-collapse-trigger>
                                     Categories
@@ -93,7 +93,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                           
 
                         ?>
-                        <?php echo do_shortcode('[product_attributes]'); ?>
+                        <?php echo do_shortcode('[product_attributes]'); ?> -->
                         <!-- new code -->
                        
                         <div class="widget-filters__list" style="list-style:inline-block;">
@@ -114,46 +114,65 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                     <div class="filter__container">
                                         <div class="filter-categories">
                                            
-                                           <?php
-                                           $args=array(
-                                             'orderby' => 'name',
-                                             'order' => 'ASC',
-                                           )
-                                           
-                                           // A $count variable
-                                           ?>
-                                           <?php foreach (get_categories( $args ) as $cat) :
-                                            // Increment $count variable
-                                            ?>
-                                           <h3><a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->cat_name; ?></a></h3>
-                                           <a href="<?php echo get_category_link($cat->term_id); ?>"><img src="<?php echo z_taxonomy_image_url($cat->term_id); ?>" /></a>
-                                           <?php endforeach; ?>
-                                          
-
-
-                                           <input type="text" name="category" value="<?php if(isset($_GET['category'])){
+                                        <input type="hidden" name="category" value="<?php if(isset($_GET['category'])){
                                                 echo $_GET['category'];
                                             } ?>" id="category">
-                                       
-                                            <ul class="filter-categories__list">
-                                                
+                                        <ul class="filter-categories__list">   
+                                        <?php
 
-                                                <?php 
-                                                //$term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
-                                                $arg = array('post_type' => 'product', 'taxonomy' => 'category', 'title'  => '');
-                                                $all_categories = get_categories( $args );
-                                                print_r($all_categories);
-                                                foreach ($all_categories as $category){
-                                                    ?>
-                                                        <li class="filter-categories__item filter-categories__item--child">
-                                                            <a href="javascript:void(0)" onclick="selectCategory('category', '<?php echo $category->name; ?>')"><?php echo $category->name; ?></a>
-                                                        </li>
+                                            $taxonomy     = 'product_cat';
+                                            $orderby      = 'name';  
+                                            $show_count   = 0;      // 1 for yes, 0 for no
+                                            $pad_counts   = 0;      // 1 for yes, 0 for no
+                                            $hierarchical = 1;      // 1 for yes, 0 for no  
+                                            $title        = '';  
+                                            $empty        = 0;
 
-
-                                                    <?php
-                                                }
+                                            $args = array(
+                                                'taxonomy'     => $taxonomy,
+                                                'orderby'      => $orderby,
+                                                'show_count'   => $show_count,
+                                                'pad_counts'   => $pad_counts,
+                                                'hierarchical' => $hierarchical,
+                                                'title_li'     => $title,
+                                                'hide_empty'   => $empty
+                                            );
+                                            $all_categories = get_categories( $args );
+                                            foreach ($all_categories as $cat) {
+                                            if($cat->category_parent == 0) {
+                                                $category_id = $cat->term_id;       
+                                                //echo '<br /><a href="'. get_term_link($cat->slug, 'product_cat') .'">'. $cat->name .'</a>';
                                                 ?>
-                                            </ul>
+                                                <li class="filter-categories__item filter-categories__item--child">
+                                                  <a href="javascript:void(0)" onclick="selectCategory('category', '<?php echo $cat->name; ?>')"><?php echo $cat->name; ?></a>
+                                                </li>
+                                                <?php
+
+                                                $args2 = array(
+                                                        'taxonomy'     => $taxonomy,
+                                                        'child_of'     => 0,
+                                                        'parent'       => $category_id,
+                                                        'orderby'      => $orderby,
+                                                        'show_count'   => $show_count,
+                                                        'pad_counts'   => $pad_counts,
+                                                        'hierarchical' => $hierarchical,
+                                                        'title_li'     => $title,
+                                                        'hide_empty'   => $empty
+                                                );
+                                                $sub_cats = get_categories( $args2 );
+                                                if($sub_cats) {
+                                                    foreach($sub_cats as $sub_category) {
+                                                        echo  $sub_category->name ;
+                                                    }   
+                                                }
+                                            }       
+                                            }
+                                            ?>
+                                           </ul>
+                                       
+                                           
+                                           
+                                            
 
                                            
                                         </div>
@@ -175,7 +194,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                     <div class="filter__container">
                                         <div class="filter-categories">
                                         
-                                            <input type="text" name="country" value="<?php if(isset($_GET['country'])){
+                                            <input type="hidden" name="country" value="<?php if(isset($_GET['country'])){
                                                 echo $_GET['country'];
                                             } ?>" id="country">
                                        
@@ -214,7 +233,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                 <div class="filter__body" data-collapse-content>
                                     <div class="filter__container">
                                         <div class="filter-categories">
-                                        <input type="text" name="brand" value="<?php if(isset($_GET['brand'])){
+                                        <input type="hidden" name="brand" value="<?php if(isset($_GET['brand'])){
                                             echo $_GET['brand'];
                                         } ?>" id="brand">
                                         <ul class="filter-categories__list">
@@ -255,7 +274,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                         <div class="filter-categories">
                                         
                                   
-                                        <input type="text" name="material" value="<?php if(isset($_GET['material'])){
+                                        <input type="hidden" name="material" value="<?php if(isset($_GET['material'])){
                                             echo $_GET['material'];
                                         } ?>" id="material">
                                        
@@ -289,7 +308,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                         <!-- new code end -->
                         
                     </div>
-                    <div class="widget-filters__actions d-flex"><button class="btn btn-primary btn-sm">Filter</button> <button class="btn btn-secondary btn-sm">Reset</button></div>
+                    
                 </div>
                 <?php  
                     $args = array(

@@ -80,7 +80,7 @@ Template Name: Blog-page
                                                     <div class="post-card__content">
                                                         <div class="post-card__category"><a href="blog-classic-right-sidebar.html">Special Offers Updated</a></div>
                                                         <div class="post-card__title">
-                                                            <h2><a href="post-full-width.html"><?php the_title();?></a></h2>
+                                                            <h2><a href="<?php echo get_permalink(); ?>"><?php the_title();?></a></h2>
                                                         </div>
                                                         <div class="post-card__date">By <a href="#"><?php echo get_the_author(); ?></a> <?php echo get_the_date('Y-m-d');?></div>
                                                         <div class="post-card__excerpt">
@@ -339,7 +339,7 @@ Template Name: Blog-page
                                         <div class="widget-search__field"></div>
                                     </form>
                                 </div>
-                                <div class="card widget widget-about-us">
+                                <!-- <div class="card widget widget-about-us">
                                     <div class="widget__header"><h4>About Blog</h4></div>
                                     <div class="widget-about-us__body">
                                         <div class="widget-about-us__text">
@@ -365,10 +365,10 @@ Template Name: Blog-page
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card widget widget-categories">
+                                </div> -->
+                                <!-- <div class="card widget widget-categories">
                                     <div class="widget__header"><h4>Categories</h4></div>
-                                    <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open">
+                                    <ul class="widget-categories__list widget-categories__list--root" data-collapse data-collapse-opened-class="widget-categories__item--open"> -->
                                         <!-- <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Latest News</a></li>
                                         <li class="widget-categories__item" data-collapse-item>
                                             <a href="#" class="widget-categories__link">Special Offers </a><button class="widget-categories__expander" type="button" data-collapse-trigger></button>
@@ -389,7 +389,7 @@ Template Name: Blog-page
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Engine & Drivetrain</a></li>
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Transmission</a></li>
                                         <li class="widget-categories__item" data-collapse-item><a href="#" class="widget-categories__link">Performance</a></li> -->
-                                        <?php 
+                                        <!-- <?php 
                                         $categories = get_categories();
                                         foreach($categories as $category) {
                                         //    echo '<div class="col-md-8"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';
@@ -397,8 +397,8 @@ Template Name: Blog-page
                                         }
                                         ?>
                                     </ul>
-                                </div>
-                                <div class="card widget widget-posts">
+                                </div> -->
+                                <!-- <div class="card widget widget-posts">
                                     <div class="widget__header"><h4>Latest Posts</h4></div>
                                     <ul class="widget-posts__list">
                                         <li class="widget-posts__item">
@@ -482,7 +482,7 @@ Template Name: Blog-page
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                                 <?php get_template_part( 'template-parts/sidebar/sidebar-primary-new'); ?>
                                 <div class="card widget-tags widget">
                                     <div class="widget__header"><h4>Tags Cloud</h4></div>

@@ -109,9 +109,9 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										</button>
 									</div>
 								</div>
-								<div class="view-options__legend">Showing 6 of 98 products</div>
+								<div class="view-options__legend shop_product_count"><?php woocommerce_result_count(); ?></div>
 								<div class="view-options__spring"></div>
-								<div class="view-options__select">
+								<!-- <div class="view-options__select">
 									<label for="view-option-sort">Sort:</label>
 									<select id="view-option-sort" class="form-control form-control-sm" name="">
 										<option value="">Price</option>
@@ -122,23 +122,72 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 									<select id="view-option-limit" class="form-control form-control-sm" name="">
 										<option value=""><?php woocommerce_result_count(); ?></option>
 									</select>
-								</div>
+								</div> -->
 							</div>
 							<div class="view-options__body view-options__body--filters">
 								<div class="view-options__label">Active Filters</div>
 								<div class="applied-filters">
 									<ul class="applied-filters__list">
 										<li class="applied-filters__item">
-											<a href="#" class="applied-filters__button applied-filters__button--filter">
-												Sales: Top Sellers <svg width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z" /></svg>
+										   <?php if(isset($_GET['category'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Category: <?php 
+                                                echo $_GET['category'];?> 
 											</a>
+											<?php
+                                            } ?>
 										</li>
 										<li class="applied-filters__item">
-											<a href="#" class="applied-filters__button applied-filters__button--filter">
-												Color: True Red <svg width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z" /></svg>
+										   <?php if(isset($_GET['country'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Country: <?php 
+                                                echo $_GET['country'];?> 
 											</a>
+											<?php
+                                            } ?>
 										</li>
-										<li class="applied-filters__item"><button type="button" class="applied-filters__button applied-filters__button--clear">Clear All</button></li>
+										<li class="applied-filters__item">
+										   <?php if(isset($_GET['brand'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Brand: <?php 
+                                                echo $_GET['brand'];?> 
+											</a>
+											<?php
+                                            } ?>
+										</li>
+										<li class="applied-filters__item">
+										   <?php if(isset($_GET['vehicle'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Vehicle: <?php 
+                                                echo $_GET['vehicle'];?> 
+											</a>
+											<?php
+                                            } ?>
+										</li>
+										<li class="applied-filters__item">
+										   <?php if(isset($_GET['color'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Color: <?php 
+                                                echo $_GET['color'];?> 
+											</a>
+											<?php
+                                            } ?>
+										</li>
+										<li class="applied-filters__item">
+										   <?php if(isset($_GET['material'])){
+												?>
+												<a href="#" class="applied-filters__button applied-filters__button--filter">
+											    Material: <?php 
+                                                echo $_GET['material'];?> 
+											</a>
+											<?php
+                                            } ?>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -265,12 +314,12 @@ M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
 										<div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
 										<div class="product-card__name">
 											<div>
-												<div class="product-card__badges">
+												<!-- <div class="product-card__badges">
 													<div class="tag-badge tag-badge--sale">sale</div>
 													<div class="tag-badge tag-badge--new">new</div>
 													<div class="tag-badge tag-badge--hot">hot</div>
-												</div>
-												<a href="product-full.html"><?php woocommerce_template_loop_product_title(); ?></a>
+												</div> -->
+												<a href="<?php echo get_permalink($products->post->ID) ?>"><?php woocommerce_template_loop_product_title(); ?></a>
 											</div>
 										</div>
 										<div class="product-card__rating">
@@ -621,7 +670,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 									</li>
 								</ul>
 							</nav>
-							<div class="products-view__pagination-legend">Showing 6 of 98 products</div>
+							<div class="products-view__pagination-legend shop_product_count"><?php woocommerce_result_count(); ?></div>
 						</div>
 		<!-- pagination -->
 <?//php

@@ -54,7 +54,9 @@ Template Name: Contact-page
                                                <?php
                                                global $redux_demo;
 
-                                               echo  $redux_demo['cpl-editor-text'];
+                                               the_content();
+
+                                            //    echo  $redux_demo['cpl-editor-text'];
                                                ?>
                                                 <!-- <p>
                                                     715 Fake Ave, Apt. 34, New York, NY 10021 USA<br />
@@ -87,7 +89,8 @@ Template Name: Contact-page
                                                 <button type="submit" class="btn btn-primary">Send Message</button>
                                             </form> -->
                                             <?php //echo do_shortcode('[contact-form-7 id="165" title="Contact form 1"]');?>
-                                            <?php echo do_shortcode('[contact-form-7 id="166" title="Contact page form"]');?>
+                                            <?php echo do_shortcode($redux_demo['cpl-editor-text']);?>
+                                            
                                         <!-- </div> -->
                                     </div>
                                 </div>
