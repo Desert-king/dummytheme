@@ -1285,45 +1285,81 @@
                                         />
                                     </svg>
                                 </span>
-                                <span class="indicator__title">Hello, Log In</span> <span class="indicator__value">My Account</span>
+                                <!-- <span class="indicator__title">Hello, Log In</span> <span class="indicator__value">My Account</span> -->
+                               <?php 
+                                    if ( is_user_logged_in() ) {
+                                    // echo 'Welcome, logged in user. <a href="'.wp_logout_url().'">Click here to logout</a>.';
+                                    ?>
+                                    <span class="indicator__title">Welcome to</span> <span class="indicator__value">Your Account</span>
+                                    <?php
+                                    
+                                    }else{
+                                        ?>
+                                        <span class="indicator__title">Please login to</span> <span class="indicator__value">Your Account</span>
+                                        <?php
+                                    // echo 'Please login by <a href="'.wp_login_url().'">clicking here</a>.';
+                                    }
+                                ?>
                             </a>
                             <div class="indicator__content">
-                                <div class="account-menu">
-                                    <form class="account-menu__form">
-                                        <div class="account-menu__form-title">Log In to Your Account</div>
-                                        <div class="form-group">
-                                            <label for="header-signin-email" class="sr-only">Email address</label> <input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Email address" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="header-signin-password" class="sr-only">Password</label>
-                                            <div class="account-menu__form-forgot">
-                                                <input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password" /> <a href="#" class="account-menu__form-forgot-link">Forgot?</a>
+                                <?php 
+                                    if ( is_user_logged_in() ) {
+                                    // echo 'Welcome, logged in user. <a href="'.wp_logout_url().'">Click here to logout</a>.';
+                                    ?>
+                                    <div class="account-menu">
+                                        <a href="#" class="account-menu__user">
+                                            <div class="account-menu__user-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatars/avatar-4.jpg" alt="" /></div>
+                                            <div class="account-menu__user-info">
+                                                <div class="account-menu__user-name">Ryan Ford</div>
+                                                <div class="account-menu__user-email">red-parts@example.com</div>
+                                                
                                             </div>
+                                        </a>
+                                        <div class="account-menu__divider"></div>
+                                        <ul class="account-menu__links">
+                                            <li><a href="<?php echo esc_url( home_url( '/my-account' ) ); ?>">Dashboard</a></li>
+                                            <!-- <li><a href="account-dashboard.html">Garage</a></li> -->
+                                            <li><a href="<?php echo esc_url( home_url( '/wp-admin/profile.php' ) ); ?>">Edit Profile</a></li>
+                                            <!-- <li><a href="account-orders.html">Order History</a></li>
+                                            <li><a href="account-addresses.html">Addresses</a></li> -->
+                                        </ul>
+                                        <div class="account-menu__divider"></div>
+                                        <ul class="account-menu__links">
+                                            <!-- <li><a href="<?php echo esc_url( home_url( '/my-account/customer-logout/?_wpnonce=fa44571443' ) ); ?>">Logout</a></li> -->
+                                            <li><a href="<?php echo wp_logout_url( get_permalink() ); ?>">Logout</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <?php
+                                    
+                                    }else{
+                                        ?>
+                                        <div class="account-menu">
+                                                <div class="account-menu__form-title"> <?php echo 'To log in <a href="'.wp_login_url().'">click here</a>.'; ?></div>
+                                                <?php wp_login_form(); ?>
+                                   
+                                            <!-- <form class="account-menu__form">
+                                                <div class="account-menu__form-title"> <?php echo 'To log in <a href="'.wp_login_url().'">click here</a>.'; ?></div> -->
+                                               
+                                                <?php //echo 'Please login by <a href="'.wp_login_url().'">clicking here</a>.'; ?>
+                                                <!-- <div class="form-group">
+                                                    <label for="header-signin-email" class="sr-only">Email address</label> <input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Email address" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="header-signin-password" class="sr-only">Password</label>
+                                                    <div class="account-menu__form-forgot">
+                                                        <input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password" /> <a href="#" class="account-menu__form-forgot-link">Forgot?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group account-menu__form-button"><button type="submit" class="btn btn-primary btn-sm">Login</button></div>
+                                                <div class="account-menu__form-link"><a href="account-login.html">Create An Account</a></div> -->
+                                            <!-- </form> -->
                                         </div>
-                                        <div class="form-group account-menu__form-button"><button type="submit" class="btn btn-primary btn-sm">Login</button></div>
-                                        <div class="account-menu__form-link"><a href="account-login.html">Create An Account</a></div>
-                                    </form>
-                                    <div class="account-menu__divider"></div>
-                                    <a href="#" class="account-menu__user">
-                                        <div class="account-menu__user-avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/avatars/avatar-4.jpg" alt="" /></div>
-                                        <div class="account-menu__user-info">
-                                            <div class="account-menu__user-name">Ryan Ford</div>
-                                            <div class="account-menu__user-email">red-parts@example.com</div>
-                                        </div>
-                                    </a>
-                                    <div class="account-menu__divider"></div>
-                                    <ul class="account-menu__links">
-                                        <li><a href="<?php echo esc_url( home_url( '/my-account' ) ); ?>">Dashboard</a></li>
-                                        <!-- <li><a href="account-dashboard.html">Garage</a></li> -->
-                                        <li><a href="<?php echo esc_url( home_url( '/wp-admin/profile.php' ) ); ?>">Edit Profile</a></li>
-                                        <!-- <li><a href="account-orders.html">Order History</a></li>
-                                        <li><a href="account-addresses.html">Addresses</a></li> -->
-                                    </ul>
-                                    <div class="account-menu__divider"></div>
-                                    <ul class="account-menu__links">
-                                        <li><a href="<?php echo esc_url( home_url( '/my-account/customer-logout/?_wpnonce=fa44571443' ) ); ?>">Logout</a></li>
-                                    </ul>
-                                </div>
+                                        <?php
+                                    // echo 'Please login by <a href="'.wp_login_url().'">clicking here</a>.';
+                                    }
+                                ?>
+                               
                             </div>
                         </div>
                         <div class="indicator indicator--trigger--click">

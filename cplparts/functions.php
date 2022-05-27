@@ -329,15 +329,22 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 // add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
 // function woocommerce_custom_product_add_to_cart_text() {
-//  return __( "<img src= \"".get_template_directory_uri() . "/assets/images/cart/my_cart.png\">" , 'woocommerce' );
+//  return __( '<img src= '.get_template_directory_uri() . '/assets/images/cart/my_cart.png>' , 'woocommerce' );
 	
 // }
 
-// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
-// function woocommerce_custom_product_add_to_cart_text() {
-// 	echo 'buy';  
+add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+function woocommerce_custom_product_add_to_cart_text() {
+	// echo 'buy';
+	return __( 'Buy', 'woocommerce' );  
 	
-// }
+}
+add_filter( 'gettext', function( $translated_text ) {
+    if ( 'View cart' === $translated_text ) {
+        $translated_text = '';
+    }
+    return $translated_text;
+} );
 
 // add_action( 'woocommerce_after_add_to_cart_button', 'add_content_after_addtocart_button_func' );
 
@@ -604,8 +611,5 @@ c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,
 	$fragments['a.cart-customlocation'] = ob_get_clean();
 	return $fragments;
 }
-
-
-
 
 

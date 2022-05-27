@@ -950,10 +950,8 @@
             var target = jQuery(elem).attr("target");
         
             jQuery(".tab-view").removeClass("active");
-            jQuery(".tabs-button").removeClass("block-zone__tabs-button--active");
-            jQuery(".tabs-button"+target).addClass("block-zone__tabs-button--active");
-            
-            
+            jQuery("#CategoryTabLast .tabs-button").removeClass("block-zone__tabs-button--active");
+            jQuery(elem).addClass("block-zone__tabs-button--active");
             jQuery("#"+target).addClass("active");
             
             
@@ -963,7 +961,8 @@
         <script>
         function handleCategoryTabMiddle(elem){
             var target = jQuery(elem).attr("target");
-        
+            jQuery("#CategoryTabMiddle .tabs-button").removeClass("block-zone__tabs-button--active");
+            jQuery(elem).addClass("block-zone__tabs-button--active");
             jQuery(".tab-view-middle").removeClass("active-middle");
             jQuery("#"+target).addClass("active-middle");
             

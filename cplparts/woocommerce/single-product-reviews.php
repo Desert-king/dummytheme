@@ -38,7 +38,7 @@ if ( ! comments_open() ) {
 			}
 			?>
 		</h2>
-		<h1> Farhana is working </h1>
+		
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
@@ -47,11 +47,11 @@ if ( ! comments_open() ) {
             <!-- custom code -->
 			<ul class="comment-list comments">
 				<?php
-				wp_list_comments( array(
-					'style'      => 'ul',
-					'short_ping' => true,
-						'callback' => 'woocommerce_comments'
-				) );
+				// wp_list_comments( array(
+				// 	'style'      => 'ul',
+				// 	'short_ping' => true,
+				// 		'callback' => 'woocommerce_comments'
+				// ) );
 				?>
 			</ul>
 			<!-- custom code one end -->

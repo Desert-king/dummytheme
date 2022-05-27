@@ -16,16 +16,15 @@
 			<div class="post-header__image" style="background-image: url('images/posts/post-1-1903x500.jpg');"></div>
 			<div class="post-header__body">
 				<div class="post-header__categories">
-					<ul class="post-header__categories-list">
-						<li class="post-header__categories-item"><a href="#" class="post-header__categories-link">Latest News</a></li>
-					</ul>
+				<a href="#" class="blog-tag"><?php echo the_category(); ?></a>
+					
 				</div>
 				<!-- <h1 class="post-header__title"> -->
 				<?php 
 				if ( is_singular() ) :
 					the_title( '<h1 class="post-header__title">', '</h1>' );
 				else :
-					the_title( '<h2 class="post-header__title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					the_title( '<h2 class="post-header__title"><a  href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 				endif; 
 				if ( 'post' === get_post_type() ) :
 		        ?>
@@ -40,7 +39,7 @@
 							   <?php cplparts_posted_by(); ?>
 						    </a>
 					    </li>
-						<li class="post-header__meta-item"><a href="#" class="post-header__meta-link">4 Comments</a></li>
+						<!-- <li class="post-header__meta-item"><a href="#" class="post-header__meta-link">4 Comments</a></li> -->
 					</ul>
 				</div>
 				<?php endif; ?>
@@ -84,7 +83,7 @@
 			
 							?>
 						</div>
-						<div class="post__pagination">
+						<!-- <div class="post__pagination">
 							<div class="post__pagination-title">Pages</div>
 							<div class="post__pagination-list">
 								<ul>
@@ -113,7 +112,7 @@
 								<div class="post__author-name">Ryan Ford</div>
 								<div class="post__author-about">Aliquam ullamcorper elementum sagittis. Etiam lacus lacus, mollis in mattis in, vehicula eu nulla. Nulla nec tellus pellentesque.</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="post-view__card post-navigation">
 						<div class="post-navigation__body">
@@ -128,7 +127,7 @@
 							?>
 							</div>
 							</div>
-					<div class="post-view__card post-navigation">
+					<!-- <div class="post-view__card post-navigation">
 						<div class="post-navigation__body">
 						    
 							<a class="post-navigation__item post-navigation__item--prev" href="#">
@@ -161,8 +160,8 @@ C-0.1,9.8-0.1,10.4,0.3,10.7z"
 								<div class="post-navigation__item-image"><img src="images/posts/post-3-80x80.jpg" alt="" /></div>
 							</a>
 						</div>
-					</div>
-					<div class="post-view__card">
+					</div> -->
+					<!-- <div class="post-view__card">
 						<h2 class="post-view__card-title">Comments (4)</h2>
 						
 						<div class="post-view__card-body comments-view">
@@ -291,7 +290,7 @@ C-0.1,9.8-0.1,10.4,0.3,10.7z"
 							<div class="form-group"><label for="comment-content">Comment</label> <textarea class="form-control" id="comment-content" rows="6"></textarea></div>
 							<div class="form-group mb-0"><button type="submit" class="btn btn-primary mt-md-4 mt-2">Post Comment</button></div>
 						</form>
-					</div>
+					</div> -->
 				</div>
 				<div class="post-view__item post-view__item-sidebar">
 					<div class="card widget widget-search">

@@ -719,7 +719,7 @@ get_header( 'shop' ); ?>
                                                         
                                                         ?>
                                                         
-                                                        <div class="reviews-view__list">
+                                                        <!-- <div class="reviews-view__list">
                                                             <div class="reviews-list">
                                                                 <ol class="reviews-list__content">
                                                                     <li class="reviews-list__item">
@@ -860,7 +860,7 @@ get_header( 'shop' ); ?>
                                                                     <div class="form-group mb-0 mt-4"><button type="submit" class="btn btn-primary">Post Your Review</button></div>
                                                                 </div>
                                                             </div>
-                                                        </form>
+                                                        </form> -->
                                                     </div>
                                                 </div>
                                                 <!-- <div class="product-tabs__pane" id="product-tab-analogs">

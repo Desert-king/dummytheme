@@ -72,6 +72,28 @@ Template Name: Blog-page
                                                 global $product;
                                             
                                             ?>
+                                             <!-- for pagination -->
+                                            
+                                                <?php
+                                                // $paged = 1;
+                                                // if(isset($_GET['page'])&& $_GET['page']>0){
+                                                //     $paged = $_GET['page'];
+                                                // }
+
+                                                // $args = [
+                                                //     'post_type'      => 'post',
+                                                //     'posts_per_page' => 2,
+                                                //     'paged'          => $paged,
+                                                //     'order'          => 'DESC',
+                                                //     'post_status'    => 'publish',
+                                                // ];
+                                                
+                                                // $the_query = new WP_Query( $args );
+
+                                                // while ($the_query->have_posts()) :$the_query->the_post();
+                                                // global $product;
+                                                ?>
+                                                <!-- for pagination end-->
                                             <div class="posts-list__item">
                                                 <div class="post-card post-card--layout--grid">
                                                     <div class="post-card__image">
@@ -288,9 +310,21 @@ Template Name: Blog-page
                                                     </div>
                                                 </div>
                                             </div> -->
+                                             <!-- for pagination-->
+                                            <?php
+                                                // $total_pages = $the_query->max_num_pages;
+                                                // $page_data = array(
+                                                //     'total_pages'  => $total_pages,
+                                                //     'current_page' =>  max( 1, $paged ),
+                                                // );
+                                                
+                                                // get_template_part( 'template-parts/pagination/pagination', null, $page_data);
+                                                
+                                                ?>
+                                            <!-- for pagination end-->
                                         </div>
                                     </div>
-                                    <div class="posts-view__pagination">
+                                    <!-- <div class="posts-view__pagination">
                                         <ul class="pagination">
                                             <li class="page-item disabled">
                                                 <a class="page-link page-link--with-arrow" href="#" aria-label="Previous">
@@ -320,8 +354,8 @@ Template Name: Blog-page
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div>-->
+                                </div> 
                             </div>
                             <div class="blog-view__item blog-view__item-sidebar">
                                 <div class="card widget widget-search">
