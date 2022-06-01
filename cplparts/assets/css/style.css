@@ -15010,3 +15010,17 @@ ol.commentlist{
     border: #e52727;
     color: #fff;
 }
+.shop-pagination a.page-numbers {
+    margin-right: 6px;
+    background-color: #f0f0f0;
+    color: black;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+.shop-pagination span.page-numbers.current {
+    margin-right: 6px;
+    background-color: #e52727;
+    color: #eaeaea;
+    padding: 3px 10px;
+    border-radius: 2px;
+}

@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
@@ -420,17 +421,15 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 								// ] );
 								
 								
-							endif;
-							// wp_reset_postdata();
-
-							foreach( $product_ids as $product_id ) {
-								$product_titles[] = get_the_title( $product_id );
+							else:
 								?>
-								
+								<div class="products-list__item">
 								<?php
-							}
-					
-
+						      echo ("no matched data is available!");
+							  ?>
+							  </div>
+							  <?php
+							endif;
 							?>
 							<?php //echo("farhana");?>
 							 <?php
