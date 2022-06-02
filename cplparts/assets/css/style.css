@@ -15024,3 +15024,9 @@ ol.commentlist{
     padding: 3px 10px;
     border-radius: 2px;
 }
+.theme-cplparts div#sidebar {
+    display: none;
+}
+.theme-cplparts .entry-title{
+    display: none;
+}

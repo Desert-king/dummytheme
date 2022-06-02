@@ -2130,21 +2130,40 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                 <div class="block-space block-space--layout--divider-nl"></div>
                 <div class="block block-brands block-brands--layout--columns-8-full">
                     <div class="container">
-                        <ul class="block-brands__list">
+                    <ul class="block-brands__list">
                                 <?php 
                                     global $redux_demo;
-                                    $brands = $redux_demo['cpl-pro-brand-section-fields-new'];
+                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
+                                        $brands = $redux_demo['cpl-pro-brand-section-fields-new'];
+                                        
+                                    }else{
+                                        $brands = "";
+                                    }
+                                    
                                     //print_r($repeaters);
-                                    $brand_titles= $redux_demo['cpl-pro-brand-title-new'];
-                                    $brand_images = $redux_demo['cpl-pro-brand-image-new'];
+                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
+                                        $brand_titles= $redux_demo['cpl-pro-brand-title-new'];
+                                    }else{
+                                        $brand_titles = "";
+                                    }
+                                   
+                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
+                                        $brand_images = $redux_demo['cpl-pro-brand-image-new'];
+                                    }else{
+                                        $brand_images = "";
+                                    }
+                                    
                                     // print_r($photoes[1]['url']);
                                     // print_r($names[1]);
                                 ?>
                                 <?php
-                                   $first_count = count($brand_titles);
+                                  if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
+                                    $first_count = count($brand_titles);
                                 //    var_export($photoes);
                                     $x = 0;
                                     while($x < $first_count) {
+                                    
+                               
                                     // foreach ($names as $name) {
                                 ?>
                                 <li class="block-brands__item">
@@ -2163,6 +2182,10 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         // }
                                     $x++;
                                     }
+                                }else{
+                                    $first_count = "";
+                                }
+                                   
                                 ?>
                             
                         </ul>
