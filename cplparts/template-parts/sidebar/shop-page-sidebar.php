@@ -199,19 +199,36 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                             } ?>" id="country">
                                        
                                             <ul class="filter-categories__list">
+                                            <?php 
+                                                //$term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
+                                                    $term =  taxonomy_exists( 'pa_country' );
+                                                    if($term !== 0 && $term !== null){
+                                                    $term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
+                                                    //print_r($term_country);
+                                                    foreach ($term_country as $country){
+                                                        ?>
+                                                            <li class="filter-categories__item filter-categories__item--child">
+                                                                <a href="javascript:void(0)" onclick="selectCategory('country', '<?php echo $country; ?>')"><?php echo $country; ?></a>
+                                                            </li>
+    
+    
+                                                        <?php
+                                                    }
                                                 
-
-                                                <?php 
-                                                $term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
-                                                foreach ($term_country as $country){
+                                                }else{
+                                                    echo "not found"; 
+                                                }
+                                                // $term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
+                                                // print_r($term_country);
+                                                // foreach ($term_country as $country){
                                                     ?>
-                                                        <li class="filter-categories__item filter-categories__item--child">
+                                                        <!-- <li class="filter-categories__item filter-categories__item--child">
                                                             <a href="javascript:void(0)" onclick="selectCategory('country', '<?php echo $country; ?>')"><?php echo $country; ?></a>
-                                                        </li>
+                                                        </li> -->
 
 
                                                     <?php
-                                                }
+                                                // }
                                                 ?>
                                             </ul>
                                         </div>
