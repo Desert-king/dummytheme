@@ -274,7 +274,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 
 									$args = [
 										'post_type'      => 'product',
-										'posts_per_page' => 8,
+										'posts_per_page' => 3,
 										'paged'          => $paged,
 										'order'          => 'DESC',
 										'post_status'    => 'publish',

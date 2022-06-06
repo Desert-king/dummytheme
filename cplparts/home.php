@@ -1770,7 +1770,8 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'posts_per_page' => 6,
                                         'orderby' => 'rand'
                                     );
-                                    $loop = new WP_Query($args);
+                                    $loop = new WP_Query($args);?>
+                                    <?php if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?> 
                                 
@@ -1820,8 +1821,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </div>
                                     </div>
                                 </div>
-                                <?php endwhile; ?>
-                                <?php wp_reset_query(); ?>
+                                <?php endwhile;
+                                wp_reset_postdata(); ?>
+                                <?php else:  ?>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div> 
                          <!-- tag one end -->
@@ -1835,7 +1839,8 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'posts_per_page' => 6,
                                         'orderby' => 'rand'
                                     );
-                                    $loop = new WP_Query($args);
+                                    $loop = new WP_Query($args);?>
+                                    <?php if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?> 
                                 
@@ -1885,8 +1890,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </div>
                                     </div>
                                 </div>
-                                <?php endwhile; ?>
-                                <?php wp_reset_query(); ?>
+                                <?php endwhile;
+                                wp_reset_postdata(); ?>
+                                <?php else:  ?>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div> 
                          <!-- tag two end-->
@@ -1900,7 +1908,8 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'posts_per_page' => 6,
                                         'orderby' => 'rand'
                                     );
-                                    $loop = new WP_Query($args);
+                                    $loop = new WP_Query($args);?>
+                                    <?php if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?> 
                                 
@@ -1950,8 +1959,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </div>
                                     </div>
                                 </div>
-                                <?php endwhile; ?>
-                                <?php wp_reset_query(); ?>
+                                <?php endwhile;
+                                wp_reset_postdata(); ?>
+                                <?php else:  ?>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div> 
                          <!-- tag three end-->
@@ -2040,7 +2052,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
                                 <?php else:  ?>
-                                <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
                                 <?php endif; ?>
                                 <!-- code static last -->
                             </div>
@@ -2080,7 +2092,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
                                 <?php else:  ?>
-                                <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
                                 <?php endif; ?>
                                 <!-- code static last -->
                             </div>
@@ -2120,7 +2132,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 <?php endwhile;
                                 wp_reset_postdata(); ?>
                                 <?php else:  ?>
-                                <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+                                <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
                                 <?php endif; ?>
                                 <!-- code static last -->
                             </div>
@@ -2197,7 +2209,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                     <div class="container">
                         <div class="row">
                             <div class="col-4">
-                                <div class="block-products-columns__title">Top Rated Products</div>
+                            <div class="block-products-columns__title">Top Rated Products</div>
                                 <div class="block-products-columns__list">
                                     <!-- #################### -->
                                     <?php
@@ -2207,6 +2219,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'orderby' => 'rand'
                                     );
                                     $loop = new WP_Query($args);
+                                    if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
                                         <!-- <div class="row"> -->
@@ -2263,8 +2276,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                             </div>
                                              <!-- ******************* -->
                                         <!-- </div> -->
-                                    <?php endwhile; ?>
-                                    <?php wp_reset_query(); ?>
+                                        <?php endwhile;
+                                        wp_reset_postdata(); ?>
+                                        <?php else:  ?>
+                                        <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                        <?php endif; ?>
                                     <!-- ###################### -->
                                     <!-- <div class="block-products-columns__list-item">
                                         <div class="product-card">
@@ -2323,7 +2339,8 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'posts_per_page' => 3,
                                         'orderby' => 'rand'
                                     );
-                                    $loop = new WP_Query($args);
+                                    $loop = new WP_Query($args); 
+                                    if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
                                             <!-- <h2>Shampoo</h2> -->
@@ -2377,8 +2394,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                 </div>
                                             </div>
                                              <!-- ******************* -->
-                                    <?php endwhile; ?>
-                                    <?php wp_reset_query(); ?>
+                                             <?php endwhile;
+                                            wp_reset_postdata(); ?>
+                                            <?php else:  ?>
+                                            <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                            <?php endif; ?>
                                     <!-- ###################### -->
                                 </div>
                             </div>
@@ -2393,6 +2413,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         'orderby' => 'rand'
                                     );
                                     $loop = new WP_Query($args);
+                                    if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
                                         global $product; ?>
                                             <!-- <h2>Shampoo</h2> -->
@@ -2446,8 +2467,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                 </div>
                                             </div>
                                              <!-- ******************* -->
-                                    <?php endwhile; ?>
-                                    <?php wp_reset_query(); ?>
+                                             <?php endwhile;
+                                            wp_reset_postdata(); ?>
+                                            <?php else:  ?>
+                                            <p><?php _e( 'Sorry, no matching data is found.' ); ?></p>
+                                            <?php endif; ?>
                                     <!-- ###################### -->
                                 </div>
                             </div>
