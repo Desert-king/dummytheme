@@ -1364,6 +1364,13 @@
                         </div>
                         <div class="indicator indicator--trigger--click">
                             
+                        <?php 
+                                        if ( class_exists( 'WooCommerce' ) ) {
+                                            $cart_contents = WC()->cart->get_cart_contents_count();
+                                            $cart_amount= WC()->cart->get_cart_contents_total() ;
+                                            $cart_total = WC()->cart->get_total();
+                                            ?>
+                            
                             <a href="<?php echo esc_url( home_url( '/cart' ) ); ?>" class="indicator__button cart-customlocation">
                                 <span class="indicator__icon">
                                     <svg width="32" height="32">
@@ -1376,19 +1383,24 @@
                                         />
                                     </svg>
                                     <span class="indicator__counter">
-                                      <?php $cart_contents = WC()->cart->get_cart_contents_count();
-                                        echo $cart_contents; ?>
+                                    <?php 
+                                      echo $cart_contents;
+                                           ?>
                                     </span>
                                 </span>
                                 <span class="indicator__title">Shopping Cart</span> 
                                 <span class="indicator__value">
-                                  <?php $cart_amount= WC()->cart->get_cart_contents_total() ;
-                                  $cart_total = WC()->cart->get_total();
-                                   //echo $cart_amount;
-                                   echo $cart_total;
+                                  <?php
+                                     echo $cart_total;
                                    ?>
                                 </span>
                             </a>
+                            <?php 
+                               } 
+                            //    else {
+                            //         echo "Please activate woocommerce";
+                            //       }
+                                ?>
                            
                             
                             <div class="indicator__content">

@@ -21,6 +21,8 @@ Template Name: Home-page
                         <form method="get" class="block-finder__form" action="<?php echo esc_url( home_url( '/shop' ) ); ?>">
                         <div class="block-finder__form-control block-finder__form-control--select">
                                 <select name="brand" aria-label="Vehicle Make" >
+                                <?php 
+                                       if(taxonomy_exists( 'pa_brand' )){  ?>
                                     <option value="none" selected>Select Brand</option>
                                     <?php 
                                       $term_brand = get_terms( array( 'taxonomy' => 'pa_brand', 'fields' => 'names' ) );
@@ -30,12 +32,17 @@ Template Name: Home-page
                                                  echo $brand; } ?>"><?php if (isset($brand)){
                                                  echo $brand; } ?></option>
                                           <?php
-                                      }
+                                           }
+                                      }else{
+                                        echo "data not found"; 
+                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="block-finder__form-control block-finder__form-control--select">
                             <select name="vehicle" aria-label="Vehicle Make" >
+                                    <?php 
+                                       if(taxonomy_exists( 'pa_vehicle' )){  ?>
                                     <option value="none">Select Vehicle</option>
                                     <?php 
                                       $term_vehicle = get_terms( array( 'taxonomy' => 'pa_vehicle', 'fields' => 'names' ) );
@@ -45,12 +52,17 @@ Template Name: Home-page
                                                  echo  $vehicle; } ?>"><?php if (isset( $vehicle)){
                                                  echo  $vehicle; } ?></option>
                                           <?php
-                                      }
+                                           }
+                                      }else{
+                                        echo "data not found"; 
+                                    }
                                     ?>
                                 </select>
                             </div>
                             <div class="block-finder__form-control block-finder__form-control--select">
                             <select name="color" aria-label="Vehicle Make" >
+                            <?php 
+                                       if(taxonomy_exists( 'pa_color' )){  ?>
                                     <option value="none">Select Color</option>
                                     <?php 
                                       $term_color = get_terms( array( 'taxonomy' => 'pa_color', 'fields' => 'names' ) );
@@ -59,12 +71,18 @@ Template Name: Home-page
                                             <option value="<?php echo $color ?>"><?php echo $color ?></option>
                                           <?php
                                       }
+                                    }else{
+                                        echo "data not found"; 
+                                    }
+                                    ?>
                                     ?>
                                 </select> 
                             </div>
                            
                             <div class="block-finder__form-control block-finder__form-control--select">
                             <select name="material" aria-label="Vehicle Make" >
+                                  <?php 
+                                       if(taxonomy_exists( 'pa_material' )){  ?>
                                     <option value="none">Select Material</option>
                                     <?php 
                                       $term_material = get_terms( array( 'taxonomy' => 'pa_material', 'fields' => 'names' ) );
@@ -73,6 +91,9 @@ Template Name: Home-page
                                             <option value="<?php echo $material ?>"><?php echo $material ?></option>
                                           <?php
                                       }
+                                    }else{
+                                        echo "data not found"; 
+                                    }
                                     ?>
                                 </select>
                             </div>

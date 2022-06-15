@@ -100,9 +100,9 @@ function my_theme_register_required_plugins() {
 		),
 
 		array(
-			'name'      => 'Wishlist for WooCommerce and Custom Post Types',
-			'slug'      => 'Wishlist-for-wooCommerce-and-custom-post-types',
-			'version'      => '1.0.25',
+			'name'      => 'Wishlist for WooCommerce',
+			'slug'      => 'aco-wishlist-for-woocommerce',
+			'version'      => '1.0.16',
 			'required'     => true, 
 		),
 
