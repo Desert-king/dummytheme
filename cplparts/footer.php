@@ -107,7 +107,7 @@
                             <div class="site-footer__bottom-row">
                                 <div class="site-footer__copyright">
                                     <!-- copyright -->
-                                    Powered by HTML — Designed by <a href="https://themeforest.net/user/kos9" target="_blank">Kos</a>
+                                    Powered by CPL — Developed by <a href="https://www.facebook.com/farhanaafrin.maysha.56" target="_blank">Farhana Afrin</a>
                                     <!-- copyright / end -->
                                 </div>
                                 <div class="site-footer__payments"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/payments.png" alt="" /></div>

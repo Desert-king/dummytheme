@@ -1362,10 +1362,20 @@
                                
                             </div>
                         </div>
+                       
                         <div class="indicator indicator--trigger--click">
-                            
+                        <!-- if ( is_plugin_active( ‘plugin-folder/plugin-file.php’ ) ):
+
+echo ‘The plugin IS activated’;
+
+else:
+
+echo ‘The plugin is NOT activated’;
+
+endif; -->
                         <?php 
                                         if ( class_exists( 'WooCommerce' ) ) {
+                                            // if ( is_plugin_active( "plugins/woocommerce/woocommerce.php" ) ):
                                             $cart_contents = WC()->cart->get_cart_contents_count();
                                             $cart_amount= WC()->cart->get_cart_contents_total() ;
                                             $cart_total = WC()->cart->get_total();
@@ -1384,22 +1394,44 @@
                                     </svg>
                                     <span class="indicator__counter">
                                     <?php 
-                                      echo $cart_contents;
+                                        // if ( class_exists( 'WooCommerce' ) ) {
+                                        //     $cart_contents = WC()->cart->get_cart_contents_count();
+                                            echo $cart_contents;
+                                            // echo ‘The plugin IS activated’;
+
+
+                                        //   } else {
+                                        //     echo "Please activate woocommerce";
+                                        //   }
                                            ?>
                                     </span>
                                 </span>
                                 <span class="indicator__title">Shopping Cart</span> 
                                 <span class="indicator__value">
                                   <?php
+                                //    if ( class_exists( 'WooCommerce' ) ) {
+                                //     $cart_amount= WC()->cart->get_cart_contents_total() ;
+                                //     $cart_total = WC()->cart->get_total();
+                                    
                                      echo $cart_total;
+                                //   } else {
+                                //     echo "Please activate woocommerce";
+                                //   }
+                                  
                                    ?>
                                 </span>
                             </a>
                             <?php 
                                } 
-                            //    else {
-                            //         echo "Please activate woocommerce";
-                            //       }
+
+                               else {
+                                    echo "Please activate woocommerce";
+                                  }
+                            // else:
+
+                            // echo "Activate woocommerce";
+                            
+                            // endif;
                                 ?>
                            
                             
