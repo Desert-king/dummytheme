@@ -23,36 +23,52 @@ Template Name: About-us
                         </div>
                         <div class="about__card">
                             <div class="about__card-title">
-                              <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['about-article-title'];
-                              ?>
+                               <?php
+                              if(isset($redux_demo['about-article-title'])){
+                                     echo $redux_demo['about-article-title'];
+                                    }else{
+                                        echo "Title is not found";
+                                    }
+                                ?>
                            </div>
-                            <div class="about__card-text">
-                              <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['about-article-content'];
+                           <div class="about__card-text">
+                              <?php   
+                                 if(isset($redux_demo['about-article-content'])){
+                                    echo $redux_demo['about-article-content'];
+                                   }else{
+                                       echo "Content is not found";
+                                   }
                               ?>
                             </div>
                             <div class="about__card-author">
-                            <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['about-content-author'];
+                            <?php 
+                                 if(isset($redux_demo['about-content-author'])){
+                                    echo $redux_demo['about-content-author'];
+                                   }else{
+                                       echo "Author is not found";
+                                   }
                               ?>
                               </div>
-                            <div class="about__card-signature"><img src="<?php  global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-content-author-sign']['url'];?>" /></div>
+                            <div class="about__card-signature">
+                            <img src="<?php  if(isset($redux_demo['about-content-author-sign']['url'])){
+                                    echo $redux_demo['about-content-author-sign']['url'];
+                                   }else{
+                                       echo "Signature is not found";
+                                   }?>" />
+                        </div>
                         </div>
                         <div class="about__indicators">
                             <div class="about__indicators-body">
                             <?php 
-                                global $redux_demo;
-                                // $repeaters = $redux_demo['counter-fields'];
-                                //print_r($repeaters);
-                                $numbers= $redux_demo['new-counter-number'];
-                                $titles = $redux_demo['new-counter-title'];
+                                if(isset($redux_demo['new-counter-number']) && isset($redux_demo['new-counter-title'])){
+                                    $numbers= $redux_demo['new-counter-number'];
+                                    $titles = $redux_demo['new-counter-title'];
+                                  
+                                // $numbers= $redux_demo['new-counter-number'];
+                                // $titles = $redux_demo['new-counter-title'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
-                                ?>
-                               
-                                <?php
+                                
                                    $counter_count = count($numbers);
                                 //    var_export($photoes);
                                     $x = 0;
@@ -67,6 +83,7 @@ Template Name: About-us
                                         // }
                                     $x++;
                                     }
+                                }
                                 ?> 
                                         
                                 <!-- <div class="about__indicators-item">
@@ -90,20 +107,27 @@ Template Name: About-us
                     <div class="container container--max--xl">
                         <div class="block-teammates__title">
                         <?php 
-                        global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-title-one'];
-                       
+                        if(isset($redux_demo['about-title-one'])){
+                            echo $redux_demo['about-title-one'];
+                           }else{
+                               echo "First Section title is not found";
+                           }
                         ?>
                         </div>
                         <div class="block-teammates__subtitle">
                         <?php 
-                        global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-sub-title-one'];
+                        if(isset($redux_demo['about-sub-title-one'])){
+                            echo $redux_demo['about-sub-title-one'];
+                           }else{
+                               echo "First Section subtitle is not found";
+                           }
                         ?>
                         </div>
                              <?php 
-                                global $redux_demo;
-                                $repeaters = $redux_demo['new-repeater-field-id'];
+                                // global $redux_demo;
+                                // $repeaters = $redux_demo['new-repeater-field-id'];
+                                if(isset($redux_demo['new-image_field']) && isset($redux_demo['new-user_name'])  && isset($redux_demo['new-designation'])){
+                                  
                                 //print_r($repeaters);
                                 $photoes = $redux_demo['new-image_field'];
                                 $names = $redux_demo['new-user_name'];
@@ -134,6 +158,7 @@ Template Name: About-us
                                     // }
                                     $x++;
                                     }
+                                }
                                 ?> 
                                 </div>
                             </div>
@@ -144,41 +169,7 @@ Template Name: About-us
                        
                             <div class="owl-carousel">
                                 
-                                <!-- <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate1-206x206.jpg" alt="" /></div>
-                                    <div class="teammate__info">
-                                        <div class="teammate__name">Michael Russo</div>
-                                        <div class="teammate__position">Chief Executive Officer</div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate2-206x206.jpg" alt="" /></div>
-                                    <div class="teammate__info">
-                                        <div class="teammate__name">Samantha Smith</div>
-                                        <div class="teammate__position">Account Manager</div>
-                                    </div>
-                                </div>
-                                <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate3-206x206.jpg" alt="" /></div>
-                                    <div class="teammate__info">
-                                        <div class="teammate__name">Anthony Harris</div>
-                                        <div class="teammate__position">Finance Director</div>
-                                    </div>
-                                </div>
-                                <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate4-206x206.jpg" alt="" /></div>
-                                    <div class="teammate__info">
-                                        <div class="teammate__name">Katherine Miller</div>
-                                        <div class="teammate__position">Marketing Officer</div>
-                                    </div>
-                                </div>
-                                <div class="block-teammates__item teammate">
-                                    <div class="teammate__avatar"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/teammates/teammate5-206x206.jpg" alt="" /></div>
-                                    <div class="teammate__info">
-                                        <div class="teammate__name">Boris Gilmore</div>
-                                        <div class="teammate__position">Engineer</div>
-                                    </div>
-                                </div> -->
+                             
                             </div>
                         </div>
                     </div>
@@ -189,21 +180,26 @@ Template Name: About-us
                     <div class="container">
                         <div class="block-reviews__title">
                         <?php 
-                        global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-title-two'];
+                        if(isset($redux_demo['about-title-two'])){
+                            echo $redux_demo['about-title-two'];
+                           }else{
+                               echo "Second Section title is not found";
+                           }
                         ?>
                         </div>
                         <div class="block-reviews__subtitle">
                         <?php 
-                        global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-sub-title-two'];
+                        if(isset($redux_demo['about-sub-title-two'])){
+                            echo $redux_demo['about-sub-title-two'];
+                           }else{
+                               echo "Second Section subtitle is not found";
+                           }
                         ?>
                         </div>
                         <?php 
-                                   global $redux_demo;
-
-                               
-                                $repeaters = $redux_demo['new-testimonial-fields'];
+                                // global $redux_demo;
+                                // $repeaters = $redux_demo['new-testimonial-fields'];
+                                if(isset($redux_demo['new-user-image']) && isset($redux_demo['new-user-feedback'])  && isset($redux_demo['new-user-name'])){
 
                                  $test_img= $redux_demo['new-user-image'];
                                  $test_feedback = $redux_demo['new-user-feedback'];
@@ -245,6 +241,7 @@ Template Name: About-us
                                     // }
                                     $x++;
                                     }
+                                }
                                 ?> 
                                 
                             </div>

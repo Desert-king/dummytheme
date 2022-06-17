@@ -13,38 +13,66 @@ Template Name: Terms-page
                         <div class="document">
                             <div class="document__header">
                                 <h1 class="document__title">
-                                <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['terms-page-title']; 
+                                <?php 
+                                 if(isset($redux_demo['terms-page-title'])){
+                                    echo $redux_demo['terms-page-title'];
+                                   }else{
+                                       echo "Term page title is not found";
+                                   }
                                 ?>
                                 </h1>
                                 <div class="document__subtitle">
-                                <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['terms-page-subtitle']; 
+                                <?php  
+                                 if(isset($redux_demo['terms-page-subtitle'])){
+                                    echo $redux_demo['terms-page-subtitle'];
+                                   }else{
+                                       echo "Term page subtitle is not found";
+                                   }
                                 ?>
                                 </div>
                             </div>
                             <div class="document__content card">
                                 <div class="typography">
                                     <!-- <p> -->
-                                    <?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-description']; 
+                                    <?php  
+                                    if(isset($redux_demo['terms-description'])){
+                                        echo $redux_demo['terms-description'];
+                                       }else{
+                                           echo "Description is not found";
+                                       }
                                     ?>
                                     <!-- </p> -->
                                     <h2>
-                                    <?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-section-one-title']; 
+                                    <?php  
+                                    if(isset($redux_demo['terms-section-one-title'])){
+                                        echo $redux_demo['terms-section-one-title'];
+                                       }else{
+                                           echo "Section one title is not found";
+                                       }
                                     ?>
                                     </h2>
-                                    <?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-section-one-content']; 
+                                    <?php 
+                                    if(isset($redux_demo['terms-section-one-content'])){
+                                        echo $redux_demo['terms-section-one-content'];
+                                       }else{
+                                           echo "Section one content is not found";
+                                       } 
                                     ?>
                                     <h2>
-                                    <?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-section-two-title']; 
+                                    <?php 
+                                    if(isset($redux_demo['terms-section-two-title'])){
+                                        echo $redux_demo['terms-section-two-title'];
+                                       }else{
+                                           echo "Section two title is not found";
+                                       } 
                                     ?>
                                     </h2>
-                                    <?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-section-two-content']; 
+                                    <?php  
+                                    if(isset($redux_demo['terms-section-two-content'])){
+                                        echo $redux_demo['terms-section-two-content'];
+                                       }else{
+                                           echo "Section two content is not found";
+                                       } 
                                     ?>
                                     <!-- <p> -->
                                     
@@ -52,8 +80,11 @@ Template Name: Terms-page
                                     <p>For information about how to contact us, please visit our <a href="contact-us.html">contact page</a>. -->
                                     <!-- </p> -->
                                     <div class="document__signature">
-                                    <img src="<?php  global $redux_demo; // Same as your opt_name
-                                    echo $redux_demo['terms-author-signature']['url'];?>" />
+                                    <img src="<?php   if(isset($redux_demo['terms-author-signature']['url'])){
+                                        echo $redux_demo['terms-author-signature']['url'];
+                                       }else{
+                                           echo "Signature is not found";
+                                       } ?>" />
                                     </div>
                                 </div>
                             </div>

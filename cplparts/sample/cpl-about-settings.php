@@ -49,9 +49,9 @@ Redux::set_field( $opt_name, 'cpl-about', array(
     'title'    => esc_html__('Media w/ URL', 'your-textdomain-here'),
     'desc'     => esc_html__('Basic media uploader with disabled URL input field.', 'your-textdomain-here'),
     'subtitle' => esc_html__('Upload any media using the WordPress native uploader', 'your-textdomain-here'),
-    'default'  => array(
-        'url'=>'https://s.wordpress.org/style/images/codeispoetry.png'
-    ),
+    // 'default'  => array(
+    //     'url'=>'https://s.wordpress.org/style/images/codeispoetry.png'
+    // ),
 ));
 Redux::setSection( $opt_name,  array(
     'id'    => 'cpl-about',   
