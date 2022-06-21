@@ -206,6 +206,8 @@ Template Name: FAQ-page
                                             <?php 
                                             if(isset(($third_section_contents)[$x])){
                                                 echo($third_section_contents)[$x];
+                                               }else{
+                                                   echo "data is not found";
                                                }
                                             ?>
                                             </p>

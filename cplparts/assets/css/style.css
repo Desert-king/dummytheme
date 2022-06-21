@@ -4335,9 +4335,11 @@ ul.footer-links__list li a {
         font-size: 18px;
         margin-bottom: 12px;
     }
+    
     .faq__question-answer .typography {
         font-size: 15px;
     }
+    
     .faq__footer-subtitle {
         margin-bottom: 20px;
     }
@@ -14939,7 +14941,11 @@ ul.post-categories {
 }
 .typography p {
     width: 662px;
-    line-break: anywhere;
+    line-break:anywhere;
+}
+.faq__question-answer .typography p{
+    width: 462px!important;
+    line-break:auto !important;
 }
 ul#primary-new {
     list-style: none;

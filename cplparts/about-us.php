@@ -24,7 +24,7 @@ Template Name: About-us
                         <div class="about__card">
                             <div class="about__card-title">
                                <?php
-                              if(isset($redux_demo['about-article-title'])){
+                              if(!empty($redux_demo['about-article-title']) && isset($redux_demo['about-article-title'])){
                                      echo $redux_demo['about-article-title'];
                                     }else{
                                         echo "Title is not found";
@@ -33,7 +33,7 @@ Template Name: About-us
                            </div>
                            <div class="about__card-text">
                               <?php   
-                                 if(isset($redux_demo['about-article-content'])){
+                                 if(!empty($redux_demo['about-article-content']) && isset($redux_demo['about-article-content'])){
                                     echo $redux_demo['about-article-content'];
                                    }else{
                                        echo "Content is not found";
@@ -42,7 +42,7 @@ Template Name: About-us
                             </div>
                             <div class="about__card-author">
                             <?php 
-                                 if(isset($redux_demo['about-content-author'])){
+                                 if(!empty($redux_demo['about-content-author']) && isset($redux_demo['about-content-author'])){
                                     echo $redux_demo['about-content-author'];
                                    }else{
                                        echo "Author is not found";
@@ -50,7 +50,7 @@ Template Name: About-us
                               ?>
                               </div>
                             <div class="about__card-signature">
-                            <img src="<?php  if(isset($redux_demo['about-content-author-sign']['url'])){
+                            <img src="<?php  if(!empty($redux_demo['about-content-author-sign']) && isset($redux_demo['about-content-author-sign']['url'])){
                                     echo $redux_demo['about-content-author-sign']['url'];
                                    }else{
                                        echo "Signature is not found";
@@ -60,7 +60,7 @@ Template Name: About-us
                         <div class="about__indicators">
                             <div class="about__indicators-body">
                             <?php 
-                                if(isset($redux_demo['new-counter-number']) && isset($redux_demo['new-counter-title'])){
+                                if(!empty($redux_demo['new-counter-number']) && isset($redux_demo['new-counter-number']) && !empty($redux_demo['new-counter-title']) && isset($redux_demo['new-counter-title'])){
                                     $numbers= $redux_demo['new-counter-number'];
                                     $titles = $redux_demo['new-counter-title'];
                                   
@@ -107,7 +107,7 @@ Template Name: About-us
                     <div class="container container--max--xl">
                         <div class="block-teammates__title">
                         <?php 
-                        if(isset($redux_demo['about-title-one'])){
+                        if(!empty($redux_demo['about-title-one']) &&  isset($redux_demo['about-title-one'])){
                             echo $redux_demo['about-title-one'];
                            }else{
                                echo "First Section title is not found";
@@ -116,7 +116,7 @@ Template Name: About-us
                         </div>
                         <div class="block-teammates__subtitle">
                         <?php 
-                        if(isset($redux_demo['about-sub-title-one'])){
+                        if(!empty($redux_demo['about-sub-title-one']) &&  isset($redux_demo['about-sub-title-one'])){
                             echo $redux_demo['about-sub-title-one'];
                            }else{
                                echo "First Section subtitle is not found";
@@ -126,7 +126,7 @@ Template Name: About-us
                              <?php 
                                 // global $redux_demo;
                                 // $repeaters = $redux_demo['new-repeater-field-id'];
-                                if(isset($redux_demo['new-image_field']) && isset($redux_demo['new-user_name'])  && isset($redux_demo['new-designation'])){
+                                if(!empty($redux_demo['new-image_field']) && isset($redux_demo['new-image_field']) && !empty($redux_demo['new-user_name']) && isset($redux_demo['new-user_name'])  && !empty($redux_demo['new-designation']) &&  isset($redux_demo['new-designation'])){
                                   
                                 //print_r($repeaters);
                                 $photoes = $redux_demo['new-image_field'];
@@ -180,7 +180,7 @@ Template Name: About-us
                     <div class="container">
                         <div class="block-reviews__title">
                         <?php 
-                        if(isset($redux_demo['about-title-two'])){
+                        if(!empty($redux_demo['about-title-two']) && isset($redux_demo['about-title-two'])){
                             echo $redux_demo['about-title-two'];
                            }else{
                                echo "Second Section title is not found";
@@ -189,7 +189,7 @@ Template Name: About-us
                         </div>
                         <div class="block-reviews__subtitle">
                         <?php 
-                        if(isset($redux_demo['about-sub-title-two'])){
+                        if(!empty($redux_demo['about-sub-title-two']) && isset($redux_demo['about-sub-title-two'])){
                             echo $redux_demo['about-sub-title-two'];
                            }else{
                                echo "Second Section subtitle is not found";
@@ -199,7 +199,7 @@ Template Name: About-us
                         <?php 
                                 // global $redux_demo;
                                 // $repeaters = $redux_demo['new-testimonial-fields'];
-                                if(isset($redux_demo['new-user-image']) && isset($redux_demo['new-user-feedback'])  && isset($redux_demo['new-user-name'])){
+                                if(!empty($redux_demo['new-user-image']) && isset($redux_demo['new-user-image']) && !empty($redux_demo['new-user-feedback']) && isset($redux_demo['new-user-feedback'])  && !empty($redux_demo['new-user-name']) &&  isset($redux_demo['new-user-name'])){
 
                                  $test_img= $redux_demo['new-user-image'];
                                  $test_feedback = $redux_demo['new-user-feedback'];

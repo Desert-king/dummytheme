@@ -10,8 +10,17 @@ Template Name: Contact-page
             <div class="site__body">
                 <div class="block-map block">
                     <div class="block-map__body">
-                        <iframe src="https://www.google.com/maps?q=<?php echo rawurlencode(implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' ))); ?>&t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            <?php echo implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' )) ; ?>
+                    <?php
+                        if(!empty(Redux::getOption( 'redux_demo', 'cpl-contact-map', '' ))){
+                            ?>
+                            <iframe src="https://www.google.com/maps?q=<?php echo rawurlencode(implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' ))); ?>&t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            <?php
+                        }else {
+                            echo "No location is set yet";
+                        }
+                        ?>
+                       
+                            <?php //echo implode(",",  Redux::getOption( 'redux_demo', 'cpl-contact-map', '' )) ; ?>
                     </div>
                     <!-- ################## -->
                     <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=firoz%20tower&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google html code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div> -->
@@ -52,9 +61,14 @@ Template Name: Contact-page
                                             <h4 class="contact-us__header card-title">Our Address</h4>
                                             <div class="contact-us__address">
                                                <?php
-                                               global $redux_demo;
+                                               //global $redux_demo;
 
-                                               the_content();
+                                               if(!empty(the_content())){
+                                                 echo the_content();
+                                               }else{
+                                                   echo "Address is not found";
+                                               }
+                                                  
 
                                             //    echo  $redux_demo['cpl-editor-text'];
                                                ?>
@@ -89,7 +103,13 @@ Template Name: Contact-page
                                                 <button type="submit" class="btn btn-primary">Send Message</button>
                                             </form> -->
                                             <?php //echo do_shortcode('[contact-form-7 id="165" title="Contact form 1"]');?>
-                                            <?php echo do_shortcode($redux_demo['cpl-editor-text']);?>
+                                            <?php 
+                                            if(!empty($redux_demo['cpl-editor-text'])){
+                                                echo do_shortcode($redux_demo['cpl-editor-text']);
+                                            }else{
+                                                echo "Contact form is not found";
+                                            }
+                                            ?>
                                             
                                         <!-- </div> -->
                                     </div>

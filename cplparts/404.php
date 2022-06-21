@@ -12,26 +12,29 @@ Template Name: 404-page
                         <div class="not-found">
                             <div class="not-found__404">
                             <?php  
-                                 global $redux_demo; // Same as your opt_name
-                                 if(isset($redux_demo['cpl-404-warning'])){
+                                 if(!empty($redux_demo['cpl-404-warning']) && isset($redux_demo['cpl-404-warning'])){
                                     echo $redux_demo['cpl-404-warning']; 
-                                 }
+                                 }else{
+                                    echo "404 warning is not found";
+                                }
                             ?>
                             </div>
                             <div class="not-found__content">
                                 <h1 class="not-found__title">
-                                <?php  
-                                global $redux_demo; // Same as your opt_name
-                                 if(isset($redux_demo['cpl-404-title'])){
+                                <?php
+                                 if(!empty($redux_demo['cpl-404-title']) && isset($redux_demo['cpl-404-title'])){
                                     echo $redux_demo['cpl-404-title']; 
-                                 }
+                                 }else{
+                                    echo "404 title is not found";
+                                }
                                  ?>
                                 </h1>
                                 <p class="not-found__text">
                                    <?php 
-                                    global $redux_demo; // Same as your opt_name
-                                    if(isset($redux_demo['cpl-404-first-content'])){
+                                    if(!empty($redux_demo['cpl-404-first-content']) && isset($redux_demo['cpl-404-first-content'])){
                                        echo $redux_demo['cpl-404-first-content']; 
+                                    }else{
+                                        echo "First content is not found";
                                     }
                                    ?>
                                 </p>
@@ -47,9 +50,10 @@ Template Name: 404-page
                                 </form> -->
                                 <p class="not-found__text">
                                 <?php 
-                                    global $redux_demo; // Same as your opt_name
-                                    if(isset($redux_demo['cpl-404-second-content'])){
+                                    if(!empty($redux_demo['cpl-404-second-content']) && isset($redux_demo['cpl-404-second-content'])){
                                        echo $redux_demo['cpl-404-second-content']; 
+                                    }else{
+                                        echo "Second-content is not found";
                                     }
                                    ?>
                                 </p>
