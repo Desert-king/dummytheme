@@ -13,23 +13,32 @@ Template Name: FAQ-page
                         <div class="faq__header">
                            <h1 class="faq__header-title">
                               <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['faq-page-title']; 
+                                 if(!empty($redux_demo['faq-page-title'])){
+                                    echo $redux_demo['faq-page-title'];
+                                 }else{
+                                   echo "No page title is not found";
+                                 }
                               ?>
                           </h1>
                         </div>
                         <div class="faq__section">
                             <h3 class="faq__section-title">
                             <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['faq-section-one-title']; 
+                                 if(!empty($redux_demo['faq-section-one-title'])){
+                                    echo $redux_demo['faq-section-one-title'];
+                                 }else{
+                                   echo "First section title is not found";
+                                 } 
                             ?>
                             </h3>
                             <div class="faq__section-body">
                             <?php 
-                                global $redux_demo;
-                                $repeaters = $redux_demo['new-faq-first-section-fields'];
+                                // global $redux_demo;
+                                // $repeaters = $redux_demo['new-faq-first-section-fields'];
+                                if(!empty($redux_demo['new-faq-first-section-title']) && isset($redux_demo['new-faq-first-section-title']) && !empty($redux_demo['new-faq-first-section-title']) && isset($redux_demo['new-faq-first-section-title'])){
                                 //print_r($repeaters);
                                 $first_section_titles= $redux_demo['new-faq-first-section-title'];
-                                $first_section_contents = $redux_demo['new-faq-first-section-content'];
+                                $first_section_contents = $redux_demo['new-faq-first-section-title'];
                                 // print_r($photoes[1]['url']);
                                 // print_r($names[1]);
                                 ?>
@@ -43,18 +52,25 @@ Template Name: FAQ-page
                                 ?>
                                 <div class="faq__question">
                                     <h5 class="faq__question-title"><?php 
-                                    if(isset(($first_section_titles)[$x])){
-                                        echo($first_section_titles)[$x];
-                                     }
-                                    ?></h5>
+                                    // if(!empty(($first_section_titles)[$x])  &&  isset(($first_section_titles)[$x])){
+                                    //     echo($first_section_titles)[$x];
+                                    //  }else{
+                                    //      echo "Question is not found";
+                                    //  }
+                                    ?>
+                                    <?php echo($first_section_titles)[$x]; ?>
+                                    </h5>
                                     <div class="faq__question-answer">
                                         <div class="typography">
                                             <p>
                                             <?php 
-                                            if(isset(($first_section_contents)[$x])){
-                                                echo($first_section_contents)[$x];
-                                             }
+                                            // if(!empty(($first_section_contents)[$x])  &&  isset(($first_section_titles)[$x])){
+                                            //     echo($first_section_contents)[$x];
+                                            //  }else{
+                                            //     echo "Answer is not found";
+                                            // }
                                             ?>
+                                            <?php echo($first_section_contents)[$x]; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -63,52 +79,25 @@ Template Name: FAQ-page
                                         // }
                                     $x++;
                                     }
+                                }
                                 ?>
-                                <!-- <div class="faq__question">
-                                    <h5 class="faq__question-title">Do you ship internationally?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="faq__question">
-                                    <h5 class="faq__question-title">How might I obtain an estimated date of delivery?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="faq__question">
-                                    <h5 class="faq__question-title">Can I split my order to ship to different locations?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                         <div class="faq__section">
                             <h3 class="faq__section-title">
                             <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['faq-section-two-title']; 
+                                 if(!empty($redux_demo['faq-section-two-title'])){
+                                    echo $redux_demo['faq-section-two-title'];
+                                 }else{
+                                   echo "Second section title is not found";
+                                 } 
                             ?>
                             </h3>
                             <div class="faq__section-body">
                             <?php 
-                                global $redux_demo;
-                                $repeaters = $redux_demo['new-faq-second-section-fields'];
+                                // global $redux_demo;
+                                // $repeaters = $redux_demo['new-faq-second-section-fields'];
+                                if(!empty($redux_demo['new-faq-second-section-title']) && isset($redux_demo['new-faq-second-section-title']) && !empty($redux_demo['new-faq-second-section-content']) && isset($redux_demo['new-faq-second-section-content'])){
                                 //print_r($repeaters);
                                 $second_section_titles= $redux_demo['new-faq-second-section-title'];
                                 $second_section_contents = $redux_demo['new-faq-second-section-content'];
@@ -125,18 +114,25 @@ Template Name: FAQ-page
                                 ?>
                                 <div class="faq__question">
                                     <h5 class="faq__question-title"><?php
-                                    if(isset(($second_section_titles)[$x])){
-                                       echo($second_section_titles)[$x];
-                                    }
-                                    ?></h5>
+                                    // if(!empty(($second_section_titles)[$x])  &&  isset(($second_section_titles)[$x])){
+                                    //    echo($second_section_titles)[$x];
+                                    // }else{
+                                    //     echo "Question is not found";
+                                    // }
+                                    ?>
+                                     <?php echo($second_section_titles)[$x]; ?>
+                                     </h5>
                                     <div class="faq__question-answer">
                                         <div class="typography">
                                             <p>
                                             <?php 
-                                            if(isset(($second_section_contents)[$x])){
-                                             echo($second_section_contents)[$x];
-                                            }
+                                            // if(!empty(($second_section_contents)[$x])  &&  isset(($second_section_titles)[$x])){
+                                            //  echo($second_section_contents)[$x];
+                                            // }else{
+                                            //     echo "Answer is not found";
+                                            // }
                                             ?>
+                                             <?php echo($second_section_contents)[$x]; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -145,41 +141,25 @@ Template Name: FAQ-page
                                         // }
                                     $x++;
                                     }
+                                }
                                 ?>
-                                <!-- <div class="faq__question">
-                                    <h5 class="faq__question-title">What payments methods are available?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="faq__question">
-                                    <h5 class="faq__question-title">Can I split my payment?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                         <div class="faq__section">
                             <h3 class="faq__section-title">
                             <?php  global $redux_demo; // Same as your opt_name
-                                 echo $redux_demo['faq-section-three-title']; 
+                                 if(!empty($redux_demo['faq-section-three-title'])){
+                                    echo $redux_demo['faq-section-three-title'];
+                                 }else{
+                                   echo "Third section title is not found";
+                                 } 
                             ?>
                             </h3>
                             <div class="faq__section-body">
                             <?php 
-                                global $redux_demo;
-                                $repeaters = $redux_demo['new-faq-third-section-fields'];
+                                // global $redux_demo;
+                                // $repeaters = $redux_demo['new-faq-third-section-fields'];
+                                if(!empty($redux_demo['new-faq-third-section-title']) && isset($redux_demo['new-faq-third-section-title']) && !empty($redux_demo['new-faq-third-section-content']) && isset($redux_demo['new-faq-third-section-content'])){
                                 //print_r($repeaters);
                                 $third_section_titles= $redux_demo['new-faq-third-section-title'];
                                 $third_section_contents = $redux_demo['new-faq-third-section-content'];
@@ -196,20 +176,26 @@ Template Name: FAQ-page
                                 ?>
                                 <div class="faq__question">
                                     <h5 class="faq__question-title"><?php 
-                                   if(isset(($third_section_titles)[$x])){
-                                    echo($third_section_titles)[$x];
-                                   }
-                                    ?></h5>
+                                //    if(!empty(($third_section_titles)[$x])  &&  isset(($third_section_titles)[$x])){
+                                //     echo($third_section_titles)[$x];
+                                //    }else{
+                                //     echo "Question is not found";
+                                //    }
+                                    
+                                    ?>
+                                    <?php echo($third_section_titles)[$x]; ?>
+                                    </h5>
                                     <div class="faq__question-answer">
                                         <div class="typography">
                                             <p>
                                             <?php 
-                                            if(isset(($third_section_contents)[$x])){
-                                                echo($third_section_contents)[$x];
-                                               }else{
-                                                   echo "data is not found";
-                                               }
+                                            // if(!empty(($third_section_contents)[$x])  &&  isset(($third_section_titles)[$x])){
+                                            //     echo($third_section_contents)[$x];
+                                            //    }else{
+                                            //     echo "Answer is not found";
+                                            // }
                                             ?>
+                                            <?php echo($third_section_contents)[$x]; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -218,29 +204,8 @@ Template Name: FAQ-page
                                         // }
                                     $x++;
                                     }
+                                }
                                 ?>
-                                <!-- <div class="faq__question">
-                                    <h5 class="faq__question-title">How do I return or exchange an item?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="faq__question">
-                                    <h5 class="faq__question-title">How do I cancel an order?</h5>
-                                    <div class="faq__question-answer">
-                                        <div class="typography">
-                                            <p>
-                                                Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                         <div class="faq__footer">
@@ -256,3 +221,4 @@ Template Name: FAQ-page
             </div>
             <!-- site__body / end --><!-- site__footer -->
             <?php get_footer(); ?>
+            

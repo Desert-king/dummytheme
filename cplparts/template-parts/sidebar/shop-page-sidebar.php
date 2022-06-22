@@ -94,6 +94,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
 
                         ?>
                         <?php echo do_shortcode('[product_attributes]'); ?> -->
+                        
                         <!-- new code -->
                        
                         <div class="widget-filters__list" style="list-style:inline-block;">
@@ -210,132 +211,228 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                             }
                                             ?>
                                            </ul>
+                                       
+                                           
+                                           
+                                            
+
+                                           
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div  name="country" class="widget-filters__item" aria-label="Vehicle Make">
-                    
-                    <div class="filter filter--opened" data-collapse-item>
-                        <button type="button" class="filter__title" data-collapse-trigger="">Country
-                          <span class="filter__arrow">
-                          <svg width="12px" height="7px">
-                              <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
-                          </svg>
-                          </span>
-                          </button>
-                        <div class="filter__body" data-collapse-content>
-                            <div class="filter__container">
-                                <div class="filter-categories">
-                                    <input type="hidden" name="country" value="<?php if(isset($_GET['country'])){ echo $_GET['country'];}
-                                   ?>" id="country">
+                        <?php  ?>
+                        <!-- dynamic attribute code start-->
+                        <?php 
+                        add_shortcode( 'product_attributes_new', 'get_product_attributes_new' );
+                        function get_product_attributes_new() {
+                            $output = '<ul style="list-style:none;">';
+                            foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                ?>
+                                 
+                                <?php
+                                $taxonomy = 'pa_' . $attribute->attribute_name;
+                                $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                        
+                                $output .= '<li><strong>' . $attribute->attribute_label . ':</strong> ' . implode( ', ', $term_names ) . '</li>';
+                            }
+                            return $output . '</ul>';
+                        }
+                        ?>
+                         
+                        <?php //echo do_shortcode('[product_attributes_new]'); ?>
+                        <!-- test -->
+                        <?php 
+                        add_shortcode( 'product_attributes_news', 'get_product_attributes_news' );
+                        function get_product_attributes_news() {
+                            //$output = '<div  name="" class="widget-filters__item" aria-label="Vehicle Make">';
+                            foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                ?>
                                
-                                    <ul class="filter-categories__list">
-                                        <?php 
-                                            if(taxonomy_exists( 'pa_country' )){
-                                            $term_country = get_terms( array( 'taxonomy' => 'pa_country', 'fields' => 'names' ) );
-                                            foreach ($term_country as $country){
-                                                    ?>
-                                                        <li class="filter-categories__item filter-categories__item--child">
-                                                            <a href="javascript:void(0)" onclick="selectCategory('country', '<?php echo $country; ?>')"><?php echo $country; ?></a>
-                                                        </li>
-
-
-                                                    <?php
-                                                }
-                                            
-                                            }else{
-                                                echo "not found"; 
-                                            }
-                                        ?>
-                                    </ul>
+                                <?php
+                                $term_main = $attribute->attribute_name;
+        
+                                $taxonomy = 'pa_' . $attribute->attribute_name;
+                                $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                ?>
+                                <div  name="<?php echo $attribute->attribute_name; ?>" class="widget-filters__item" aria-label="Vehicle Make">
+                                <div class="filter filter--opened" data-collapse-item>
+                                <button type="button" class="filter__title" data-collapse-trigger=""><?php echo $attribute->attribute_label; ?>
+                                 
+                                  <span class="filter__arrow">
+                                  <svg width="12px" height="7px">
+                                      <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
+                                  </svg>
+                                  </span>
+                                  </button>
+                                <?php
+                                //$output .= '<li><strong>' . $attribute->attribute_label . ':</strong> ' . implode( ', ', $term_names ) . '</li>';
+                                ?>
+                                <!-- ################ -->
+                                <div class="filter__body" data-collapse-content>
+                                    <div class="filter__container">
+                                        <div class="filter-categories">
+                                            <h1><?php echo $term_main; ?></h1>
+                                            <input type="hidden" name="<?php echo $term_main; ?>" value="<?php if(isset($_GET['$term_main'])){ echo $_GET['$term_main'];}
+                                           ?>" id="<?php echo $term_main; ?>">
+                                       
+                                            <ul class="filter-categories__list">
+                                                <?php 
+                                                    if(taxonomy_exists( $taxonomy )){
+                                                    $term_country = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                    foreach ($term_country as $country){
+                                                            ?>
+                                                                <li class="filter-categories__item filter-categories__item--child">
+                                                                    <a href="javascript:void(0)" onclick="selectCategory('country', '<?php echo $country; ?>')"><?php echo $country; ?></a>
+                                                                </li>
+        
+        
+                                                            <?php
+                                                        }
+                                                    
+                                                    }else{
+                                                        echo "not found"; 
+                                                    }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ########### -->
+                                </div>
+                                </div>
+                                <?php
+                            }
+                            //return $output . '</div>';
+                            
+                        }
+                        ?>
+                         
+                        <?php echo do_shortcode('[product_attributes_news]'); ?>
+                        <!-- dynamic attribute code end-->
+                        <div  name="color" class="widget-filters__item" aria-label="Vehicle Make">
+                    
+                            <div class="filter filter--opened" data-collapse-item>
+                                <button type="button" class="filter__title" data-collapse-trigger="">Color
+                                  <span class="filter__arrow">
+                                  <svg width="12px" height="7px">
+                                      <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
+                                  </svg>
+                                  </span>
+                                  </button>
+                                <div class="filter__body" data-collapse-content>
+                                    <div class="filter__container">
+                                        <div class="filter-categories">
+                                            <input type="hidden" name="color" value="<?php if(isset($_GET['color'])){ echo $_GET['color'];}
+                                           ?>" id="color">
+                                       
+                                            <ul class="filter-categories__list">
+                                                <?php 
+                                                    if(taxonomy_exists( 'pa_color' )){
+                                                    $term_color = get_terms( array( 'taxonomy' => 'pa_color', 'fields' => 'names' ) );
+                                                    foreach ($term_color as $color){
+                                                            ?>
+                                                                <li class="filter-categories__item filter-categories__item--child">
+                                                                    <a href="javascript:void(0)" onclick="selectCategory('color', '<?php echo $color; ?>')"><?php echo $color; ?></a>
+                                                                </li>
+        
+        
+                                                            <?php
+                                                        }
+                                                    
+                                                    }else{
+                                                        echo "not found"; 
+                                                    }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div  name="brand" class="widget-filters__item" aria-label="Vehicle Make">
-            
-                    <div class="filter filter--opened" data-collapse-item>
-                        <button type="button" class="filter__title" data-collapse-trigger="">Brand
-                          <span class="filter__arrow">
-                          <svg width="12px" height="7px">
-                              <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
-                          </svg>
-                          </span>
-                          </button>
-                        <div class="filter__body" data-collapse-content>
-                            <div class="filter__container">
-                                <div class="filter-categories">
-                                <input type="hidden" name="brand" value="<?php  if(isset($_GET['brand'])){ echo $_GET['brand'];}
-                                 ?>" id="brand">
-                                    <ul class="filter-categories__list">
-                                        <?php 
-                                            if(taxonomy_exists( 'pa_brand' )){
-                                            $term_brand = get_terms( array( 'taxonomy' => 'pa_brand', 'fields' => 'names' ) );
-                                            foreach ($term_brand as $brand){
-                                                    ?>
-                                                        <li class="filter-categories__item filter-categories__item--child">
-                                                            <a href="javascript:void(0)" onclick="selectCategory('brand', '<?php echo $brand; ?>')"><?php echo $brand; ?></a>
-                                                        </li>
-
-
-                                                    <?php
-                                                }
-                                            
-                                            }else{
-                                                echo "not found"; 
-                                            }
-                                        ?>
-                                    </ul>
+                        <div  name="brand" class="widget-filters__item" aria-label="Vehicle Make">
+                    
+                            <div class="filter filter--opened" data-collapse-item>
+                                <button type="button" class="filter__title" data-collapse-trigger="">Brand
+                                  <span class="filter__arrow">
+                                  <svg width="12px" height="7px">
+                                      <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
+                                  </svg>
+                                  </span>
+                                  </button>
+                                <div class="filter__body" data-collapse-content>
+                                    <div class="filter__container">
+                                        <div class="filter-categories">
+                                        <input type="hidden" name="brand" value="<?php  if(isset($_GET['brand'])){ echo $_GET['brand'];}
+                                         ?>" id="brand">
+                                            <ul class="filter-categories__list">
+                                                <?php 
+                                                    if(taxonomy_exists( 'pa_brand' )){
+                                                    $term_brand = get_terms( array( 'taxonomy' => 'pa_brand', 'fields' => 'names' ) );
+                                                    foreach ($term_brand as $brand){
+                                                            ?>
+                                                                <li class="filter-categories__item filter-categories__item--child">
+                                                                    <a href="javascript:void(0)" onclick="selectCategory('brand', '<?php echo $brand; ?>')"><?php echo $brand; ?></a>
+                                                                </li>
+        
+        
+                                                            <?php
+                                                        }
+                                                    
+                                                    }else{
+                                                        echo "not found"; 
+                                                    }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div  name="material" class="widget-filters__item" aria-label="Vehicle Make">
-            
-                    <div class="filter filter--opened" data-collapse-item>
-                        <button type="button" class="filter__title" data-collapse-trigger="">Material
-                          <span class="filter__arrow">
-                          <svg width="12px" height="7px">
-                              <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
-                          </svg>
-                          </span>
-                          </button>
-                        <div class="filter__body" data-collapse-content>
-                            <div class="filter__container">
-                                <div class="filter-categories">
-                                
-                          
-                                <input type="hidden" name="material" value="<?php if(isset($_GET['material'])){ 
-                                    echo $_GET['material'];  }
-                                ?>" id="material">
-                                    <ul class="filter-categories__list">
-                                        <?php 
-                                            if(taxonomy_exists( 'pa_material' )){
-                                            $term_material = get_terms( array( 'taxonomy' => 'pa_material', 'fields' => 'names' ) );
-                                            foreach ($term_material as $material){
-                                                    ?>
-                                                        <li class="filter-categories__item filter-categories__item--child">
-                                                            <a href="javascript:void(0)" onclick="selectCategory('material', '<?php echo $material; ?>')"><?php echo $material; ?></a>
-                                                        </li>
-
-
-                                                    <?php
-                                                }
-                                            
-                                            }else{
-                                                echo "not found"; 
-                                            }
-                                        ?>
-                                    </ul>
+                        
+                        <div  name="material" class="widget-filters__item" aria-label="Vehicle Make">
+                    
+                            <div class="filter filter--opened" data-collapse-item>
+                                <button type="button" class="filter__title" data-collapse-trigger="">Material
+                                  <span class="filter__arrow">
+                                  <svg width="12px" height="7px">
+                                      <path d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"></path>
+                                  </svg>
+                                  </span>
+                                  </button>
+                                <div class="filter__body" data-collapse-content>
+                                    <div class="filter__container">
+                                        <div class="filter-categories">
+                                        
+                                  
+                                        <input type="hidden" name="material" value="<?php if(isset($_GET['material'])){ 
+                                            echo $_GET['material'];  }
+                                        ?>" id="material">
+                                            <ul class="filter-categories__list">
+                                                <?php 
+                                                    if(taxonomy_exists( 'pa_material' )){
+                                                    $term_material = get_terms( array( 'taxonomy' => 'pa_material', 'fields' => 'names' ) );
+                                                    foreach ($term_material as $material){
+                                                            ?>
+                                                                <li class="filter-categories__item filter-categories__item--child">
+                                                                    <a href="javascript:void(0)" onclick="selectCategory('material', '<?php echo $material; ?>')"><?php echo $material; ?></a>
+                                                                </li>
+        
+        
+                                                            <?php
+                                                        }
+                                                    
+                                                    }else{
+                                                        echo "not found"; 
+                                                    }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
                         <div class="widget-filters__actions d-flex"><button class="btn btn-primary btn-sm"  type="submit">Filter</button> <button class="btn btn-secondary btn-sm">Reset</button></div>
                         </form>
                         </div>
