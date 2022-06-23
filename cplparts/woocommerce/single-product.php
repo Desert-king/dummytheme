@@ -161,17 +161,19 @@ get_header( 'shop' ); ?>
                                                     </div>
                                                     <div class="product__meta">
                                                         <table>
+                                                        <?php
+                                                           global $product;
+                                                           $sku = $product->get_sku();
+                                                           if (!empty($sku) && isset($sku)) {
+                                                            ?>
                                                             <tr>
                                                                 <th>SKU</th>
                                                                 <td><?php 
-                                                                global $product;
-                                                                $sku = $product->get_sku();
-                                                                if (isset($sku)) {
                                                                     echo $sku;
-                                                                  }
                                                                 ?>
                                                                 </td>
                                                             </tr>
+                                                            <?php } ?>
                                                             
                                                             <tr>
                                                             <?php $taxonomy = 'pa_color'; // Here set the product attribute taxonomy

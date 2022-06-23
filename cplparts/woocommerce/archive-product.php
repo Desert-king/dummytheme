@@ -1,4 +1,3 @@
-
 <?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
@@ -16,9 +15,14 @@
  * @version 3.4.0
  */
 
+
+
 defined( 'ABSPATH' ) || exit;
+//require_once (dirname(__FILE__) . '../../template-parts/sidebar/shop-page-sidebar.php');
+//include '../template-parts/sidebar/shop-page-sidebar.php';
 
 get_header( 'shop' );
+
 
 /**
  * Hook: woocommerce_before_main_content.
@@ -31,6 +35,7 @@ do_action( 'woocommerce_before_main_content' );
 
 
 ?>
+
 <!-- <header class="woocommerce-products-header"> -->
 	<?php //if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<!-- <h1 class="woocommerce-products-header__title page-title"> -->
@@ -118,7 +123,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 								<div class="view-options__label">Active Filters</div>
 								<div class="applied-filters">
 									<ul class="applied-filters__list">
-										<li class="applied-filters__item">
+										<!-- <li class="applied-filters__item">
 										   <?php if(isset($_GET['category'])){
 												?>
 												<a href="#" class="applied-filters__button applied-filters__button--filter">
@@ -127,8 +132,26 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											</a>
 											<?php
                                             } ?>
-										</li>
-										<li class="applied-filters__item">
+										</li> -->
+										<?php 
+										$Query = array_filter($_GET);
+										foreach ($Query as $key => $tag){ ?>
+											<li class="applied-filters__item">
+											<?php if(isset($_GET[$key])){
+												 ?>
+												 <a href="#" class="applied-filters__button applied-filters__button--filter">
+												 <?php 
+												 echo "$key: $tag" ;?> 
+											 </a>
+											 <?php
+											 } ?>
+										 </li>
+										 <?php
+										}
+										?>
+
+										
+										<!-- <li class="applied-filters__item">
 										   <?php if(isset($_GET['country'])){
 												?>
 												<a href="#" class="applied-filters__button applied-filters__button--filter">
@@ -138,7 +161,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											<?php
                                             } ?>
 										</li>
-										<li class="applied-filters__item">
+										 <li class="applied-filters__item">
 										   <?php if(isset($_GET['brand'])){
 												?>
 												<a href="#" class="applied-filters__button applied-filters__button--filter">
@@ -177,7 +200,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											</a>
 											<?php
                                             } ?>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -196,57 +219,84 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 						<div class="products-list__content">
 						     <!-- search from home page -->
 							 <?php  
+							    //$term_main = $attribute->attribute_name;
 								$tax_query = array( 
 									'relation' => 'OR',
 								);
-								if(isset($_GET['category']) && !empty($_GET['category'])){
+								
+								
+								foreach ($Query as $key => $item ){
 									$tax_query[] =  array(
-										'taxonomy' => 'product_cat',
-									    'field' => 'slug',
-										'terms'           =>  array($_GET['category']),
-										'operator'        => 'IN',
-									);
+												'taxonomy' => 'pa_'.$key,
+											    'field' => 'slug',
+												'terms'           =>  array($item),
+												'operator'        => 'IN',
+											);
 								}
-								if(isset($_GET['color']) && !empty($_GET['color'])){
-									$tax_query[] =  array(
-										'taxonomy'        => 'pa_color',
-										'field'           => 'slug',
-										'terms'           =>  array($_GET['color']),
-										'operator'        => 'IN',
-									);
-								}
-								if(isset($_GET['brand']) && !empty($_GET['brand'])){
-									$tax_query[] =  array(
-										'taxonomy'        => 'pa_brand',
-										'field'           => 'slug',
-										'terms'           =>  array($_GET['brand']),
-										'operator'        => 'IN',
-									);
-								}
-								if(isset($_GET['material']) && !empty($_GET['material'])){
-									$tax_query[] =  array(
-										'taxonomy'        => 'pa_material',
-										'field'           => 'slug',
-										'terms'           =>  array($_GET['material']),
-										'operator'        => 'IN',
-									);
-								}
-								if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
-									$tax_query[] =  array(
-										'taxonomy'        => 'pa_vehicle',
-										'field'           => 'slug',
-										'terms'           =>  array($_GET['vehicle']),
-										'operator'        => 'IN',
-									);
-								}
-								if(isset($_GET['country']) && !empty($_GET['country'])){
-										$tax_query[] =  array(
-											'taxonomy'        => 'pa_country',
-											'field'           => 'slug',
-											'terms'           =>  array($_GET['country']),
-											'operator'        => 'IN',
-										);
-								}
+								// if(isset($_GET['category']) && !empty($_GET['category'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy' => 'product_cat',
+								// 	    'field' => 'slug',
+								// 		'terms'           =>  array($_GET['category']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// if(isset($_GET['color']) && !empty($_GET['color'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy'        => 'pa_color',
+								// 		'field'           => 'slug',
+								// 		'terms'           =>  array($_GET['color']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// // if(isset($_GET[$term_main]) && !empty($_GET[$term_main])){
+								// // 	$tax_query[] =  array(
+								// // 		'taxonomy'        => $current_taxonomy,
+								// // 		'field'           => 'slug',
+								// // 		'terms'           =>  array($_GET[$term_main]),
+								// // 		'operator'        => 'IN',
+								// // 	);
+								// // }
+								// if(isset($_GET['cpl']) && !empty($_GET['cpl'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy'        => 'pa_cpl',
+								// 		'field'           => 'slug',
+								// 		'terms'           =>  array($_GET['cpl']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// if(isset($_GET['brand']) && !empty($_GET['brand'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy'        => 'pa_brand',
+								// 		'field'           => 'slug',
+								// 		'terms'           =>  array($_GET['brand']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// if(isset($_GET['material']) && !empty($_GET['material'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy'        => 'pa_material',
+								// 		'field'           => 'slug',
+								// 		'terms'           =>  array($_GET['material']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
+								// 	$tax_query[] =  array(
+								// 		'taxonomy'        => 'pa_vehicle',
+								// 		'field'           => 'slug',
+								// 		'terms'           =>  array($_GET['vehicle']),
+								// 		'operator'        => 'IN',
+								// 	);
+								// }
+								// if(isset($_GET['country']) && !empty($_GET['country'])){
+								// 		$tax_query[] =  array(
+								// 			'taxonomy'        => 'pa_country',
+								// 			'field'           => 'slug',
+								// 			'terms'           =>  array($_GET['country']),
+								// 			'operator'        => 'IN',
+								// 		);
+								// }
 								
 										
 							// $products = new WP_Query( array(
@@ -271,10 +321,12 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 									if(isset($_GET['page'])&& $_GET['page']>0){
 										$paged = $_GET['page'];
 									}
-
+									// echo "<pre>";
+                                    //  print_r($tax_query);
+									//  echo "</pre>";
 									$args = [
 										'post_type'      => 'product',
-										'posts_per_page' => 3,
+										'posts_per_page' => 8,
 										'paged'          => $paged,
 										'order'          => 'DESC',
 										'post_status'    => 'publish',
@@ -420,7 +472,6 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 								// 	'current_page' => $paged,
 								// ] );
 								
-								
 							else:
 								?>
 								<div class="products-list__item">
@@ -433,30 +484,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 							?>
 							<?php //echo("farhana");?>
 							 <?php
-                                
-								// pagination git
-								
-								$total_pages = $the_query->max_num_pages;
-								$page_data = array(
-									'total_pages'  => $total_pages,
-									'current_page' =>  max( 1, $paged ),
-								);
-								// var_dump($page_data);
-								// var_dump($total_pages);
-								// var_dump($total_pages);
-								// print_r($paged);
-								// echo paginate_links( [
-								// 	'base'      => get_pagenum_link( 1 ) . '%_%',
-								// 	'format'    => 'page/%#%',
-								// 	'current'   => $paged,
-								// 	'total'     => $total_pages,
-								// 	'prev_text' => __( '« Prev', 'advanced-woocommerce-theme' ),
-								// 	'next_text' => __( 'Next »', 'advanced-woocommerce-theme' ),
-								// ] );
-								get_template_part( 'template-parts/pagination/pagination', null, $page_data);
-
-								//get_template_part( 'woocommerce\loop\pagination', null, $page_data);
-								
+								// $total_pages = $the_query->max_num_pages;
+								// $page_data = array(
+								// 	'total_pages'  => $total_pages,
+								// 	'current_page' =>  max( 1, $paged ),
+								// );
+								// get_template_part( 'template-parts/pagination/pagination', null, $page_data);
 								?>
 						</div>
 					</div>
@@ -472,8 +505,17 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 					 
 					<div class="products-view__pagination">
 							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<li class="page-item disabled">
+								<ul class="pagination shop-pagination">
+								<?php
+								// pagination git
+								$total_pages = $the_query->max_num_pages;
+								$page_data = array(
+									'total_pages'  => $total_pages,
+									'current_page' =>  max( 1, $paged ),
+								);
+								get_template_part( 'template-parts/pagination/pagination', null, $page_data);
+								?>
+									<!-- <li class="page-item disabled">
 										<a class="page-link page-link--with-arrow" href="#" aria-label="Previous">
 											<span class="page-link__arrow page-link__arrow--left" aria-hidden="true">
 												<svg width="7" height="11">
@@ -501,7 +543,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 												</svg>
 											</span>
 										</a>
-									</li>
+									</li> -->
 								</ul>
 							</nav>
 							<div class="products-view__pagination-legend shop_product_count"><?php woocommerce_result_count(); ?></div>

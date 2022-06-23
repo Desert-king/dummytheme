@@ -273,18 +273,20 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                 <div class="filter__body" data-collapse-content>
                                     <div class="filter__container">
                                         <div class="filter-categories">
-                                            <h1><?php echo $term_main; ?></h1>
-                                            <input type="hidden" name="<?php echo $term_main; ?>" value="<?php if(isset($_GET['$term_main'])){ echo $_GET['$term_main'];}
+                                            <h1><?php //echo $term_main; ?></h1>
+                                            <input type="hidden" name="<?php echo $term_main; ?>" value="<?php if(isset($_GET[$term_main])){ echo $_GET[$term_main];}
                                            ?>" id="<?php echo $term_main; ?>">
                                        
                                             <ul class="filter-categories__list">
                                                 <?php 
-                                                    if(taxonomy_exists( $taxonomy )){
-                                                    $term_country = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                    $current_taxonomy = 'pa_' . $term_main;
+                                                    //echo $current_taxonomy;
+                                                    if(taxonomy_exists( $current_taxonomy )){
+                                                    $term_country = get_terms( array( 'taxonomy' => $current_taxonomy , 'fields' => 'names' ) );
                                                     foreach ($term_country as $country){
                                                             ?>
                                                                 <li class="filter-categories__item filter-categories__item--child">
-                                                                    <a href="javascript:void(0)" onclick="selectCategory('country', '<?php echo $country; ?>')"><?php echo $country; ?></a>
+                                                                    <a href="javascript:void(0)" onclick="selectCategory('<?php echo $term_main; ?>', '<?php echo $country; ?>')"><?php echo $country; ?></a>
                                                                 </li>
         
         
@@ -311,7 +313,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                          
                         <?php echo do_shortcode('[product_attributes_news]'); ?>
                         <!-- dynamic attribute code end-->
-                        <div  name="color" class="widget-filters__item" aria-label="Vehicle Make">
+                        <!-- <div  name="color" class="widget-filters__item" aria-label="Vehicle Make">
                     
                             <div class="filter filter--opened" data-collapse-item>
                                 <button type="button" class="filter__title" data-collapse-trigger="">Color
@@ -350,8 +352,8 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div  name="brand" class="widget-filters__item" aria-label="Vehicle Make">
+                        </div> -->
+                        <!-- <div  name="brand" class="widget-filters__item" aria-label="Vehicle Make">
                     
                             <div class="filter filter--opened" data-collapse-item>
                                 <button type="button" class="filter__title" data-collapse-trigger="">Brand
@@ -432,7 +434,7 @@ C11.2,9.8,11.2,10.4,10.8,10.8z"
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="widget-filters__actions d-flex"><button class="btn btn-primary btn-sm"  type="submit">Filter</button> <button class="btn btn-secondary btn-sm">Reset</button></div>
                         </form>
                         </div>
