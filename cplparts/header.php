@@ -220,17 +220,30 @@
                     <div class="header__topbar-start-bg"></div>
                    
                     <div class="header__topbar-start">
+                    <div class="topbar topbar--spaceship-start">
                         <?php
-                            wp_nav_menu(
+                            // wp_nav_menu(
+                            //     array(
+                            //         'theme_location' => 'top-menu-start',
+                            //         'container' => 'div', // parent container 
+                            //         'container_class' => 'topbar topbar--spaceship-start', //parent container ID
+                            //         'depth' => 1,
+                            //         'echo' => 'false'
+                            //     )
+                            // );
+                            wp_nav_menu(    
                                 array(
                                     'theme_location' => 'top-menu-start',
-                                    'container' => 'div', // parent container 
-                                    'container_class' => 'topbar topbar--spaceship-start', //parent container ID
-                                    'depth' => 1,
-                                    'echo' => 'false'
+                                    'container' => 'ul',
+                                    'menu_class' => 'menu',
+                                    'items_wrap' => '<ul  id="menu-top-menu-start" class="menu">%3$s</ul>',
+                                    // 'add_li_class'  => 'main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu',
+                                    'depth' => '2',
                                 )
+
                             );
                         ?>
+                        </div>
                         
                     </div>
                    
