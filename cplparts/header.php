@@ -1276,7 +1276,11 @@
                     </div>
                     <div class="header__indicators">
                         <div class="indicator">
-                            <a href="<?php echo esc_url( home_url( '/wishlist' ) ); ?>" class="indicator__button">
+                            <?php 
+                                    //var_dump(get_option('active_plugins'));
+                                if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                ?>
+                                <a href="<?php echo esc_url( home_url( '/wishlist' ) ); ?>" class="indicator__button">
                                 <span class="indicator__icon">
                                     <svg width="32" height="32">
                                         <path
@@ -1286,7 +1290,13 @@
                                         />
                                     </svg>
                                 </span>
-                            </a>
+                                </a>
+                                <?php
+                              } else {
+                                echo 'Please active Wishlist for WooCommerce plugin';
+                              }
+                            ?>
+                           
                         </div>
                         <div class="indicator indicator--trigger--click">
                             <a href="<?php echo esc_url( home_url( '/my-account' ) ); ?>" class="indicator__button">

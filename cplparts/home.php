@@ -457,7 +457,12 @@ M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
 l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                             />
                                         </svg> -->
-                                        <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                     </button>
                                     <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                         <svg width="16" height="16">
@@ -618,7 +623,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                         </svg>
                                                     </button>
                                                     <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                     <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                    <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                     </button>
                                                     <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                         <svg width="16" height="16">
@@ -774,7 +784,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -855,7 +870,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -936,7 +956,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -1092,7 +1117,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -1173,7 +1203,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -1254,7 +1289,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                              <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">
@@ -1414,7 +1454,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                                             </svg>
                                                         </button>
                                                         <button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-                                                             <?php echo do_shortcode('[awwlm_add_to_wishlist]'); ?>
+                                                        <?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+                                                        echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+                                                        <p>Please active Wishlist for WooCommerce plugin</p>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                         </button>
                                                         <button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
                                                             <svg width="16" height="16">

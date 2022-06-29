@@ -609,7 +609,7 @@ h6 {
 .btn-primary:disabled {
     border-color: #e52727;
     background: #e52727;
-    color: #fff;
+    color: #fff !important;
 }
 .btn-primary.focus,
 .btn-primary:focus,

@@ -60,17 +60,16 @@ Template Name: Contact-page
                                         <div class="mr-1">
                                             <h4 class="contact-us__header card-title">Our Address</h4>
                                             <div class="contact-us__address">
-                                               <?php
+                                              <?php
                                                //global $redux_demo;
-
-                                               if(!empty(the_content())){
-                                                 echo the_content();
+                                               $thecontent = get_the_content();
+                                              if(!empty($thecontent))
+                                               {
+                                                 echo $thecontent;
                                                }else{
                                                    echo "Address is not found";
                                                }
-                                                  
-
-                                            //    echo  $redux_demo['cpl-editor-text'];
+                                               //    echo  $redux_demo['cpl-editor-text'];
                                                ?>
                                                 <!-- <p>
                                                     715 Fake Ave, Apt. 34, New York, NY 10021 USA<br />
@@ -104,11 +103,19 @@ Template Name: Contact-page
                                             </form> -->
                                             <?php //echo do_shortcode('[contact-form-7 id="165" title="Contact form 1"]');?>
                                             <?php 
-                                            if(!empty($redux_demo['cpl-editor-text'])){
+                                            if(!empty($redux_demo['cpl-editor-text']) && is_plugin_active( 'contact-form-7/wp-contact-form-7.php' )){
                                                 echo do_shortcode($redux_demo['cpl-editor-text']);
-                                            }else{
-                                                echo "Contact form is not found";
                                             }
+                                            else
+                                                {
+                                                    ?>
+                                                    <p> 
+                                                    Contact form is not found </br>
+                                                    1. Activate 'Contact Form 7' plugin. </br>
+                                                    2. Then put shortcode of your our contact form from Sample Options -> Cpl Contact Settings 
+                                                   </p>
+                                                    <?php 
+                                                }
                                             ?>
                                             
                                         <!-- </div> -->

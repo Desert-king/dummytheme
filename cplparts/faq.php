@@ -211,7 +211,9 @@ Template Name: FAQ-page
                         <div class="faq__footer">
                             <div class="faq__footer-title">Still Have A Questions?</div>
                             <div class="faq__footer-subtitle">We will be happy to answer any questions you may have.</div>
-                            <a href="<?php global $redux_demo; echo $redux_demo['contact-link'];?>" class="btn btn-primary">
+                            <a href="<?php global $redux_demo;  if(!empty($redux_demo['contact-link'])){
+                                               echo $redux_demo['contact-link'];
+                                            } ?>" class="btn btn-primary">
                             Contact Us
                             </a>
                         </div>
