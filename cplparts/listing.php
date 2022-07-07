@@ -16,8 +16,10 @@ Template Name: listing
                     <?php
                     $args = array(
                         'post_type'      => 'product',
-                        'posts_per_page' => 2,
-                        'orderby' => 'rand'
+                        //'posts_per_page' => 2,
+                        'orderby' => 'rand',
+                        'paged' => !empty($_GET['pg']) ? absint($_GET['pg']) : 1,
+
                     );
                     $loop = new WP_Query($args);
                     while ($loop->have_posts()) : $loop->the_post();
@@ -45,6 +47,24 @@ Template Name: listing
                     <?php endwhile; ?>
                     <?php next_posts_link(); ?>
                     <?php previous_posts_link(); ?>
+                      <!-- Added for last pagination -->
+									<?php
+									// $myQuery = new WP_Query();
+
+									// $cars = $myQuery->query([
+									// 	'post_type' => 'product',
+                                    //     //'posts_per_page' => 3,
+									// 	'paged' => !empty($_GET['pg']) ? absint($_GET['pg']) : 1,
+									// ]);
+
+									// foreach ($cars as $car) {
+									// 	echo $car->post_title;
+                                    //     echo ("</br>");
+									// }
+
+									echo myPaginateLinks($loop);
+									?>
+									<!-- Added for last pagination -->
                     <?php wp_reset_query(); ?>
                 </ul>
                 
