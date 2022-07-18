@@ -800,3 +800,47 @@ function myPaginateLinks( WP_Query $wp_query, $args = '' ) {
 
 
 
+
+
+
+//include_once( 'inc/bootstrapguru-importer.php' );
+
+// function ocdi_register_plugins( $plugins ) {
+// 	$theme_plugins = [
+// 	  [ 
+// 		'name'         => 'WooCommerce', 
+// 		'slug'         => 'woocommerce',
+// 		'version'      => '6.2.2',
+// 		'required'     => true, 
+// 	  ],
+// 	  [ 
+// 		'name'      => 'Template Library and Redux Framework',
+// 		'slug'      => 'redux-framework',
+// 		'version'      => '4.3.11',
+// 		'required'     => true, 
+// 	  ],
+// 	  [
+// 		'name'      => 'Contact Form 7',
+// 		'slug'      => 'contact-form-7',
+// 		'version'      => '5.5.6',
+// 		'required'     => true, 
+// 	  ],
+// 	  [
+// 		'name'      => 'Wishlist for WooCommerce',
+// 		'slug'      => 'aco-wishlist-for-woocommerce',
+// 		'version'      => '1.0.16',
+// 		'required'     => true, 
+// 	  ],
+// 	  [
+// 		'name'      => 'MC4WP: Mailchimp for WordPress',
+// 		'slug'      => 'mailchimp-for-wp',
+// 		'version'      => '4.8.7',
+// 		'required'     => true, 
+// 	  ],
+// 	];
+   
+// 	return array_merge( $plugins, $theme_plugins );
+//   }
+//   add_filter( 'ocdi/register_plugins', 'ocdi_register_plugins' );
+
+

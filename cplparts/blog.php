@@ -359,7 +359,7 @@ Template Name: Blog-page
                             </div>
                             <div class="blog-view__item blog-view__item-sidebar">
                                 <div class="card widget widget-search">
-                                    <form action="get" class="widget-search__form">
+                                    <!-- <form action="get" class="widget-search__form">
                                         <input class="widget-search__input" name="s" type="search" placeholder="Blog search..." />
                                         <button class="widget-search__button">
                                             <svg width="20" height="20">
@@ -371,7 +371,7 @@ Template Name: Blog-page
                                             </svg>
                                         </button>
                                         <div class="widget-search__field"></div>
-                                    </form>
+                                    </form> -->
                                 </div>
                                 <!-- <div class="card widget widget-about-us">
                                     <div class="widget__header"><h4>About Blog</h4></div>

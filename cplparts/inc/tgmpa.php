@@ -105,6 +105,18 @@ function my_theme_register_required_plugins() {
 			'version'      => '1.0.16',
 			'required'     => true, 
 		),
+		array(
+			'name'      => 'MC4WP: Mailchimp for WordPress',
+			'slug'      => 'mailchimp-for-wp',
+			'version'      => '4.8.7',
+			'required'     => true, 
+		),
+		array(
+			'name'      => 'One Click Demo Import',
+			'slug'      => 'one-click-demo-import',
+			'version'      => '3.1.2',
+			'required'     => true, 
+		),
 
 		// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 		// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.

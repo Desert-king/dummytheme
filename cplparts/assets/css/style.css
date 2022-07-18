@@ -15067,3 +15067,10 @@ ol.commentlist{
 .footer, #site-footer, footer {
     background-color: #fafafa !important;
 }
+.cart-collaterals .cart {
+    display: -ms-flexbox;
+    display: flex;
+    float: right !important;
+    margin-top: 50px  !important;
+    margin-bottom: 50px  !important;
+}

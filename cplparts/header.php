@@ -1,3 +1,7 @@
+<?php
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <!-- Mirrored from red-parts.html.themeforest.scompiler.ru/themes/red-ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Feb 2022 05:49:22 GMT -->
@@ -1061,7 +1065,7 @@
                     <div class="header__search">
                         <div class="search">
                             <?php //get_search_form(); ?>
-                            <form method="get"  class="search__body">
+                            <!-- <form method="get"  class="search__body">
                                 <div class="search__shadow"></div>
                                 <input class="search__input" type="text" name="s" placeholder="Enter Keyword or Part Number" />
                                 <button class="search__button search__button--start" type="button">
@@ -1095,89 +1099,7 @@
                                     <div class="search__decor-start"></div>
                                     <div class="search__decor-end"></div>
                                 </div>
-                                <!-- <div class="search__dropdown search__dropdown--suggestions suggestions">
-                                    <div class="suggestions__group">
-                                        <div class="suggestions__group-title">Products</div>
-                                        <div class="suggestions__group-content">
-                                            <a class="suggestions__item suggestions__product" href="#">
-                                                <div class="suggestions__product-image image image--type--product">
-                                                    <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-2-40x40.jpg" alt="" /></div>
-                                                </div>
-                                                <div class="suggestions__product-info">
-                                                    <div class="suggestions__product-name">Brandix Brake Kit BDX-750Z370-S</div>
-                                                    <div class="suggestions__product-rating">
-                                                        <div class="suggestions__product-rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="suggestions__product-rating-label">5 on 22 reviews</div>
-                                                    </div>
-                                                </div>
-                                                <div class="suggestions__product-price">$224.00</div>
-                                            </a>
-                                            <a class="suggestions__item suggestions__product" href="#">
-                                                <div class="suggestions__product-image image image--type--product">
-                                                    <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-3-40x40.jpg" alt="" /></div>
-                                                </div>
-                                                <div class="suggestions__product-info">
-                                                    <div class="suggestions__product-name">Left Headlight Of Brandix Z54</div>
-                                                    <div class="suggestions__product-rating">
-                                                        <div class="suggestions__product-rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star"></div>
-                                                                    <div class="rating__star"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="suggestions__product-rating-label">3 on 14 reviews</div>
-                                                    </div>
-                                                </div>
-                                                <div class="suggestions__product-price">$349.00</div>
-                                            </a>
-                                            <a class="suggestions__item suggestions__product" href="#">
-                                                <div class="suggestions__product-image image image--type--product">
-                                                    <div class="image__body"><img class="image__tag" src="<?php echo get_template_directory_uri(); ?>/assets/images/products/product-4-40x40.jpg" alt="" /></div>
-                                                </div>
-                                                <div class="suggestions__product-info">
-                                                    <div class="suggestions__product-name">Glossy Gray 19" Aluminium Wheel AR-19</div>
-                                                    <div class="suggestions__product-rating">
-                                                        <div class="suggestions__product-rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="suggestions__product-rating-label">4 on 26 reviews</div>
-                                                    </div>
-                                                </div>
-                                                <div class="suggestions__product-price">$589.00</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="suggestions__group">
-                                        <div class="suggestions__group-title">Categories</div>
-                                        <div class="suggestions__group-content">
-                                            <a class="suggestions__item suggestions__category" href="#">Headlights & Lighting</a> <a class="suggestions__item suggestions__category" href="#">Fuel System & Filters</a>
-                                            <a class="suggestions__item suggestions__category" href="#">Body Parts & Mirrors</a> <a class="suggestions__item suggestions__category" href="#">Interior Accessories</a>
-                                        </div>
-                                    </div>
-                                </div> -->
+                               
                                 <div class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
                                     <div class="search__dropdown-arrow"></div>
                                     <div class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
@@ -1271,7 +1193,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
+                            <?php get_search_form(); ?>
                         </div>
                     </div>
                     <div class="header__indicators">
