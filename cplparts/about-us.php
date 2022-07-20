@@ -10,9 +10,14 @@ Template Name: About-us
                     <div class="about__body">
                         <div class="about__image">
                             
-                            <div class="about__image-bg" style="background-image: url('<?php  global $redux_demo; // Same as your opt_name
-                        echo $redux_demo['about-image']['url'];?>')">
-                        </div>
+                            <div class="block-finder__image" style="background-image: url('<?php  
+                                if(!empty($redux_demo['about-image']) && isset($redux_demo['about-image']['url'])){
+                                    echo $redux_demo['about-image']['url'];
+                                }else{
+                                    echo "Bannar is not found";
+                                };?>');">
+                            </div>
+                        
                             <div class="decor about__image-decor decor--type--bottom">
                                 <div class="decor__body">
                                     <div class="decor__start"></div>
@@ -64,16 +69,11 @@ Template Name: About-us
                                     $numbers= $redux_demo['new-counter-number'];
                                     $titles = $redux_demo['new-counter-title'];
                                   
-                                // $numbers= $redux_demo['new-counter-number'];
-                                // $titles = $redux_demo['new-counter-title'];
-                                // print_r($photoes[1]['url']);
-                                // print_r($names[1]);
-                                
+                             
                                    $counter_count = count($numbers);
-                                //    var_export($photoes);
+                               
                                     $x = 0;
                                     while($x < $counter_count) {
-                                    // foreach ($names as $name) {
                                         ?>
                                         <div class="about__indicators-item">
                                             <div class="about__indicators-item-value"><?php echo($numbers)[$x]; ?></div>
@@ -86,18 +86,7 @@ Template Name: About-us
                                 }
                                 ?> 
                                         
-                                <!-- <div class="about__indicators-item">
-                                    <div class="about__indicators-item-value">350</div>
-                                    <div class="about__indicators-item-title">Stores around the world</div>
-                                </div>
-                                <div class="about__indicators-item">
-                                    <div class="about__indicators-item-value">80 000</div>
-                                    <div class="about__indicators-item-title">Original auto parts</div>
-                                </div>
-                                <div class="about__indicators-item">
-                                    <div class="about__indicators-item-value">5 000</div>
-                                    <div class="about__indicators-item-title">Satisfied customers</div>
-                                </div> -->
+                             
                             </div>
                         </div>
                     </div>

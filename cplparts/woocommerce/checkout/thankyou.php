@@ -16,7 +16,20 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
 ?>
+
+<div class="woocommerce">
+     <main id="primary" class="site-main">
+		<div class="site__body">
+		    <div class="block-space block-space--layout--after-header"></div>
+			<div class="block">
+		<div class="container">
+
+
+
+
+
 
 <div class="woocommerce-order">
 
@@ -86,3 +99,15 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 </div>
+
+
+
+
+
+</div>
+        </div>
+		<div class="block-space block-space--layout--before-footer"></div>
+		</div>
+	</main>
+</div>
+

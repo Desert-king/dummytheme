@@ -14,89 +14,74 @@ Template Name: Home-page
                             <div class="decor__center"></div>
                         </div>
                     </div>
-                    <div class="block-finder__image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/finder-1903x500.jpg');"></div>
+                    <!-- <div class="block-finder__image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/finder-1903x500.jpg');"></div> -->
+                    <div class="block-finder__image" style="background-image: url('<?php  
+                            if(!empty($redux_demo['bannar-image']) && isset($redux_demo['bannar-image']['url'])){
+                                echo $redux_demo['bannar-image']['url'];
+                               }else{
+                                   echo "Bannar is not found";
+                               };?>');"></div>
                     <div class="block-finder__body container container--max--xl">
-                        <div class="block-finder__title">Find Parts For Your Vehicle</div>
-                        <div class="block-finder__subtitle">Over hundreds of brands and tens of thousands of parts</div>
+                        <div class="block-finder__title">
+                            <?php
+                              if(!empty($redux_demo['bannar-title']) && isset($redux_demo['bannar-title'])){
+                                     echo $redux_demo['bannar-title'];
+                                    }else{
+                                        echo "Bannar Title is not found";
+                                    }
+                                ?>
+                                </div>
+                        <div class="block-finder__subtitle">
+                        <?php
+                              if(!empty($redux_demo['bannar-subtitle']) && isset($redux_demo['bannar-subtitle'])){
+                                     echo $redux_demo['bannar-subtitle'];
+                                    }else{
+                                        echo "Bannar Subtitle is not found";
+                                    }
+                                ?>
+                        </div>
                         <form method="get" class="block-finder__form" action="<?php echo esc_url( home_url( '/shop' ) ); ?>">
-                        <div class="block-finder__form-control block-finder__form-control--select">
-                                <select name="brand" aria-label="Vehicle Make" >
-                                <?php 
-                                       if(taxonomy_exists( 'pa_brand' )){  ?>
-                                    <option value="none" selected>Select Brand</option>
-                                    <?php 
-                                      $term_brand = get_terms( array( 'taxonomy' => 'pa_brand', 'fields' => 'names' ) );
-                                      foreach ($term_brand as $brand){
-                                          ?>
-                                            <option value="<?php if (isset($brand)){
-                                                 echo $brand; } ?>"><?php if (isset($brand)){
-                                                 echo $brand; } ?></option>
-                                          <?php
-                                           }
-                                      }else{
-                                        echo "data not found"; 
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="block-finder__form-control block-finder__form-control--select">
-                            <select name="vehicle" aria-label="Vehicle Make" >
-                                    <?php 
-                                       if(taxonomy_exists( 'pa_vehicle' )){  ?>
-                                    <option value="none">Select Vehicle</option>
-                                    <?php 
-                                      $term_vehicle = get_terms( array( 'taxonomy' => 'pa_vehicle', 'fields' => 'names' ) );
-                                      foreach ($term_vehicle as $vehicle){
-                                          ?>
-                                            <option value="<?php if (isset( $vehicle)){
-                                                 echo  $vehicle; } ?>"><?php if (isset( $vehicle)){
-                                                 echo  $vehicle; } ?></option>
-                                          <?php
-                                           }
-                                      }else{
-                                        echo "data not found"; 
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="block-finder__form-control block-finder__form-control--select">
-                            <select name="color" aria-label="Vehicle Make" >
-                            <?php 
-                                       if(taxonomy_exists( 'pa_color' )){  ?>
-                                    <option value="none">Select Color</option>
-                                    <?php 
-                                      $term_color = get_terms( array( 'taxonomy' => 'pa_color', 'fields' => 'names' ) );
-                                      foreach ($term_color as $color){
-                                          ?>
-                                            <option value="<?php echo $color ?>"><?php echo $color ?></option>
-                                          <?php
-                                      }
-                                    }else{
-                                        echo "data not found"; 
-                                    }
-                                    ?>
-                                    ?>
-                                </select> 
-                            </div>
+                        
+                            <!-- dynamic select start -->
                            
-                            <div class="block-finder__form-control block-finder__form-control--select">
-                            <select name="material" aria-label="Vehicle Make" >
-                                  <?php 
-                                       if(taxonomy_exists( 'pa_material' )){  ?>
-                                    <option value="none">Select Material</option>
-                                    <?php 
-                                      $term_material = get_terms( array( 'taxonomy' => 'pa_material', 'fields' => 'names' ) );
-                                      foreach ($term_material as $material){
-                                          ?>
-                                            <option value="<?php echo $material ?>"><?php echo $material ?></option>
-                                          <?php
-                                      }
-                                    }else{
-                                        echo "data not found"; 
+                                <?php 
+                                add_shortcode( 'dynamic_select', 'get_product_attributes_news' );
+                                function get_product_attributes_news() {
+                                    $i = 0;
+                                    foreach( wc_get_attribute_taxonomies() as $attribute ) {
+                                        if($i==4)
+                                        break;
+                                        $term_main = $attribute->attribute_name;
+                                        $taxonomy = 'pa_' . $attribute->attribute_name;
+                                        $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                        if(taxonomy_exists( $taxonomy )){  ?>
+                                            <div class="block-finder__form-control block-finder__form-control--select">
+                                                <select name="<?php echo $attribute->attribute_name; ?>" aria-label="Vehicle Make" >
+                                                    <option value="<?php if(isset($_GET[$term_main])){ echo $_GET[$term_main];}
+                                           ?>" selected>Select <?php echo $term_main; ?></option>
+                                                    <?php 
+                                                    $term_names = get_terms( array( 'taxonomy' => $taxonomy, 'fields' => 'names' ) );
+                                                    foreach ($term_names as $brand){
+                                                        ?>
+                                                            <option value="<?php if (isset($brand)){
+                                                                echo $brand; } ?>"><?php if (isset($brand)){
+                                                                echo $brand; } ?></option>
+                                                        <?php
+                                                            }
+                                                        }else{
+                                                            echo "data not found"; 
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        <?php
+                                        $i++;
                                     }
-                                    ?>
-                                </select>
-                            </div>
+                                }
+                                
+                            ?>
+                            <?php echo do_shortcode('[dynamic_select]'); ?>
+                            
                             <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
                         </form>
                     </div>
@@ -166,7 +151,7 @@ Template Name: Home-page
                 <div class="block-features block block-features--layout--top-strip">
                     <div class="container">
                         <ul class="block-features__list">
-                            <li class="block-features__item">
+                            <!-- <li class="block-features__item">
                                 <div class="block-features__item-icon">
                                     <svg width="48" height="48" viewBox="0 0 48 48">
                                         <path
@@ -215,8 +200,39 @@ Template Name: Home-page
                                     <div class="block-features__item-title">Free Shipping</div>
                                     <div class="block-features__item-subtitle">For orders from $50</div>
                                 </div>
-                            </li>
-                            <li class="block-features__item">
+                            </li> -->
+                            <?php 
+                                if(!empty($redux_demo['home-service-image']) && isset($redux_demo['home-service-image']) && !empty($redux_demo['home-service-title']) && isset($redux_demo['home-service-title']) && !empty($redux_demo['home-service-detail']) && isset($redux_demo['home-service-detail'])){
+                                    $image = $redux_demo['home-service-image'];
+                                    $service_title = $redux_demo['home-service-title'];
+                                    $service_detail = $redux_demo['home-service-detail'];
+                                  
+                                // $numbers= $redux_demo['new-counter-number'];
+                                // $titles = $redux_demo['new-counter-title'];
+                                // print_r($photoes[1]['url']);
+                                // print_r($names[1]);
+                                
+                                   $counter_count = count($image);
+                                //    var_export($photoes);
+                                    $x = 0;
+                                    while($x < $counter_count) {
+                                    // foreach ($names as $name) {
+                                        ?>
+                                        <li class="block-features__item">
+                                            <img style="width:48px; margin-right:10px;"src="<?php echo  $image[$x]['url'];?>" />
+                                          <div class="block-features__item-info">
+                                            <div class="block-features__item-title"><?php echo($service_title)[$x]; ?></div>
+                                            <div class="block-features__item-subtitle"><?php echo($service_detail)[$x]; ?></div>
+                                          </div>
+                                        </li>
+                                        <?php
+                                        // }
+                                    $x++;
+                                    }
+                                }
+                                ?> 
+                                        
+                            <!-- <li class="block-features__item">
                                 <div class="block-features__item-icon">
                                     <svg width="48" height="48" viewBox="0 0 48 48">
                                         <path
@@ -357,7 +373,7 @@ Template Name: Home-page
                                     <div class="block-features__item-title">Hot Offers</div>
                                     <div class="block-features__item-subtitle">Discounts up to 90%</div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -687,6 +703,16 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                         </div>
                     </div>
                 </div>
+                <!-- dynamic filtering of product categorywise start-->
+                <!-- <div class="block-space block-space--layout--divider-lg"></div>
+                <div class="block block-zone" id="CategoryTabTop">
+                    <div class="container">
+                        <div class="block-zone__body">
+                        <?php echo do_shortcode( '[my_shortcode]'); ?>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- dynamic filtering of product categorywise end-->
                 <div class="block-space block-space--layout--divider-lg"></div>
                 <div class="block block-zone" id="CategoryTabTop">
                     <div class="container">
@@ -714,7 +740,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                             <div class="category-card__name"><a href="category-4-columns-sidebar.html">Wheels & Tires</a></div>
                                             <ul class="category-card__children">
                                                 <li><a href="category-4-columns-sidebar.html">Wheel Covers</a></li>
-                                                <li><a href="category-4-columns-sidebar.html">Brake Kits</a></li>
+                                                <li><a href="category-4-columns-sidebar.html">Sensors</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tire Chains</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Wheel disks</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tires</a></li>
@@ -729,17 +755,17 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="block-zone__widget">
                                 <div class="block-zone__widget-header">
                                     <div class="block-zone__tabs">
-                                        <button class="tabs-button block-zone__tabs-button--active" target="tabPopularTop" onclick="handleCategoryTabTop(this)">Popular</button>
+                                        <button class="tabs-button block-zone__tabs-button--active" target="tabIridiumTop" onclick="handleCategoryTabTop(this)">Iridium</button>
                                         <button class="tabs-button" target="tabPowertrainTop" onclick="handleCategoryTabTop(this)">Powertrain</button> 
-                                        <button class="tabs-button" target="tabBestsellersTop" onclick="handleCategoryTabTop(this)">Bestsellers</button>
+                                        <button class="tabs-button" target="tabSensorsTop" onclick="handleCategoryTabTop(this)">Sensors</button>
                                         <!-- <button class="tabs-button block-zone__tabs-button--active"  ">
                                             Powertrain new
                                            </button> 
-                                         <button class="tabs-button" target="tabBestsellers" onclick="handleCategoryTab(this)">
-                                            Bestsellers
+                                         <button class="tabs-button" target="tabSensors" onclick="handleCategoryTab(this)">
+                                            Sensors
                                          </button> 
-                                          <button class="tabs-button" target="tabPopular" onclick="handleCategoryTab(this)">
-                                            Popular
+                                          <button class="tabs-button" target="tabIridium" onclick="handleCategoryTab(this)">
+                                            Iridium
                                           </button>  -->
                                     </div>
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
@@ -759,13 +785,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                     </div>
                                 </div>
                                 
-                                <div id="tabPopularTop"  class="block-zone__widget-body tab-view-top active-top">
+                                <div id="tabIridiumTop"  class="block-zone__widget-body tab-view-top active-top">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
                                             $args = array(
-                                                'product_cat' => 'Popular',
+                                                'product_cat' => 'Iridium',
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -931,13 +957,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </div>
                                     </div>
                                 </div>
-                                <div id="tabBestsellersTop"  class="block-zone__widget-body tab-view-top">
+                                <div id="tabSensorsTop"  class="block-zone__widget-body tab-view-top">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
                                             $args = array(
-                                                'product_cat' => 'Bestsellers',
+                                                'product_cat' => 'Sensors',
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -1048,7 +1074,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                             <div class="category-card__name"><a href="category-4-columns-sidebar.html">Wheels & Tires</a></div>
                                             <ul class="category-card__children">
                                                 <li><a href="category-4-columns-sidebar.html">Wheel Covers</a></li>
-                                                <li><a href="category-4-columns-sidebar.html">Brake Kits</a></li>
+                                                <li><a href="category-4-columns-sidebar.html">Sensors</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tire Chains</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Wheel disks</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tires</a></li>
@@ -1063,17 +1089,17 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="block-zone__widget">
                                 <div class="block-zone__widget-header">
                                     <div class="block-zone__tabs">
-                                        <button class="tabs-button block-zone__tabs-button--active" target="tabBestsellersMiddle" onclick="handleCategoryTabMiddle(this)">Bestsellers</button>
+                                        <button class="tabs-button block-zone__tabs-button--active" target="tabSensorsMiddle" onclick="handleCategoryTabMiddle(this)">Sensors</button>
                                         <button class="tabs-button" target="tabPowertrainMiddle" onclick="handleCategoryTabMiddle(this)">Powertrain</button> 
-                                        <button class="tabs-button" target="tabPopularMiddle" onclick="handleCategoryTabMiddle(this)">Popular</button>
+                                        <button class="tabs-button" target="tabIridiumMiddle" onclick="handleCategoryTabMiddle(this)">Iridium</button>
                                         <!-- <button class="tabs-button block-zone__tabs-button--active"  ">
                                             Powertrain new
                                            </button> 
-                                         <button class="tabs-button" target="tabBestsellers" onclick="handleCategoryTab(this)">
-                                            Bestsellers
+                                         <button class="tabs-button" target="tabSensors" onclick="handleCategoryTab(this)">
+                                            Sensors
                                          </button> 
-                                          <button class="tabs-button" target="tabPopular" onclick="handleCategoryTab(this)">
-                                            Popular
+                                          <button class="tabs-button" target="tabIridium" onclick="handleCategoryTab(this)">
+                                            Iridium
                                           </button>  -->
                                     </div>
                                     <div class="arrow block-zone__arrow block-zone__arrow--prev arrow--prev">
@@ -1092,13 +1118,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </button>
                                     </div>
                                 </div>
-                                <div id="tabBestsellersMiddle"  class="block-zone__widget-body tab-view-middle active-middle">
+                                <div id="tabSensorsMiddle"  class="block-zone__widget-body tab-view-middle active-middle">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
                                             $args = array(
-                                                'product_cat' => 'Bestsellers',
+                                                'product_cat' => 'Sensors',
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -1264,13 +1290,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         </div>
                                     </div>
                                 </div>
-                                <div id="tabPopularMiddle"  class="block-zone__widget-body tab-view-middle">
+                                <div id="tabIridiumMiddle"  class="block-zone__widget-body tab-view-middle">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
                                             $args = array(
-                                                'product_cat' => 'Popular',
+                                                'product_cat' => 'Iridium',
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -1381,7 +1407,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                             <div class="category-card__name"><a href="category-4-columns-sidebar.html">Wheels & Tires</a></div>
                                             <ul class="category-card__children">
                                                 <li><a href="category-4-columns-sidebar.html">Wheel Covers</a></li>
-                                                <li><a href="category-4-columns-sidebar.html">Brake Kits</a></li>
+                                                <li><a href="category-4-columns-sidebar.html">Sensors</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tire Chains</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Wheel disks</a></li>
                                                 <li><a href="category-4-columns-sidebar.html">Tires</a></li>
@@ -1401,11 +1427,11 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                         <button class="tabs-button block-zone__tabs-button--active"  target="tabPowertrain" onclick="handleCategoryTab(this)">
                                             Powertrain 
                                            </button> 
-                                         <button class="tabs-button" target="tabBestsellers" onclick="handleCategoryTab(this)">
-                                            Bestsellers
+                                         <button class="tabs-button" target="tabSensors" onclick="handleCategoryTab(this)">
+                                            Sensors
                                          </button> 
-                                          <button class="tabs-button" target="tabPopular" onclick="handleCategoryTab(this)">
-                                            Popular
+                                          <button class="tabs-button" target="tabIridium" onclick="handleCategoryTab(this)">
+                                            Iridium
                                           </button> 
                                           
                                        
@@ -1518,13 +1544,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 
                                 <!-- ******************************** -->
                                 
-                                <div id="tabBestsellers"  class="block-zone__widget-body tab-view">
+                                <div id="tabSensors"  class="block-zone__widget-body tab-view">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
                                             $args = array(
-                                                'product_cat' => 'Bestsellers',
+                                                'product_cat' => 'Sensors',
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -1607,15 +1633,15 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 
                                 <!-- ************************** -->
                                 <!-- ############################################ -->
-                                <div id="tabPopular"  class="block-zone__widget-body tab-view">
+                                <div id="tabIridium"  class="block-zone__widget-body tab-view">
                                     <div class="block-zone__carousel">
                                         <div class="block-zone__carousel-loader"></div>
                                         <div class="owl-carousel">
                                             <?php
-                                            // $name = "Popular";
+                                            // $name = "Iridium";
                                             $args = array(
                                                   // 'product_cat' => $btn_name,
-                                                'product_cat' => "Popular",
+                                                'product_cat' => "Iridium",
                                                 'posts_per_page' => 3,
                                                 // 'orderby' => 'rand'
                                             );
@@ -1706,21 +1732,61 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                         <div class="block-banners__list">
                             <a href="#" class="block-banners__item block-banners__item--style--one">
                                 <span class="block-banners__item-image"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/banners/banner1.jpg" alt="" /></span>
-                                <span class="block-banners__item-image block-banners__item-image--blur"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/banners/banner1.jpg" alt="" /></span><span class="block-banners__item-title">Motor Oils</span>
+                                <span class="block-banners__item-image block-banners__item-image--blur">
+                                <img src="<?php  if(!empty($redux_demo['home-page-short-bannar-left']) && isset($redux_demo['home-page-short-bannar-left']['url'])){
+                                    echo $redux_demo['home-page-short-bannar-left']['url'];
+                                   }else{
+                                       echo "Bannar is not found";
+                                   }?>" />
+                                </span>
+                                <span class="block-banners__item-title">
+                                <?php
+                              if(!empty($redux_demo['bannar-left-title']) && isset($redux_demo['bannar-left-title'])){
+                                     echo $redux_demo['bannar-left-title'];
+                                    }else{
+                                        echo "Title is not found";
+                                    }
+                                ?>
+                                </span>
                                 <span class="block-banners__item-details">
-                                    Synthetic motor oil with free shipping<br />
-                                    Friction free life guaranteed
+                                <?php
+                              if(!empty($redux_demo['bannar-left-subtitle']) && isset($redux_demo['bannar-left-subtitle'])){
+                                     echo $redux_demo['bannar-left-subtitle'];
+                                    }else{
+                                        echo "Subtitle is not found";
+                                    }
+                                ?>
                                 </span>
                                 <span class="block-banners__item-button btn btn-primary btn-sm">Shop Now </span>
                             </a>
                             <a href="#" class="block-banners__item block-banners__item--style--two">
                                 <span class="block-banners__item-image"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/banners/banner2.jpg" alt="" /></span>
-                                <span class="block-banners__item-image block-banners__item-image--blur"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/banners/banner2.jpg" alt="" /></span><span class="block-banners__item-title">Save up to $40</span>
-                                <span class="block-banners__item-details">
-                                    Luxurious interior part for real aesthetes<br />
-                                    Leather, fabric, ivory and more.
+                                <span class="block-banners__item-image block-banners__item-image--blur">
+                                <img src="<?php  if(!empty($redux_demo['home-page-short-bannar-right']) && isset($redux_demo['home-page-short-bannar-right']['url'])){
+                                    echo $redux_demo['home-page-short-bannar-right']['url'];
+                                   }else{
+                                       echo "Bannar is not found";
+                                   }?>" />
                                 </span>
-                                <span class="block-banners__item-button btn btn-primary btn-sm">Shop Now</span>
+                                <span class="block-banners__item-title">
+                                <?php
+                              if(!empty($redux_demo['bannar-right-title']) && isset($redux_demo['bannar-right-title'])){
+                                     echo $redux_demo['bannar-right-title'];
+                                    }else{
+                                        echo "Title is not found";
+                                    }
+                                ?>
+                                </span>
+                                <span class="block-banners__item-details">
+                                <?php
+                              if(!empty($redux_demo['bannar-right-subtitle']) && isset($redux_demo['bannar-right-subtitle'])){
+                                     echo $redux_demo['bannar-right-subtitle'];
+                                    }else{
+                                        echo "Subtitle is not found";
+                                    }
+                                ?>
+                                </span>
+                                <span class="block-banners__item-button btn btn-primary btn-sm">Shop Now </span>
                             </a>
                         </div>
                     </div>
@@ -1730,7 +1796,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                     <div class="container">
                         <div class="section-header">
                             <div class="section-header__body">
-                                <h2 class="section-header__title">New Arrivals</h2>
+                                <h2 class="section-header__title">Others</h2>
                                 <div class="section-header__spring"></div>
                                 <ul class="section-header__links">
                                     <!-- <button class="tabs-button tabs-button-active"  target="tabFeatured" onclick="handleCategoryTab(this)">
@@ -1767,7 +1833,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="owl-carousel">
                                 <?php
                                     $args = array(
-                                        'product_cat' => 'New',
+                                        'product_cat' => 'Others',
                                         'posts_per_page' => 6,
                                         'orderby' => 'rand'
                                     );
@@ -2211,22 +2277,22 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                     <ul class="block-brands__list">
                                 <?php 
                                     global $redux_demo;
-                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
-                                        $brands = $redux_demo['cpl-pro-brand-section-fields-new'];
+                                    if(isset($redux_demo['cpl-home-brand-section-fields-new'])){
+                                        $brands = $redux_demo['cpl-home-brand-section-fields-new'];
                                         
                                     }else{
                                         $brands = "";
                                     }
                                     
                                     //print_r($repeaters);
-                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
-                                        $brand_titles= $redux_demo['cpl-pro-brand-title-new'];
+                                    if(isset($redux_demo['cpl-home-brand-section-fields-new'])){
+                                        $brand_titles= $redux_demo['cpl-home-brand-title-new'];
                                     }else{
                                         $brand_titles = "";
                                     }
                                    
-                                    if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
-                                        $brand_images = $redux_demo['cpl-pro-brand-image-new'];
+                                    if(isset($redux_demo['cpl-home-brand-section-fields-new'])){
+                                        $brand_images = $redux_demo['cpl-home-brand-image-new'];
                                     }else{
                                         $brand_images = "";
                                     }
@@ -2235,7 +2301,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                     // print_r($names[1]);
                                 ?>
                                 <?php
-                                  if(isset($redux_demo['cpl-pro-brand-section-fields-new'])){
+                                  if(isset($redux_demo['cpl-home-brand-section-fields-new'])){
                                     $first_count = count($brand_titles);
                                 //    var_export($photoes);
                                     $x = 0;
@@ -2244,24 +2310,29 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                
                                     // foreach ($names as $name) {
                                 ?>
+                                <?php
+                                if(!empty($redux_demo['cpl-home-brand-section-fields-new'])){
+                                    ?>
                                 <li class="block-brands__item">
                                      <a href="#" class="block-brands__item-link">
                                      <img src="<?php echo $brand_images[$x]['url'] ?>" alt="" /> 
                                      <span class="block-brands__item-name"><?php 
-                                            if(isset(($brand_titles)[$x])){
+                                            
                                                 echo($brand_titles)[$x];
-                                             }
+                                             
                                             ?></span></a>
                                 </li>
                                  <li class="block-brands__divider" role="presentation"></li>
+                                 
                                             
                                            
                                 <?php
-                                        // }
+                                        }
                                     $x++;
                                     }
                                 }else{
-                                    $first_count = "";
+                                    // $first_count = "";
+                                    echo "Brand is not found";
                                 }
                                    
                                 ?>
@@ -2275,12 +2346,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                     <div class="container">
                         <div class="row">
                             <div class="col-4">
-                            <div class="block-products-columns__title">Top Rated Products</div>
+                            <div class="block-products-columns__title">Accessories</div>
                                 <div class="block-products-columns__list">
                                     <!-- #################### -->
                                     <?php
                                     $args = array(
-                                        'product_cat' => 'Top Related Product',
+                                        'product_cat' => 'Accessories',
                                         'posts_per_page' => 3,
                                         'orderby' => 'rand'
                                     );
@@ -2469,12 +2540,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 </div>
                             </div>
                             <div class="col-4">
-                                <div class="block-products-columns__title">Bestsellers</div>
+                                <div class="block-products-columns__title">Sensors</div>
                                 <div class="block-products-columns__list">
                                    <!-- #################### -->
                                    <?php
                                     $args = array(
-                                        'product_cat' => 'Bestsellers',
+                                        'product_cat' => 'Sensors',
                                         'posts_per_page' => 3,
                                         'orderby' => 'rand'
                                     );

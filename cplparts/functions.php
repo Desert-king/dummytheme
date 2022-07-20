@@ -34,7 +34,7 @@ if ( class_exists('Redux')) {
    //  require_once (dirname(__FILE__) . '/sample/cpl-faq-third-section-settings.php');
 	require_once (dirname(__FILE__) . '/sample/cpl-terms-&-conditions-settings.php');
 	require_once (dirname(__FILE__) . '/sample/cpl-404-settings.php');
-	require_once (dirname(__FILE__) . '/sample/cpl-product-brands-settings.php');
+	require_once (dirname(__FILE__) . '/sample/cpl-home-page-settings.php');
 }
 
 
@@ -844,3 +844,7 @@ function myPaginateLinks( WP_Query $wp_query, $args = '' ) {
 //   add_filter( 'ocdi/register_plugins', 'ocdi_register_plugins' );
 
 
+// function create_shortcode(){
+//     return "<h2>Hello world !</h2>";
+// }
+// add_shortcode('my_shortcode', 'create_shortcode');

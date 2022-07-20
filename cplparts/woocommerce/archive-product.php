@@ -426,7 +426,8 @@ M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
 									</div>
 									<div class="product-card__footer">
 										<div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php woocommerce_template_loop_price(); ?></div></div>
-										<?php woocommerce_template_loop_add_to_cart(); ?>
+										<?php //woocommerce_template_loop_add_to_cart(); ?>
+										<button class="product-card__addtocart-sm" type="button"><?php woocommerce_template_loop_add_to_cart(); ?></button>
 										<!-- <button class="cpl-cart product-card__addtocart-icon" type="button" aria-label="Add to cart"> -->
 										    <?php 
 											// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
