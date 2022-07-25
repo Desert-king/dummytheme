@@ -1,10 +1,4 @@
 
-function admin_import_scripts() {
-
-    wp_register_script( 'bootstrapguru-import', get_template_directory_uri() . '/demo-importer/bootstrapguru-import.js', false, '1.0.0' );
-    wp_enqueue_script( 'bootstrapguru-import' );
-}
-add_action( 'admin_enqueue_scripts', 'admin_import_scripts' );
 
 
 (function($) {

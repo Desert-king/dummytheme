@@ -943,6 +943,7 @@
                 </div>
             </div>
         </div>
+       
         
 		<?php wp_footer(); ?>
         <script>
@@ -959,28 +960,43 @@
         }
         </script>
         <script>
-        function handleCategoryTabMiddle(elem){
-            var target = jQuery(elem).attr("target");
-            jQuery("#CategoryTabMiddle .tabs-button").removeClass("block-zone__tabs-button--active");
-            jQuery(elem).addClass("block-zone__tabs-button--active");
-            jQuery(".tab-view-middle").removeClass("active-middle");
-            jQuery("#"+target).addClass("active-middle");
+        // function handleCategoryTabMiddle(elem){
+        //     var target = jQuery(elem).attr("target");
+        //     jQuery("#CategoryTabMiddle .tabs-button").removeClass("block-zone__tabs-button--active");
+        //     jQuery(elem).addClass("block-zone__tabs-button--active");
+        //     jQuery(".tab-view-middle").removeClass("active-middle");
+        //     jQuery("#"+target).addClass("active-middle");
             
             
 
-        }
+        // }
         </script>
         <script>
-        function handleCategoryTabTop(elem){
-            var target = jQuery(elem).attr("target");
-            jQuery("#CategoryTabTop .tabs-button").removeClass("block-zone__tabs-button--active");
-            jQuery(elem).addClass("block-zone__tabs-button--active");
-            jQuery(".tab-view-top").removeClass("active-top");
-            jQuery("#"+target).addClass("active-top");
-            
-            
+           
 
-        }
+            function handleCategoryTabProduct(elem){
+            
+            var target = jQuery(elem).attr("target");
+            var id = $(elem).parents("div.block.block-zone").attr("id");
+            jQuery("#"+id+ " .tabs-button").removeClass("block-zone__tabs-button--active");
+            
+            jQuery(elem).addClass("block-zone__tabs-button--active");
+            jQuery("#"+id+ " .tab-view-top").removeClass("active-top");
+            jQuery("#"+id+ " #"+target).addClass("active-top");
+        
+          };
+
+            //     function handleCategoryTabProduct(elem){
+            //     var target = jQuery(elem).attr("target");
+            //     console.log(i);
+            //     jQuery("div.block.block-zone .tabs-button").removeClass("block-zone__tabs-button--active");
+            //     jQuery(elem).addClass("block-zone__tabs-button--active");
+
+            //     jQuery(".tab-view-top").removeClass("active-top");
+            //     jQuery("#"+target).addClass("active-top");
+            //     }
+           
+            
         </script>
         <script>
         function handleTagTab(elem){
