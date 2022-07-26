@@ -45,9 +45,11 @@ Template Name: Home-page
                             <!-- dynamic select start -->
                            
                                 <?php 
+                                if (!class_exists('WooCommerce')) return; 
                                 add_shortcode( 'dynamic_select', 'get_product_attributes_news' );
                                 function get_product_attributes_news() {
                                     $i = 0;
+                                   
                                     foreach( wc_get_attribute_taxonomies() as $attribute ) {
                                         if($i==4)
                                         break;
@@ -79,8 +81,8 @@ Template Name: Home-page
                                     }
                                 }
                                 
-                            ?>
-                            <?php echo do_shortcode('[dynamic_select]'); ?>
+                            
+                            echo do_shortcode('[dynamic_select]'); ?>
                             
                             <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
                         </form>
@@ -362,27 +364,35 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                 <!-- custom        -->
                        
                 <div class="block-space block-space--layout--divider-nl"></div>
+                <?php if(!empty($redux_demo['attention-section-title']) && isset($redux_demo['attention-section-title']) && !empty($redux_demo['attention-section-discount']) 
+                && isset($redux_demo['attention-section-discount']) && !empty($redux_demo['attention-section-subtitle']) && isset($redux_demo['attention-section-subtitle']) 
+                && isset($redux_demo['cpl-home-attention-section'])){
+                    $attention_title = implode(",", $redux_demo['attention-section-title']);
+                    $attention_discount = implode(",", $redux_demo['attention-section-discount']);
+                    $attention_subtitle = implode(",", $redux_demo['attention-section-subtitle']);
+                    $offer_cat = implode(",", $redux_demo['attention-section-product-category']);
+                    ?>
                 <div class="block block-sale">
                     <div class="block-sale__content">
                         <div class="block-sale__header">
                             <div class="block-sale__title">
                                 <?php 
-                                   if(!empty($redux_demo['attention-section-title']) && isset($redux_demo['attention-section-title'])){
-                                    $attention_title = implode(",", $redux_demo['attention-section-title']);
+                                //    if(!empty($redux_demo['attention-section-title']) && isset($redux_demo['attention-section-title'])){
+                                //     $attention_title = implode(",", $redux_demo['attention-section-title']);
                                     echo $attention_title;
-                                   }else{
-                                       echo "Attention section title is not found";
-                                   }
+                                //    }else{
+                                //        echo "Attention section title is not found";
+                                //    }
                                 ?>
                             </div>
                             <div class="block-sale__subtitle">
                             <?php 
-                                   if(!empty($redux_demo['attention-section-discount']) && isset($redux_demo['attention-section-discount'])){
-                                    $attention_discount = implode(",", $redux_demo['attention-section-discount']);
+                                //    if(!empty($redux_demo['attention-section-discount']) && isset($redux_demo['attention-section-discount'])){
+                                //     $attention_discount = implode(",", $redux_demo['attention-section-discount']);
                                     echo $attention_discount;
-                                   }else{
-                                       echo "Attention section discount is not found";
-                                   }
+                                //    }else{
+                                //        echo "Attention section discount is not found";
+                                //    }
                                 ?>
                             </div>
                             <div class="block-sale__timer">
@@ -416,12 +426,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                 </div>
                                 <div class="block-sale__link"><a href="#">
                                 <?php 
-                                   if(!empty($redux_demo['attention-section-subtitle']) && isset($redux_demo['attention-section-subtitle'])){
-                                    $attention_subtitle = implode(",", $redux_demo['attention-section-subtitle']);
+                                //    if(!empty($redux_demo['attention-section-subtitle']) && isset($redux_demo['attention-section-subtitle'])){
+                                //     $attention_subtitle = implode(",", $redux_demo['attention-section-subtitle']);
                                     echo $attention_subtitle;
-                                   }else{
-                                       echo "Attention section subtitle is not found";
-                                   }
+                                //    }else{
+                                //        echo "Attention section subtitle is not found";
+                                //    }
                                 ?>
                                 </a></div>
                                 <div class="arrow block-sale__arrow block-sale__arrow--next arrow--next">
@@ -455,9 +465,9 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="container">
                             <?php 
                                   
-                                    if(isset($redux_demo['cpl-home-attention-section'])){
-                                        $offer_cat = implode(",", $redux_demo['attention-section-product-category']);
-                                    }
+                                    // if(isset($redux_demo['cpl-home-attention-section'])){
+                                        // $offer_cat = implode(",", $redux_demo['attention-section-product-category']);
+                                    // }
                                    
                                     ?>
                                     <div class="block-sale__carousel">
@@ -554,6 +564,26 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                         </div>
                     </div>
                 </div>
+                <?php 
+                }else{
+                    ?>
+                    <div class="block block-products-carousel">
+                    <div class="container">
+                    <div class="section-header">
+                    <div class="section-header__body">
+                    <h2 class="section-header__title">
+                    <?php
+                    echo "Attention zone is not found";
+                    ?>
+                    </h2>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <?php
+                }
+                                   
+                ?>
                 <!-- dynamic filtering of product categorywise start-->
                 <div class="block-space block-space--layout--divider-lg"></div>
                 <?php 
@@ -605,8 +635,6 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                     ?>
                 <!-- <div class="block block-zone" id="CategoryTabTop"> -->
                 <div class="block block-zone" id="product_section_<?php echo wp_unique_id(); ?>"> 
-                   
-                <!-- <div class="block block-zone" id="<?php echo $product_section_id[$x] ?>"> -->
                     <div class="container">
                     <!-- <?php echo $product_section_id[$x] ?> -->
                              
@@ -1830,6 +1858,13 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                     </div>
                 </div>
                 <div class="block-space block-space--layout--divider-nl d-xl-block d-none"></div>
+                <?php 
+                  if(!empty($redux_demo['last-section-product-category-one']) && isset($redux_demo['last-section-product-category-one']) && !empty($redux_demo['last-section-product-category-two']) 
+                  && isset($redux_demo['last-section-product-category-two']) && !empty($redux_demo['last-section-product-category-three']) && isset($redux_demo['last-section-product-category-three'])){
+                    $last_sec_cat_one =  $redux_demo['last-section-product-category-one'];
+                    $last_sec_cat_two = $redux_demo['last-section-product-category-two'];
+                    $last_sec_cat_three =  $redux_demo['last-section-product-category-three'];
+                ?>
                 <?php //echo do_shortcode('[wpcs id=118]'); ?>
                 <div class="block block-products-columns">
                     <div class="container">
@@ -1837,12 +1872,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="col-4">
                             <div class="block-products-columns__title">
                                 <?php 
-                                 if(!empty($redux_demo['last-section-product-category-one']) && isset($redux_demo['last-section-product-category-one'])){
-                                    $last_sec_cat_one =  $redux_demo['last-section-product-category-one'];
+                                //  if(!empty($redux_demo['last-section-product-category-one']) && isset($redux_demo['last-section-product-category-one'])){
+                                //     $last_sec_cat_one =  $redux_demo['last-section-product-category-one'];
                                     echo $last_sec_cat_one;
-                                   }else{
-                                       echo "Category is not found";
-                                   }
+                                //    }else{
+                                //        echo "Category is not found";
+                                //    }
                                 ?>
                             </div>
                                 <div class="block-products-columns__list">
@@ -1856,6 +1891,7 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                                     $loop = new WP_Query($args);
                                     if ( $loop->have_posts() ) : 
                                     while ($loop->have_posts()) : $loop->the_post();
+                                        
                                         global $product; ?>
                                         <!-- <div class="row"> -->
                                             <!-- <h2>Shampoo</h2> -->
@@ -1967,12 +2003,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="col-4">
                                 <div class="block-products-columns__title">
                                 <?php 
-                                 if(!empty($redux_demo['last-section-product-category-two']) && isset($redux_demo['last-section-product-category-two'])){
-                                    $last_sec_cat_two = $redux_demo['last-section-product-category-two'];
+                                //  if(!empty($redux_demo['last-section-product-category-two']) && isset($redux_demo['last-section-product-category-two'])){
+                                //     $last_sec_cat_two = $redux_demo['last-section-product-category-two'];
                                     echo $last_sec_cat_two;
-                                   }else{
-                                       echo "Category is not found";
-                                   }
+                                //    }else{
+                                //        echo "Category is not found";
+                                //    }
                                 ?>
                                 </div>
                                 <div class="block-products-columns__list">
@@ -2049,12 +2085,12 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                             <div class="col-4">
                                 <div class="block-products-columns__title">
                                 <?php 
-                                 if(!empty($redux_demo['last-section-product-category-three']) && isset($redux_demo['last-section-product-category-three'])){
-                                    $last_sec_cat_three =  $redux_demo['last-section-product-category-three'];
+                                //  if(!empty($redux_demo['last-section-product-category-three']) && isset($redux_demo['last-section-product-category-three'])){
+                                //     $last_sec_cat_three =  $redux_demo['last-section-product-category-three'];
                                     echo $last_sec_cat_three;
-                                   }else{
-                                       echo "Category is not found";
-                                   }
+                                //    }else{
+                                //        echo "Category is not found";
+                                //    }
                                 ?>
                                 </div>
                                 <div class="block-products-columns__list">
@@ -2131,6 +2167,27 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
                         </div>
                     </div>
                 </div>
+                <?php 
+                  }
+                else{
+                    ?>
+                    <div class="block block-products-carousel">
+                    <div class="container">
+                    <div class="section-header">
+                    <div class="section-header__body">
+                    <h2 class="section-header__title">
+                    <?php
+                    echo "Data is not found";
+                    ?>
+                    </h2>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <?php
+                }
+                      
+                ?>
                 <div class="block-space block-space--layout--before-footer"></div>
             </div>
            
