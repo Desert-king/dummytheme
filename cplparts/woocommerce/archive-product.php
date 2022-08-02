@@ -135,20 +135,52 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										</li> -->
 										<?php 
 										$Query = array_filter($_GET);
-										foreach ($Query as $key => $tag){ ?>
-											<li class="applied-filters__item">
-											<?php if(isset($_GET[$key])){
+										foreach ($Query as $key => $tag){ 
+											?>
+											<li class="applied-filters__item" id="remove">
+											<?php 
+											if(isset($_GET[$key])){
 												 ?>
 												 <a href="#" class="applied-filters__button applied-filters__button--filter">
 												 <?php 
 												 echo "$key: $tag" ;?> 
-											 </a>
+												 <svg id="i", onclick="removeFunction()" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg>
+												 <input name="<?php echo $_GET[$key];?>" value="<?php echo $_GET[$key];?>" id="<?php echo $_GET[$key]; ?>">
+											    </a>
 											 <?php
 											 } ?>
 										 </li>
 										 <?php
+										 echo current_location(); 
+
+										 $link = 'echo current_location()';
+										 $linkParts = explode('&tag=', $link);
+										 $link = $linkParts[0];
+										 echo $linkParts[0];
 										}
 										?>
+
+                                        <?php 
+										function current_location()
+											{
+												if (isset($_SERVER['HTTPS']) &&
+													($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+													isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+													$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+													$protocol = 'https://';
+												} else {
+													$protocol = 'http://';
+												}
+												return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+											}
+
+											echo current_location(); 
+
+											$link = 'echo current_location()';
+                                            $linkParts = explode('&return=', $link);
+                                            $link = $linkParts[0];
+											
+											?>
 
 										
 										<!-- <li class="applied-filters__item">
@@ -241,62 +273,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 								// 		'operator'        => 'IN',
 								// 	);
 								// }
-								// if(isset($_GET['color']) && !empty($_GET['color'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy'        => 'pa_color',
-								// 		'field'           => 'slug',
-								// 		'terms'           =>  array($_GET['color']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
-								// // if(isset($_GET[$term_main]) && !empty($_GET[$term_main])){
-								// // 	$tax_query[] =  array(
-								// // 		'taxonomy'        => $current_taxonomy,
-								// // 		'field'           => 'slug',
-								// // 		'terms'           =>  array($_GET[$term_main]),
-								// // 		'operator'        => 'IN',
-								// // 	);
-								// // }
-								// if(isset($_GET['cpl']) && !empty($_GET['cpl'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy'        => 'pa_cpl',
-								// 		'field'           => 'slug',
-								// 		'terms'           =>  array($_GET['cpl']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
-								// if(isset($_GET['brand']) && !empty($_GET['brand'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy'        => 'pa_brand',
-								// 		'field'           => 'slug',
-								// 		'terms'           =>  array($_GET['brand']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
-								// if(isset($_GET['material']) && !empty($_GET['material'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy'        => 'pa_material',
-								// 		'field'           => 'slug',
-								// 		'terms'           =>  array($_GET['material']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
-								// if(isset($_GET['vehicle']) && !empty($_GET['vehicle'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy'        => 'pa_vehicle',
-								// 		'field'           => 'slug',
-								// 		'terms'           =>  array($_GET['vehicle']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
-								// if(isset($_GET['country']) && !empty($_GET['country'])){
-								// 		$tax_query[] =  array(
-								// 			'taxonomy'        => 'pa_country',
-								// 			'field'           => 'slug',
-								// 			'terms'           =>  array($_GET['country']),
-								// 			'operator'        => 'IN',
-								// 		);
-								// }
+								
 								
 										
 							// $products = new WP_Query( array(

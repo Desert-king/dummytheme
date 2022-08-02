@@ -1037,6 +1037,18 @@
 
     }
     </script>
+
+    <!-- <script>
+    function remove(elem){
+    elem.parentNode.removeChild(elem);
+    }
+    </script> -->
+    <script>
+    function removeFunction() {
+    const element = document.getElementById("remove");
+    element.remove();
+    }
+    </script>
     
 
     <!-- <script>
