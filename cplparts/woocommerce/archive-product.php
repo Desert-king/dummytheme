@@ -135,29 +135,40 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										</li> -->
 										<?php 
 										$Query = array_filter($_GET);
+										$i = 0;
 										foreach ($Query as $key => $tag){ 
 											?>
-											<li class="applied-filters__item" id="remove">
+											<!-- <li class="applied-filters__item"> -->
+											<li class="applied-filters__item" id="<?php  echo $i++ ; ?>">
+											<!-- <li class="applied-filters__item" id="filter_term_<?php echo wp_unique_id(); ?>"> -->
 											<?php 
 											if(isset($_GET[$key])){
 												 ?>
 												 <a href="#" class="applied-filters__button applied-filters__button--filter">
 												 <?php 
-												 echo "$key: $tag" ;?> 
-												 <svg id="i", onclick="removeFunction()" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg>
+												 echo "$key: $tag" ;
+												 $link = 'echo current_location()';
+												 $linkParts = explode('&return=', $link);
+												 $link = $linkParts[0];
+												  ?> 
+												
+												 <svg class="applied-svg" id="i" onclick="removeFunction(this)" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg>
+												 <!-- <svg class="applied-svg" id="i" onclick="removeFunction(this)" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg> -->
 												 <input name="<?php echo $_GET[$key];?>" value="<?php echo $_GET[$key];?>" id="<?php echo $_GET[$key]; ?>">
 											    </a>
 											 <?php
+											 ;
 											 } ?>
 										 </li>
 										 <?php
-										 echo current_location(); 
+										//  echo current_location(); 
 
-										 $link = 'echo current_location()';
-										 $linkParts = explode('&tag=', $link);
-										 $link = $linkParts[0];
-										 echo $linkParts[0];
+										//  $link = 'echo current_location()';
+										//  $linkParts = explode('&tag=', $link);
+										//  $link = $linkParts[0];
+										//  echo $linkParts[0];
 										}
+										
 										?>
 
                                         <?php 
@@ -179,6 +190,10 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											$link = 'echo current_location()';
                                             $linkParts = explode('&return=', $link);
                                             $link = $linkParts[0];
+											// foreach($_GET as $key => $tag)
+											// {  
+											// // do your thing.
+											// }
 											
 											?>
 

@@ -1038,15 +1038,13 @@
     }
     </script>
 
-    <!-- <script>
-    function remove(elem){
-    elem.parentNode.removeChild(elem);
-    }
-    </script> -->
+  
+ 
     <script>
-    function removeFunction() {
-    const element = document.getElementById("remove");
-    element.remove();
+     function removeFunction(e) {
+        var root = e.parentNode;
+        root.parentNode.removeChild(root);
+        console.log(root);
     }
     </script>
     
