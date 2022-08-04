@@ -152,9 +152,9 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 												 $link = $linkParts[0];
 												  ?> 
 												
-												 <svg class="applied-svg" id="i" onclick="removeFunction('<?php echo home_url($_SERVER['REQUEST_URI']); ?>', '<?php  echo $key ; ?>')" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg>
+												 <svg class="applied-svg" id="i" onclick="removeFunction(this)" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg>
 												 <!-- <svg class="applied-svg" id="i" onclick="removeFunction(this)" value="<?php echo $_GET[$key];?>" width="9" height="9"><path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"></path></svg> -->
-												 <!-- <input name="<?php echo $_GET[$key];?>" value="<?php echo $_GET[$key];?>" id="<?php echo $_GET[$key]; ?>"> -->
+												 <input name="<?php echo $_GET[$key];?>" value="<?php echo $_GET[$key];?>" id="<?php echo $_GET[$key]; ?>">
 											    </a>
 											 <?php
 											 ;
@@ -172,30 +172,33 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										?>
 
                                         <?php 
-										// function current_location()
-										// 	{
-										// 		if (isset($_SERVER['HTTPS']) &&
-										// 			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
-										// 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-										// 			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-										// 			$protocol = 'https://';
-										// 		} else {
-										// 			$protocol = 'http://';
-										// 		}
-										// 		return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-										// 	}
+										function current_location()
+											{
+												if (isset($_SERVER['HTTPS']) &&
+													($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+													isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+													$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+													$protocol = 'https://';
+												} else {
+													$protocol = 'http://';
+												}
+												return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+											}
 
 											?>
-											<!-- <h4 class="current_url" id="current_url"> -->
-											<?php //echo current_location(); 
+											<h4 class="current_url" id="current_url">
+											<?php echo current_location(); 
 
-											// $link = 'echo current_location()';
-                                            // $linkParts = explode('&return=', $link);
-                                            // $link = $linkParts[0];
-											
+											$link = 'echo current_location()';
+                                            $linkParts = explode('&return=', $link);
+                                            $link = $linkParts[0];
+											// foreach($_GET as $key => $tag)
+											// {  
+											// // do your thing.
+											// }
 											
 											?>
-											<!-- </h4> -->
+											</h4>
 
 										
 										<!-- <li class="applied-filters__item">

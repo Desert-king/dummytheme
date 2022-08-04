@@ -1041,11 +1041,42 @@
   
  
     <script>
-     function removeFunction(e) {
-        var root = e.parentNode;
-        root.parentNode.removeChild(root);
-        console.log(root);
+        function removeURLParameter(url, parameter) {
+    //prefer to use l.search if you have a location/link object
+    var urlparts= url.split('?');   
+    if (urlparts.length>=2) {
+
+        var prefix= encodeURIComponent(parameter)+'=';
+        var pars= urlparts[1].split(/[&;]/g);
+
+        //reverse iteration as may be destructive
+        for (var i= pars.length; i-- > 0;) {    
+            //idiom for string.startsWith
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                pars.splice(i, 1);
+            }
+        }
+
+        url= urlparts[0]+'?'+pars.join('&');
+         window.location.replace(url)
+          
+    } else {
+         window.location.replace(url)
+       
     }
+}
+
+     function removeFunction(url, param) {
+        // alert(url);
+        // alert(param);
+        removeURLParameter(url, param);
+        // var root = e.parentNode;
+        // root.parentNode.removeChild(root);
+        // console.log(root);
+        
+    }
+   
+
     </script>
     
 
