@@ -20,10 +20,11 @@ defined( 'ABSPATH' ) || exit;
 <div class="site__body">
 	<div class="block-space block-space--layout--after-header"></div>
 	    <div class="block">
-		     <div class="container container--max--lg cpl-my-account">
-			 <div class="row">
+		    <div class="container container--max--lg cpl-my-account">
+			  <div class="row">
 	                <!-- <div class="u-column1 col-1"> -->
-					<div class="col-md-3 d-flex">
+					<!-- <div class="col-md-3 d-flex"> -->
+					<div class="col-md-3">
 <?php
 
 /**
@@ -34,7 +35,8 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_account_navigation' ); ?>
 
 </div>
-<div class="col-md-9 d-flex mt-4 mt-md-0">
+<!-- <div class="col-md-9 d-flex mt-4 mt-md-0"> -->
+<div class="col-md-9  mt-4 mt-md-0">
 <div class="woocommerce-MyAccount-content">
 	<?php
 		/**
@@ -46,7 +48,7 @@ do_action( 'woocommerce_account_navigation' ); ?>
 	?>
 </div>
 </div>
-</div>
+</div> 
 </div>
 <div class ="block-space block-space--layout--before-footer"></div>
 </div>
