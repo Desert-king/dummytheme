@@ -15148,7 +15148,7 @@ section.woocommerce-order-details {
     width: 100%;
     padding-top: 40px;
 }
-table.woocommerce-table--order-details{
+table.woocommerce-table--order-details, table.woocommerce-orders-table.woocommerce-MyAccount-orders{
     width: 100%;
 }
 section.woocommerce-customer-details {
@@ -15158,4 +15158,11 @@ section.woocommerce-customer-details {
 table.woocommerce-table.woocommerce-table--order-details.shop_table.order_details th, table.woocommerce-table.woocommerce-table--order-details.shop_table.order_details td {
     border: 1px solid #e1e0e0;
     padding: 10px 20px;
+}
+table.woocommerce-orders-table.woocommerce-MyAccount-orders, table.woocommerce-orders-table.woocommerce-MyAccount-orders th, table.woocommerce-orders-table.woocommerce-MyAccount-orders td{
+    border: 1px solid #e1e0e0;
+    padding: 10px 20px;
+}
+a.woocommerce-Button--previous.button{
+    margin-right: 30px;
 }

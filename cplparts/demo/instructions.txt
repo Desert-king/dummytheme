@@ -1,0 +1,25 @@
+To initially activate the theme follow the following instructions.
+
+1. Step 1: Setup a fresh wordpress project
+2. Step 2: activate cplparts theme from your project
+3. Step 3: Now you will get suggestions for installing some plugins from your project dashboard. 
+          Install all the plugins. And activate them.
+4. Step 4: Now go cplparts > demo here you will find some demo data what you have to import to your theme
+          (i). From  project dashboard  go  Appearance > Import Demo Data 
+            here you will get "Select an XML file to import." now click "Select a File" and upload democpl-parts.WordPress.2022-08-12.xml from "demo" folder and 
+            click "Continue & Import" button. It will take few seconds to import th file.
+          (ii). IN same page here you will get "Select a JSON/WIE file to import." now click "Select a File" and upload localhost-red_parts-widgets (4).wie from "demo" folder and 
+            click "Continue & Import" button. It will take few seconds to import th file.
+          (iii). IN same page here you will get "Select a DAT file to import." now click "Select a File" and upload cplparts-export (2).dat from "demo" folder and 
+            click "Continue & Import" button. It will take few seconds to import th file.
+          (iv). From project dashboard  go  Sample Options > Import / Export . here you will get option to import json file now click "Upload file" and upload redux_options__redux_demo_backup_08-12-2022.json from "demo" folder and 
+            click "Import" button. It will take few seconds to import th file.
+5. Step 5: From Dashboard browse Pages search "Shop" page . Your actual Shop page is "Shop — Shop Page". If you get another shop page just delete the other shop page,
+6. Step 6: From project dashboard  go  Appearance > Menus you will get some menus.  You have to select a menu & set display loaction of the menus with checkbox and save the settings.
+           Set loaction as instructions:
+           (i) Categories (Categories)	->  Categories
+           (ii)	Footer first Menu (Footer first menu) ->  Footer first menu		
+           (iii) Footer first Menu (Footer first menu) -> Footer second menu
+           (iv)	Main menu (Main menu) -> Main menu
+           (v) Product category menu (Product category menu) -> Product category menu
+           (vi) Top menu start (Top menu start) -> "Automatically add new top-level pages to this menu" & "Top menu start"

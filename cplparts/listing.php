@@ -45,8 +45,8 @@ Template Name: listing
                             </li>
                         </div>
                     <?php endwhile; ?>
-                    <?php next_posts_link(); ?>
-                    <?php previous_posts_link(); ?>
+                    <?php //next_posts_link(); ?>
+                    <?php //previous_posts_link(); ?>
                       <!-- Added for last pagination -->
 									<?php
 									// $myQuery = new WP_Query();
@@ -63,6 +63,7 @@ Template Name: listing
 									// }
 
 									echo myPaginateLinks($loop);
+                                    
 									?>
 									<!-- Added for last pagination -->
                     <?php wp_reset_query(); ?>

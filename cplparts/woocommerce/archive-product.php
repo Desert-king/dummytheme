@@ -15,6 +15,7 @@
  * @version 3.4.0
  */
 
+// global $product;
 
 
 defined( 'ABSPATH' ) || exit;
@@ -135,6 +136,7 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 										</li> -->
 										<?php 
 										$Query = array_filter($_GET);
+										
 										$i = 0;
 										foreach ($Query as $key => $tag){ 
 											?>
@@ -161,93 +163,11 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											 } ?>
 										 </li>
 										 <?php
-										//  echo current_location(); 
 
-										//  $link = 'echo current_location()';
-										//  $linkParts = explode('&tag=', $link);
-										//  $link = $linkParts[0];
-										//  echo $linkParts[0];
 										}
 										
 										?>
 
-                                        <?php 
-										// function current_location()
-										// 	{
-										// 		if (isset($_SERVER['HTTPS']) &&
-										// 			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
-										// 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-										// 			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-										// 			$protocol = 'https://';
-										// 		} else {
-										// 			$protocol = 'http://';
-										// 		}
-										// 		return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-										// 	}
-
-											?>
-											<!-- <h4 class="current_url" id="current_url"> -->
-											<?php //echo current_location(); 
-
-											// $link = 'echo current_location()';
-                                            // $linkParts = explode('&return=', $link);
-                                            // $link = $linkParts[0];
-											
-											
-											?>
-											<!-- </h4> -->
-
-										
-										<!-- <li class="applied-filters__item">
-										   <?php if(isset($_GET['country'])){
-												?>
-												<a href="#" class="applied-filters__button applied-filters__button--filter">
-											    Country: <?php 
-                                                echo $_GET['country'];?> 
-											</a>
-											<?php
-                                            } ?>
-										</li>
-										 <li class="applied-filters__item">
-										   <?php if(isset($_GET['brand'])){
-												?>
-												<a href="#" class="applied-filters__button applied-filters__button--filter">
-											    Brand: <?php 
-                                                echo $_GET['brand'];?> 
-											</a>
-											<?php
-                                            } ?>
-										</li>
-										<li class="applied-filters__item">
-										   <?php if(isset($_GET['vehicle'])){
-												?>
-												<a href="#" class="applied-filters__button applied-filters__button--filter">
-											    Vehicle: <?php 
-                                                echo $_GET['vehicle'];?> 
-											</a>
-											<?php
-                                            } ?>
-										</li>
-										<li class="applied-filters__item">
-										   <?php if(isset($_GET['color'])){
-												?>
-												<a href="#" class="applied-filters__button applied-filters__button--filter">
-											    Color: <?php 
-                                                echo $_GET['color'];?> 
-											</a>
-											<?php
-                                            } ?>
-										</li>
-										<li class="applied-filters__item">
-										   <?php if(isset($_GET['material'])){
-												?>
-												<a href="#" class="applied-filters__button applied-filters__button--filter">
-											    Material: <?php 
-                                                echo $_GET['material'];?> 
-											</a>
-											<?php
-                                            } ?>
-										</li> -->
 									</ul>
 								</div>
 							</div>
@@ -266,9 +186,14 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 						<div class="products-list__content">
 						     <!-- search from home page -->
 							 <?php  
-							    //$term_main = $attribute->attribute_name;
+							    
 								$tax_query = array( 
 									'relation' => 'OR',
+									// 'post_type'      => 'product',
+									// 'paged' => !empty($_GET['pg']) ? absint($_GET['pg']) : 1,
+									// 'order'          => 'rand',
+									// 'post_status'    => 'publish',
+									// 'tax_query'      => $tax_query,
 								);
 								
 								
@@ -278,162 +203,127 @@ C0.4,4,0,3.6,0,3.2V0.8C0,0.4,0.4,0,0.8,0h14.4C15.6,0,16,0.4,16,0.8v2.4C16,3.6,15
 											    'field' => 'slug',
 												'terms'           =>  array($item),
 												'operator'        => 'IN',
+												'paged' => !empty($_GET['pg']) ? absint($_GET['pg']) : 1,
 											);
 								}
-								// if(isset($_GET['category']) && !empty($_GET['category'])){
-								// 	$tax_query[] =  array(
-								// 		'taxonomy' => 'product_cat',
-								// 	    'field' => 'slug',
-								// 		'terms'           =>  array($_GET['category']),
-								// 		'operator'        => 'IN',
-								// 	);
-								// }
 								
-								
+									 if(isset($tax_query[1])){
+
+									// foreach ($Query as $key => $item ){
 										
-							// $products = new WP_Query( array(
-							// 	'post_type'      => array('product'),
-							// 	'post_status'    => 'publish',
-							// 	'posts_per_page' => -1,
-							// 	'tax_query'      => $tax_query)
-							// 	);
-
-
-									// $paged = (get_query_var( 'paged' ))  ? get_query_var( 'paged' ) : 1;
-									// if ( get_query_var( 'paged' ) ) {
-									// 	$paged = get_query_var( 'paged' );
-									// } elseif ( get_query_var( 'page' ) ) {
-									// 	$paged = get_query_var( 'page' );
-									// }
-									// else {
-									// 	$paged = 1;
-									// }
-									// var_dump(get_query_var( 'paged' ));
-									$paged = 1;
-									if(isset($_GET['page'])&& $_GET['page']>0){
-										$paged = $_GET['page'];
-									}
-									// echo "<pre>";
-                                    //  print_r($tax_query);
-									//  echo "</pre>";
-									$args = [
+										$args = [
 										'post_type'      => 'product',
-										'posts_per_page' => 8,
-										'paged'          => $paged,
-										'order'          => 'DESC',
+										'order'          => 'rand',
 										'post_status'    => 'publish',
-										'tax_query'      => $tax_query
+										'tax_query'      => $tax_query,
 									];
+
+								}else{
+								$args = [
+									'post_type'      => 'product',
+									// 'posts_per_page' => 8,
+									// 'paged'          => $paged,
+									'paged' => !empty($_GET['pg']) ? absint($_GET['pg']) : 1,
+									'order'          => 'rand',
+									'post_status'    => 'publish',
+								];
+							}
+								// }
 									
 									$the_query = new WP_Query( $args );
+									
 
 							// The Loop
 							// if ( $products->have_posts() ): while ( $products->have_posts() ):
 							// 	$products->the_post();
 							// 	$product_ids[] = $products->post->ID;
-
-								if ( $the_query->have_posts() ): while ( $the_query->have_posts() ):
+								if ( $the_query->have_posts() ): while (  $the_query->have_posts() ):
 									$the_query->the_post();
+									// $ID = $product->get_id();
+									
 									$product_ids[] = $the_query->post->ID;
 									
 								
 								?>
 								<div class="products-list__item">
-								<div class="product-card">
-									<div class="product-card__actions-list">
-										<button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
-											<svg width="16" height="16">
-												<path
-													d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
-M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
-												/>
-											</svg>
-										</button>
-										<button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
-										<?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
-											 echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
-											 <p>Please active Wishlist for WooCommerce plugin</p>
-											 <?php 
-											 }
-											 ?>
-										</button>
-										<button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
-											<svg width="16" height="16">
-												<path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z" />
-												<path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z" />
-												<path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z" />
-											</svg>
-										</button>
-									</div>
-									<div class="product-card__image">
-										<div class="image image--type--product">
-											<a class="image__body">
-											<?php //do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
-											<?php echo woocommerce_template_loop_product_thumbnail(); ?>
-											</a>
-										</div>
-										<div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
-											<div class="status-badge__body">
-												<div class="status-badge__icon">
-													<svg width="13" height="13"><path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z" /></svg>
+								    <div class="product-card">
+									    <div class="product-card__actions-list">
+											<button class="product-card__action product-card__action--quickview" type="button" aria-label="Quick view">
+												<svg width="16" height="16">
+													<path
+														d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
+	M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"
+													/>
+												</svg>
+											</button>
+											<button class="product-card__action product-card__action--wishlist" type="button" aria-label="Add to wish list">
+											<?php if ( is_plugin_active( 'aco-wishlist-for-woocommerce/start.php' ) ) {
+												echo do_shortcode('[awwlm_add_to_wishlist]'); }else{?> 
+												<p>Please active Wishlist for WooCommerce plugin</p>
+												<?php 
+												}
+												?>
+											</button>
+											<button class="product-card__action product-card__action--compare" type="button" aria-label="Add to compare">
+												<svg width="16" height="16">
+													<path d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z" />
+													<path d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z" />
+													<path d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z" />
+												</svg>
+											</button>
+									    </div>
+									    <div class="product-card__image">
+										     <div class="image image--type--product">
+											    <a class="image__body">
+											          <?php echo woocommerce_template_loop_product_thumbnail(); ?>
+											    </a>
+										    </div>
+											<div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+												<div class="status-badge__body">
+													<div class="status-badge__icon">
+														<svg width="13" height="13"><path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z" /></svg>
+													</div>
+													<div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
+													<div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
 												</div>
-												<div class="status-badge__text">Part Fit for 2011 Ford Focus S</div>
-												<div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip" title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
 											</div>
-										</div>
-									</div>
-									<div class="product-card__info">
+									    </div>
+									    <div class="product-card__info">
 										<div class="product-card__meta"><span class="product-card__meta-title">SKU:</span> 140-10440-B</div>
-										<div class="product-card__name">
-											<div>
-												<!-- <div class="product-card__badges">
-													<div class="tag-badge tag-badge--sale">sale</div>
-													<div class="tag-badge tag-badge--new">new</div>
-													<div class="tag-badge tag-badge--hot">hot</div>
-												</div> -->
-												<a href="<?php echo get_permalink($the_query->post->ID) ?>"><?php woocommerce_template_loop_product_title(); ?></a>
-											</div>
-										</div>
-										<div class="product-card__rating">
-											<div class="rating product-card__rating-stars">
-												<div class="rating__body">
-													<div class="rating__star rating__star--active"></div>
-													<div class="rating__star rating__star--active"></div>
-													<div class="rating__star rating__star--active"></div>
-													<div class="rating__star rating__star--active"></div>
-													<div class="rating__star"></div>
+											<div class="product-card__name">
+												<div>
+													<a href="<?php echo get_permalink($the_query->post->ID) ?>"><?php woocommerce_template_loop_product_title(); ?></a>
 												</div>
+										    </div>
+											<div class="product-card__rating">
+												<div class="rating product-card__rating-stars">
+													<div class="rating__body">
+														<div class="rating__star rating__star--active"></div>
+														<div class="rating__star rating__star--active"></div>
+														<div class="rating__star rating__star--active"></div>
+														<div class="rating__star rating__star--active"></div>
+														<div class="rating__star"></div>
+													</div>
+												</div>
+												<div class="product-card__rating-label">4 on 3 reviews</div>
 											</div>
-											<div class="product-card__rating-label">4 on 3 reviews</div>
+											<div class="product-card__features">
+												<ul>
+													<li>Speed: 750 RPM</li>
+													<li>Power Source: Cordless-Electric</li>
+													<li>Battery Cell Type: Lithium</li>
+													<li>Voltage: 20 Volts</li>
+													<li>Battery Capacity: 2 Ah</li>
+												</ul>
+											</div>
+									    </div>
+									    <div class="product-card__footer">
+										    <div class="product-card__prices">
+												<div class="product-card__price product-card__price--current"><?php woocommerce_template_loop_price(); ?>
+											</div>
 										</div>
-										<div class="product-card__features">
-											<ul>
-												<li>Speed: 750 RPM</li>
-												<li>Power Source: Cordless-Electric</li>
-												<li>Battery Cell Type: Lithium</li>
-												<li>Voltage: 20 Volts</li>
-												<li>Battery Capacity: 2 Ah</li>
-											</ul>
-										</div>
-									</div>
-									<div class="product-card__footer">
-										<div class="product-card__prices"><div class="product-card__price product-card__price--current"><?php woocommerce_template_loop_price(); ?></div></div>
 										<?php //woocommerce_template_loop_add_to_cart(); ?>
 										<button class="product-card__addtocart-sm" type="button"><?php woocommerce_template_loop_add_to_cart(); ?></button>
-										<!-- <button class="cpl-cart product-card__addtocart-icon" type="button" aria-label="Add to cart"> -->
-										    <?php 
-											// add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
-											// function woocommerce_custom_product_add_to_cart_text() {
-											// 	echo 'buy';  
-												
-											// }
-											?>
-											<?php //do_action('woocommerce_after_shop_loop_item','add_to_cart_replace');	 ?>
-											<?php //woocommerce_template_loop_add_to_cart(do_action('woocommerce_after_shop_loop_item','add_to_cart_replace')); ?>
-											
-											<?php //woocommerce_template_loop_add_to_cart(do_action('woocommerce_after_add_to_cart_button', 'add_content_after_addtocart_button_func')); ?>
-											<?php //do_action('woocommerce_after_add_to_cart_button'); ?>
-										<!-- </button> -->
 										<button class="product-card__addtocart-full" type="button"><?php woocommerce_template_loop_add_to_cart(); ?></button>
 										<button class="product-card__wishlist" type="button">
 											<svg width="16" height="16">
@@ -457,27 +347,69 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 							</div>
 								<?php
 							endwhile;
-							    
-								?>
+							?>
+							<?php //next_posts_link(); ?>
+                           <?php //previous_posts_link(); ?>
+						   <?php
+							// echo myPaginateLinks($the_query);
+							// wp_reset_query(); 
 							
-                                	<div class="products-view__pagination">
+								?>
+								
+								<div class="products-view__pagination">
+									<nav aria-label="Page navigation example">
+										<ul class="pagination">
+											<!-- <li class="page-item disabled">
+												<a class="page-link page-link--with-arrow" href="" aria-label="Previous">
+													<span class="page-link__arrow page-link__arrow--left" aria-hidden="true">
+														<svg width="7" height="11">
+															<path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"></path>
+														</svg>
+													</span>
+											    </a>
+										    </li> -->
+											<?php  
+											echo myPaginateLinks($the_query);
+							                wp_reset_query(); 
+							                ?>
+										    <!-- <li class="page-item">
+												<a class="page-link" href="#">1</a></li><li class="page-item active" aria-current="page"><span class="page-link">2 
+													<span class="sr-only">(current)</span></span></li><li class="page-item"><a class="page-link" href="#">3</a>
+																				</li>
+																				<li class="page-item"><a class="page-link" href="#">4</a></li><li class="page-item page-item--dots"><div class="pagination__dots"></div></li><li class="page-item"><a class="page-link" href="#">9</a></li>
+																				<li class="page-item"><a class="page-link page-link--with-arrow" href="" aria-label="Next"><span class="page-link__arrow page-link__arrow--right" aria-hidden="true"><svg width="7" height="11"><path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
+										C-0.1,9.8-0.1,10.4,0.3,10.7z"></path></svg> 
+                                                    </span></a>
+											</li> -->
+										</ul>
+									</nav>
+									<!-- <div class="products-view__pagination-legend">Showing 6 of 98 products</div> -->
+								</div>
+                                	<!-- <div class="products-view__pagination">
 							<nav aria-label="Page navigation example">
 								<ul class="pagination shop-pagination">
+								
 								<?php
 								//pagination git
+								
 								$total_pages = $the_query->max_num_pages;
 								$page_data = array(
 									'total_pages'  => $total_pages,
 									'current_page' =>  max( 1, $paged ),
 								);
 								get_template_part( 'template-parts/pagination/pagination', null, $page_data);
+								
 								?>
+								 
 									
 								</ul>
 							</nav> 
 							<div class="products-view__pagination-legend shop_product_count"><?php woocommerce_result_count(); ?></div>
-						</div>
+							
+						</div> -->
 							   
+
+
 								<?php
 								
 								
@@ -490,108 +422,24 @@ l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"
 							  </div>
 							  <?php
 							endif;
+							
 							?>
 							
 						</div>
+						
 					</div>
 					
+					
 					 
-					<!-- <div class="products-view__pagination">
-							<nav aria-label="Page navigation example">
-								<ul class="pagination shop-pagination">
-								<?php
-								// pagination git
-								// $total_pages = $the_query->max_num_pages;
-								// $page_data = array(
-								// 	'total_pages'  => $total_pages,
-								// 	'current_page' =>  max( 1, $paged ),
-								// );
-								// get_template_part( 'template-parts/pagination/pagination', null, $page_data);
-								?>
-									
-								</ul>
-							</nav> -->
-							<div class="products-view__pagination-legend shop_product_count"><?php woocommerce_result_count(); ?></div>
-						<!-- </div> -->
+				
 		<!-- pagination -->
-<?//php
-
-
-// do_action( 'woocommerce_after_shop_loop' ); 
-
-// if ( woocommerce_product_loop() ) {
-
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	//do_action( 'woocommerce_before_shop_loop' );
-
-	// woocommerce_product_loop_start();
-
-	// if ( wc_get_loop_prop( 'total' ) ) {
-	// 	while ( have_posts() ) {
-	// 		the_post();
-
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 */
-			//do_action( 'woocommerce_shop_loop' );
-
-	// 		wc_get_template_part( 'content', 'product' );
-	// 	}
-	// }
-
-	// woocommerce_product_loop_end();
-   
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-// 	do_action( 'woocommerce_after_shop_loop' );
-// } else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-// 	do_action( 'woocommerce_no_products_found' );
-// }
-
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-// do_action( 'woocommerce_after_main_content' );
-
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
- //do_action( 'woocommerce_sidebar' );
- 
- ?>
- <?php //if(get_sidebar( 'primary-new' )){
-	//echo get_sidebar( 'primary-new' );
-//  }
-//  else{
-// 	 echo "no sidebar";
-//  } 
- ?>
- <?php //get_sidebar( 'primary-new' ); ?>
- <?php //get_template_part( 'template-parts/sidebar/sidebar-primary-new'); ?>
- 
-                       
 
                      </div>
+					
                 </div>
+				
              </div>
+			
          </div>
     </div>
 	<div class="block-space block-space--layout--before-footer"></div>
